@@ -1,0 +1,55 @@
+<section class='main'>
+  <div class='main-wrapper'>
+    <div class='main-header'>
+      <h3 class='main-header__title'>Главная</h3>
+      <a href="/help" class='main-header__help'>
+        <h4 class='main-header__help__text'>Помощь</h4>
+        <img src='/icons/info.svg' class='main-header__help__icon' />
+      </a>
+    </div>
+
+    <div class='main-search-section'>
+      <div class='search-container'>
+        <div class='search-input-wrapper'>
+          <div class='search-input-container'>
+            <div class='search-tags'></div>
+            <input 
+              type='text' 
+              class='search-input' 
+              placeholder='Выберите каналы'
+              data-search-input
+            >
+            <img 
+              src='/icons/chevron.svg' 
+              class='search-arrow-icon' 
+              data-search-arrow
+            />
+          </div>
+          <div class='search-dropdown' data-search-dropdown></div>
+        </div>
+      </div>
+      <a href="/create" class='main-search-section__settings'>
+        <img src='/icons/settings.svg' class='main-search-section__settings__icon' />
+      </a>
+    </div>
+
+    <div class='main-empty'>
+      <img src='/images/main/image.png' class='main-empty__image' />
+      <h3 class='main-empty__title'>
+        Создайте новый пост или выберите каналы
+      </h3>
+      <p class='main-empty__text'>
+        Создайте новый пост или выберите каналы
+      </p>
+    </div>
+
+    <a href="/new-post" class='main-button'>
+      <div class='main-button__icon'>
+        <img src='/icons/plus.svg' class='main-button__icon__plus' />
+      </div>
+      <span class='main-button__span'>
+        Добавить новый пост
+      </span>
+    </a>
+  </div>
+</section>

@@ -1,0 +1,312 @@
+<section class='create'>
+  <img src='/images/create/arrow.png' class='create__background' />
+  <div class='create-wrapper'>
+    <div class='create-header'>
+      <a href="/" class='create-header__back'>
+        <img src='/icons/chevronleft.svg' class='create-header__back__icon' />
+        <h3 class='create-header__title'>Каналы и группы</h3>
+      </a>
+    </div>
+
+    <div class='main-search-section'>
+      <div class='search-container'>
+        <div class='search-input-wrapper'>
+          <div class='search-input-container'>
+            <div class='search-tags'></div>
+            <input 
+              type='text' 
+              class='search-input' 
+              placeholder='Выберите каналы'
+              data-search-input
+            >
+            <img 
+              src='/icons/chevron.svg' 
+              class='search-arrow-icon' 
+              data-search-arrow
+            />
+          </div>
+          <div class='search-dropdown' data-search-dropdown></div>
+        </div>
+      </div>
+      <a href="/create" class='main-search-section__settings'>
+        <img src='/icons/search.svg' class='main-search-section__settings__icon' />
+      </a>
+    </div>
+
+    <div class='create-cards'>
+      <div class='create-card-wrapper'>
+        <div class='create-card-wrapper__header'>
+          <div class='create-card__header'>
+            <h4 class='create-card__title'>Каналы</h4>
+            <div class='create-card__counter'>{{channels.length}}</div>
+            <img class='create-card__add' src='/icons/plusnew.svg' alt='Add' />
+            <img class='create-card__add-icon' src='/images/create/graph.png' alt='graph' />
+          </div>
+        </div>
+        <div class='create-card'>
+          <div class='create-card__content' data-channels-content>
+            <div class="multi-select-header" style="display: none;">
+              <span>Выбранные каналы <span class="selected-count">0</span></span>
+              <button class="select-all-btn">Выбрать все</button>
+            </div>
+            <div class="multi-select-actions" style="display: none;">
+              <div class="actions-left">
+                <button class="action-add-group" disabled>Добавить в группу</button>
+                <button class="action-delete" disabled>
+                  <span>Удалить</span>
+                  <img src="/icons/trash.svg" alt="Удалить"/>
+                </button>
+              </div>
+              <button class="action-cancel">×</button>
+            </div>
+            {{#if channels.length}}
+              <div class="create-card__content-wrapper">
+                <div class="channel-cards-grid">
+                  {{#each channels}}
+                    <div class="channel-card">
+                      <div class="channel-card__header">
+                        <img src="{{avatar}}" class="channel-card__avatar" alt="Channel avatar" />
+                        <button class="channel-card__menu" data-dropdown-trigger>
+                          <img src="/icons/dots.svg" alt="Menu" />
+                        </button>
+                        <input
+                          type="checkbox"
+                          class="card-select-checkbox checkbox-hidden"
+                        />
+                      </div>
+                      <div class="channel-card__body">
+                        <h5 class="channel-card__title">{{title}}</h5>
+                        <p class="channel-card__username">{{username}}</p>
+                      </div>
+                    </div>
+                  {{/each}}
+                </div>
+              </div>
+            {{/if}}
+            <div class='create-card__empty' {{#if channels.length}}style='display: none;'{{/if}}>
+              <p class='create-card__empty__title'>У вас пока нет каналов</p>
+              <p class='create-card__empty__text'>
+                Чтобы добавить канал, нажмите на кнопку «Подключить канал» ниже
+              </p>
+            </div>
+
+            <button class='create-card__show-more' data-show-more>
+              <span>Показать</span>
+              <img src='/icons/chevvron.svg' alt='Show more' />
+            </button>
+          </div>
+
+          <div class='create-card__empty' style='display: none;'>
+            <p class='create-card__empty__title'>У вас пока нет каналов</p>
+            <p class='create-card__empty__text'>
+              Чтобы добавить канал, нажмите на кнопку «Подключить канал» ниже
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="create-card {{#if groupsExpanded}}expanded{{/if}}">
+        <div class="create-card__header">
+          <h4 class="create-card__title">Группы</h4>
+          <div class="create-card__counter">{{groups.length}}</div>
+          <img class="create-card__add" src="/icons/plusnew.svg" alt="Add" />
+        </div>
+
+        <div class="create-card__content" data-groups-content>
+          <div class="multi-select-header-group" style="display: none;">
+            <span>Выбранные группы <span class="selected-count">0</span></span>
+            <button class="select-all-btn-group">Выбрать все</button>
+          </div>
+          <div class="multi-select-actions-group" style="display: none;">
+            <div class="actions-left">
+              <button class="action-delete-group" disabled>
+                <span>Удалить</span>
+                <img src="/icons/trash.svg" alt="Удалить"/>
+              </button>
+            </div>
+            <button class="action-cancel-group">×</button>
+          </div>
+          {{#if groups.length}}
+            <div class="create-card__content-wrapper">
+              <div class="group-cards-grid">
+                {{#each groups}}
+                  <div class="group-card">
+                    <div class="group-card__header">
+                      <img src="{{avatar}}" class="group-card__avatar" alt="Group avatar" />
+                      <button class="group-card__menu" data-group-dropdown-trigger>
+                        <img src="/icons/dotswhite.svg" alt="Menu" />
+                      </button>
+                      <input
+                        type="checkbox"
+                        class="group-select-checkbox checkbox-hidden"
+                      />
+                    </div>
+                    <div class="group-card__body">
+                      <h5 class="group-card__title">{{title}}</h5>
+                      <div class="group-card__members-wrapper">
+                        <p class="group-card__members">Каналов</p>
+                        <span class="group-card__members-count">{{members}}</span>
+                      </div>
+                    </div>
+                  </div>
+                {{/each}}
+              </div>
+            </div>
+            <button class="create-card__show-more" data-group-show-more>
+              <span>{{#if groupsExpanded}}Скрыть{{else}}Показать{{/if}}</span>
+              <img src="/icons/chevvron.svg" alt="Toggle" />
+            </button>
+          {{else}}
+            <div class="create-card__empty">
+              <p class="create-card__empty__title">У вас пока нет групп</p>
+              <p class="create-card__empty__text">
+                Чтобы добавить группу, нажмите на кнопку «Подключить группу» ниже
+              </p>
+            </div>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+
+    <a class='main-button' data-modal-trigger>
+      <div class='main-button__icon'>
+        <img src='/icons/plus.svg' class='main-button__icon__plus' />
+      </div>
+      <span class='main-button__span'>
+        Подключить канал
+      </span>
+    </a>
+  </div>
+
+  <div class="modal" data-modal>
+    <div class="modal__content">
+      <div class="modal__header">
+        <h2 class="modal__title">Добавить канал</h2>
+        <button class="modal__close" data-modal-close>
+          <img src="/icons/close.svg" alt="Закрыть">
+        </button>
+      </div>
+      
+      <div class="modal__body">
+        <div class="modal__step">
+          <p class="modal__step-text">1. Добавьте бот <strong>@botname</strong> в админы канала и предоставьте ему права на управление постами.</p>
+        </div>
+
+        <img src="/images/create/settings.png" alt="Права бота" class="modal__permissions">
+
+        <div class="modal__step">
+          <p class="modal__step-text">2. Введите короткий адрес или ID канала в поле ниже.</p>
+          <div class="modal__input-wrapper">
+            <input type="text" class="modal__input" placeholder="@channel" data-channel-input>
+            <img src="/icons/chevron.svg" class="modal__input-arrow" alt="Стрелка">
+          </div>
+        </div>
+
+        <div class="modal__buttons">
+          <button class="modal__button modal__button--cancel" data-modal-close>Отмена</button>
+          <button class="modal__button modal__button--add">Добавить</button>
+        </div>
+        <div class="modal__link-wrapper">
+          <a href="#" class="modal__link">Инструкция по подключению</a>
+          <img src="/icons/external.svg" alt="Стрелка" class="modal__link-arrow">
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="bottom-menu" class="bottom-menu">
+    <div class="bottom-menu__overlay" data-bottom-menu-close></div>
+    <div class="bottom-menu__container">
+      <button class="bottom-menu__close" data-bottom-menu-close>
+        <img src="/icons/close.svg" alt="Закрыть">
+      </button>
+      <h4 class="bottom-menu__title">Выберите действие</h4>
+      <ul class="bottom-menu__list">
+        <li><button class="bottom-menu__item" data-bottom-menu-add-group><span>Добавить в группу</span><img src="/icons/iconplus.svg" alt="Добавить"></button></li>
+        <li><button class="bottom-menu__item" data-bottom-menu-choose-multiple><span>Выбрать несколько</span><img src="/icons/ul.svg" alt="Выбрать"></button></li>
+        <li><button class="bottom-menu__item" data-bottom-menu-delete><span>Удалить</span><img src="/icons/garbage.svg" alt="Удалить"></button></li>
+      </ul> 
+    </div>
+  </div>
+
+  <!-- Модальное окно подтверждения удаления -->
+  <div class="modal modal-confirm" id="confirm-delete-modal" data-modal-confirm style="display: none;">
+    <div class="modal__content">
+      <div class="modal__header">
+        <div class="modal__header-wrapper">
+          <h2 class="modal__title">Удалить каналы?</h2>
+          <span class="modal__counter">24</span>
+        </div>
+        <button class="modal__close" data-modal-close-confirm>
+          <img src="/icons/close.svg" alt="Закрыть">
+        </button>
+      </div>
+      <div class="modal__body">
+        <p class="modal__text">Выбранные каналы</p>
+        <div class="modal__channels">
+          <div class="modal__channel">
+            <span>Риа новости</span>
+            <img class="modal__channel-close" src="/icons/close.svg" alt="Убрать"/>
+          </div>
+                    <div class="modal__channel">
+            <span>Риа новости</span>
+            <img class="modal__channel-close" src="/icons/close.svg" alt="Убрать"/>
+          </div>
+                    <div class="modal__channel">
+            <span>Риа новости</span>
+            <img class="modal__channel-close" src="/icons/close.svg" alt="Убрать"/>
+          </div>
+                    <div class="modal__channel">
+            <span>Риа новостиновостиновостиновостиновостиновости</span>
+            <img class="modal__channel-close" src="/icons/close.svg" alt="Убрать"/>
+          </div>
+        </div>
+        <div class="modal__buttons-delete">
+          <button class="modal__button modal__button--cancel" data-modal-close-confirm>Отмена</button>
+          <button class="modal__button modal__button--delete" id="confirm-delete-button">Удалить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Добавляем новую модалку для добавления в группу -->
+  <div class="modal modal-add-to-group" id="add-to-group-modal" data-modal-add-to-group style="display: none;">
+    <div class="modal__content">
+      <div class="modal__header">
+        <div class="modal__header-wrapper">
+          <h2 class="modal__title">Добавить в группу</h2>
+        </div>
+        <button class="modal__close" data-modal-close-add-to-group>
+          <img src="/icons/close.svg" alt="Закрыть">
+        </button>
+      </div>
+      <div class="modal__body">
+        <div class="modal__header-wrapper">
+          <p class="modal__text-choosen">Каналы</p>
+          <span class="modal__counter">24</span>
+        </div>
+        <div class="modal__channels">
+          <div class="modal__channel">
+            <span>• Риа новости</span>
+          </div>
+        </div>
+        <div class="modal__groups-list">
+          <div class="modal__group-item">
+            <div class="modal__group-info">
+              <img src="/images/create/default.png" alt="Группа" class="modal__group-avatar">
+              <div class="modal__group-details">
+                <h3 class="modal__group-title">Название группы</h3>
+                <p class="modal__group-count">12 каналов</p>
+              </div>
+            </div>
+            <input type="radio" name="group" class="modal__group-radio">
+          </div>
+        </div>
+        <div class="modal__buttons">
+          <button class="modal__button modal__button--cancel" data-modal-close-add-to-group>Отмена</button>
+          <button class="modal__button modal__button--add">Добавить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
