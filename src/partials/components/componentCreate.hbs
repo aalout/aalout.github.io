@@ -40,8 +40,8 @@
             <h4 class='create-card__title'>Каналы</h4>
             <div class='create-card__counter'>{{channels.length}}</div>
             <img class='create-card__add' src='/icons/plusnew.svg' alt='Add' />
-            <img class='create-card__add-icon' src='/images/create/graph.png' alt='graph' />
           </div>
+          <img class='create-card__add-icon' src='/images/create/graph.png' alt='graph' />
         </div>
         <div class='create-card'>
           <div class='create-card__content' data-channels-content>
@@ -106,64 +106,68 @@
       </div>
 
       <div class="create-card {{#if groupsExpanded}}expanded{{/if}}">
-        <div class="create-card__header">
-          <h4 class="create-card__title">Группы</h4>
-          <div class="create-card__counter">{{groups.length}}</div>
-          <a href="/create-group"><img class="create-card__add" src="/icons/plusnew.svg" alt="Add" /></a>
-        </div>
-
-        <div class="create-card__content" data-groups-content>
-          <div class="multi-select-header-group" style="display: none;">
-            <span>Выбранные группы <span class="selected-count">0</span></span>
-            <button class="select-all-btn-group">Выбрать все</button>
-          </div>
-          <div class="multi-select-actions-group" style="display: none;">
-            <div class="actions-left">
-              <button class="action-delete-group" disabled>
-                <span>Удалить</span>
-                <img src="/icons/trash.svg" alt="Удалить"/>
-              </button>
+        <div class='create-card-wrapper'>
+          <div class='create-card-wrapper__header'>
+            <div class='create-card__header'>
+              <h4 class='create-card__title'>Группы</h4>
+              <div class='create-card__counter'>{{groups.length}}</div>
+              <img class='create-card__add' src='/icons/plusnew.svg' alt='Add' />
             </div>
-            <button class="action-cancel-group">×</button>
+            <img class='create-card__add-icon' src='/images/create/graph.png' alt='graph' />
           </div>
-          {{#if groups.length}}
-            <div class="create-card__content-wrapper">
-              <div class="group-cards-grid">
-                {{#each groups}}
-                  <div class="group-card">
-                    <div class="group-card__header">
-                      <img src="{{avatar}}" class="group-card__avatar" alt="Group avatar" />
-                      <button class="group-card__menu" data-group-dropdown-trigger>
-                        <img src="/icons/dotswhite.svg" alt="Menu" />
-                      </button>
-                      <input
-                        type="checkbox"
-                        class="group-select-checkbox checkbox-hidden"
-                      />
-                    </div>
-                    <div class="group-card__body">
-                      <h5 class="group-card__title">{{title}}</h5>
-                      <div class="group-card__members-wrapper">
-                        <p class="group-card__members">Каналов</p>
-                        <span class="group-card__members-count">{{members}}</span>
+          <div class="create-card__content" data-groups-content>
+            <div class="multi-select-header-group" style="display: none;">
+              <span>Выбранные группы <span class="selected-count">0</span></span>
+              <button class="select-all-btn-group">Выбрать все</button>
+            </div>
+            <div class="multi-select-actions-group" style="display: none;">
+              <div class="actions-left">
+                <button class="action-delete-group" disabled>
+                  <span>Удалить</span>
+                  <img src="/icons/trash.svg" alt="Удалить"/>
+                </button>
+              </div>
+              <button class="action-cancel-group">×</button>
+            </div>
+            {{#if groups.length}}
+              <div class="create-card__content-wrapper">
+                <div class="group-cards-grid">
+                  {{#each groups}}
+                    <div class="group-card">
+                      <div class="group-card__header">
+                        <img src="{{avatar}}" class="group-card__avatar" alt="Group avatar" />
+                        <button class="group-card__menu" data-group-dropdown-trigger>
+                          <img src="/icons/dotswhite.svg" alt="Menu" />
+                        </button>
+                        <input
+                          type="checkbox"
+                          class="group-select-checkbox checkbox-hidden"
+                        />
+                      </div>
+                      <div class="group-card__body">
+                        <h5 class="group-card__title">{{title}}</h5>
+                        <div class="group-card__members-wrapper">
+                          <p class="group-card__members">Каналов</p>
+                          <span class="group-card__members-count">{{members}}</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                {{/each}}
+                  {{/each}}
+                </div>
               </div>
-            </div>
-            <button class="create-card__show-more" data-group-show-more>
-              <span>{{#if groupsExpanded}}Скрыть{{else}}Показать{{/if}}</span>
-              <img src="/icons/chevvron.svg" alt="Toggle" />
-            </button>
-          {{else}}
-            <div class="create-card__empty">
-              <p class="create-card__empty__title">У вас пока нет групп</p>
-              <p class="create-card__empty__text">
-                Чтобы добавить группу, нажмите на кнопку «Подключить группу» ниже
-              </p>
-            </div>
-          {{/if}}
+              <button class="create-card__show-more" data-group-show-more>
+                <span>{{#if groupsExpanded}}Скрыть{{else}}Показать{{/if}}</span>
+                <img src="/icons/chevvron.svg" alt="Toggle" />
+              </button>
+            {{else}}
+              <div class="create-card__empty">
+                <p class="create-card__empty__title">У вас пока нет групп</p>
+                <p class="create-card__empty__text">
+                  Чтобы добавить группу, нажмите на кнопку «Подключить группу» ниже
+                </p>
+              </div>
+            {{/if}}
+          </div>
         </div>
       </div>
     </div>
