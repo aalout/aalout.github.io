@@ -1,0 +1,43 @@
+<section class="edit-group">
+    <div class="edit-group__header">
+        <h3 class="edit-group__title">Редактировать группу</h3>
+        <input class="edit-group__input" placeholder="Введите название" />
+    </div>
+
+    <div class="edit-group__content">
+        <div class="edit-group__content-header">
+            <div class="edit-group__content-header-title">
+                <h3 class="edit-group__content-header-title-text">Выбранные каналы</h3>
+                <span class="edit-group__content-header-title-count">0</span>
+            </div>
+            <button class="edit-group__content-header-button">
+                <span>Выбрать все</span>
+            </button>
+        </div>
+        <div class="edit-group__content-search">
+            <input class="edit-group__content-search-input" placeholder="Поиск каналов" />
+            <button class="edit-group__content-search-button">
+                <img src="/icons/search.svg" alt="Поиск" />
+            </button>
+        </div>
+        <div class="edit-group__content-channels">
+            <div class="channel-card">
+                <div class="channel-card__header">
+                    <img src="{{avatar}}" class="channel-card__avatar" alt="Channel avatar" />
+                    <div class="channel-card__checkbox">
+                        <img src="/icons/check.svg" alt="Selected" />
+                    </div>
+                </div>
+                <div class="channel-card__body">
+                    <h5 class="channel-card__title">{{title}}</h5>
+                    <p class="channel-card__username">{{username}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="edit-group__button">
+        <img class="edit-group__button-icon" src="/icons/save.svg" alt="Сохранить" />
+        <span>Сохранить изменения</span>
+    </button>
+</section>

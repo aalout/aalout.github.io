@@ -6,6 +6,7 @@
 @import './components/componentPreview.css';
 @import './components/componentHelp.css';
 @import './components/componentCreateGroup.css';
+@import './components/componentEditGroup.css';
 
 :root {
   --primary-color: #42b983;

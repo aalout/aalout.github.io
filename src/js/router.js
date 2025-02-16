@@ -21,6 +21,9 @@ export class Router {
       },
       '/create-group': (appEl) => {
         new CreateGroup();
+      },
+      '/edit-group': (appEl) => {
+        new EditGroup();
       }
     };
     this.currentPath = '';
