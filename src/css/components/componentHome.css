@@ -160,6 +160,21 @@
   flex-wrap: nowrap !important;
 }
 
+.search-placeholder {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: 0px;
+  color: rgba(162, 162, 162, 1);
+}
+
 /* Подгоняем стили для одного тега */
 .search-tag {
   background: rgba(133, 111, 255, 0.1);

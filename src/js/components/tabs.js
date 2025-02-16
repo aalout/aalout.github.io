@@ -28,7 +28,7 @@ export class Tabs {
     });
 
     // Обновляем видимый контент
-    this.contents.forEach(content => {в
+    this.contents.forEach(content => {
       content.classList.toggle('active', content.dataset.content === targetTab);
     });
   }

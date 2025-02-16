@@ -10,6 +10,7 @@ export class Search {
     this.dropdown = document.querySelector('[data-search-dropdown]');
     this.tagsContainer = document.querySelector('.search-tags');
     this.arrowIcon = document.querySelector('[data-search-arrow]');
+    this.placeholder = document.querySelector('[data-search-placeholder]');
     if (!this.input || !this.dropdown || !this.tagsContainer) return;
     this.bindEvents();
     this.renderDropdown('');
@@ -21,13 +22,24 @@ export class Search {
         this.renderTag(tag);
       });
     }
+    this.updatePlaceholderVisibility();
   }
   bindEvents() {
     this.input.addEventListener('input', () => {
       this.handleSearch();
+      this.handleTagsVisibility();
+      this.updatePlaceholderVisibility();
     });
     this.input.addEventListener('focus', () => {
       this.showDropdown();
+      this.handleTagsVisibility();
+      this.updatePlaceholderVisibility();
+    });
+    this.input.addEventListener('blur', () => {
+      setTimeout(() => {
+        this.handleTagsVisibility();
+        this.updatePlaceholderVisibility();
+      }, 100);
     });
     this.input.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -81,6 +93,7 @@ export class Search {
 
     this.input.value = '';
     this.renderDropdown('');
+    this.updatePlaceholderVisibility();
   }
   removeTag(text) {
     this.tags = this.tags.filter(t => t !== text);
@@ -92,6 +105,7 @@ export class Search {
       this.renderTag(tag);
     });
     this.renderDropdown(this.input.value);
+    this.updatePlaceholderVisibility();
   }
   renderDropdown(filter = '') {
     const filteredItems = this.items.filter(item => {
@@ -142,5 +156,23 @@ export class Search {
         this.renderDropdown(this.input.value);
       });
     });
+  }
+  handleTagsVisibility() {
+    if (this.input.value) {
+      this.tagsContainer.style.display = 'none';
+    } else {
+      this.tagsContainer.style.display = 'flex';
+    }
+  }
+  updatePlaceholderVisibility() {
+    if (!this.placeholder) return;
+
+    const shouldShowPlaceholder = !this.input.value && this.tags.length === 0 && document.activeElement !== this.input;
+    
+    if (shouldShowPlaceholder) {
+      this.placeholder.style.display = 'block';
+    } else {
+      this.placeholder.style.display = 'none';
+    }
   }
 }
