@@ -40,10 +40,12 @@
             <span data-counter>0</span> / 4000
           </div>
           <div class='editor-toolbar' data-toolbar>
-            <button data-format='bold'>B</button>
-            <button data-format='italic'>I</button>
-            <button data-format='strike'>S</button>
-            <button data-format='link'>Link</button>
+            <button data-format='clear'>Убрать форматирование</button>
+            <button data-format='underline'>Подчеркнутый</button>
+            <button data-format='strike'>Зачеркнутый</button>
+            <button data-format='italic'>Курсив</button>
+            <button data-format='bold'>Жирный</button>
+            <button data-format='link'>Ссылка</button>
           </div>
         </div>
         
@@ -163,6 +165,23 @@
           <span data-hidden-counter>0</span> / 4000
         </div>
       </div>
+      <div class="modal-buttons">
+        <button class="modal-button modal-button--cancel">Отмена</button>
+        <button class="modal-button modal-button--add">Добавить</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Добавим модальное окно для ссылки -->
+<div class="modal" data-modal="link" style="display: none;">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Добавить ссылку</h3>
+      <button class="modal-close">×</button>
+    </div>
+    <div class="modal-body">
+      <input type="text" class="modal-input" placeholder="Введите ссылку" data-link-input>
       <div class="modal-buttons">
         <button class="modal-button modal-button--cancel">Отмена</button>
         <button class="modal-button modal-button--add">Добавить</button>

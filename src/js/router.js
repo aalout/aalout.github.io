@@ -3,12 +3,14 @@ import { Search } from './components/search.js';
 import { NewPost } from './components/newPost.js';
 import { Preview } from './components/preview.js';
 import { CreateGroup } from './components/createGroup.js';
+import { Tabs } from './components/tabs.js';
 
 export class Router {
   constructor(routes) {
     this.routes = {
       '/': (appEl) => {
         new Search(window.channels?.map(c => c.title) || [], true);
+        new Tabs();
       },
       '/create': (appEl) => {
         new CreateSearch();

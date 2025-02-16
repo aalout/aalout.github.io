@@ -39,7 +39,7 @@ export class NewPost {
    */
   getCaretCoordinates(element, position) {
     const div = document.createElement('div');
-    const style = getComputedStyle(element);
+    const style = window.getComputedStyle(element);
     const properties = [
       'direction', 'boxSizing', 'width', 'height', 'overflowX', 'overflowY',
       'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth',
@@ -53,18 +53,29 @@ export class NewPost {
     properties.forEach(prop => {
       div.style[prop] = style[prop];
     });
+
+    // Настраиваем поведение для многострочного ввода
     div.style.whiteSpace = 'pre-wrap';
+    div.style.wordWrap = 'break-word';
+    // Если это input, перевод строки не используется
     if (element.nodeName === 'INPUT') {
       div.style.whiteSpace = 'pre';
     }
-    div.textContent = element.value.substring(0, position);
+
+    // Заменяем переносы строк на <br/> чтобы добиться корректного расчёта высоты
+    const textBeforeCaret = element.value.substring(0, position).replace(/\n/g, '<br/>');
+    div.innerHTML = textBeforeCaret || '<br/>';
+    
     const span = document.createElement('span');
     span.textContent = element.value.substring(position) || '.';
     div.appendChild(span);
-    
+
+    // Учитываем прокрутку исходного элемента (если она есть)
+    div.scrollTop = element.scrollTop;
+
     document.body.appendChild(div);
     const spanRect = span.getBoundingClientRect();
-    let coordinates = {
+    const coordinates = {
       left: spanRect.left + window.scrollX,
       top: spanRect.top + window.scrollY
     };
@@ -120,22 +131,15 @@ export class NewPost {
       
       const editorRect = this.editor.getBoundingClientRect();
       const markerRect = tempElement.getBoundingClientRect();
-      const relativeLeft = markerRect.left - editorRect.left + 
-                          parseInt(styles.paddingLeft, 10);
-      const relativeTop = markerRect.top - editorRect.top + 
-                         parseInt(styles.paddingTop, 10) + 
-                         parseFloat(styles.lineHeight);
+      const relativeLeft = markerRect.left - editorRect.left + parseInt(styles.paddingLeft, 10);
+      const relativeTop = markerRect.top - editorRect.top + parseInt(styles.paddingTop, 10) + parseFloat(styles.lineHeight);
 
-      console.log('Координаты:', {
-        editor: editorRect,
-        marker: markerRect,
-        relative: { left: relativeLeft, top: relativeTop }
-      });
-
-      this.editorContainer.removeChild(mirror);
+      // Задаём минимальное значение left равное 106px
+      const minLeft = 106;
+      const adjustedLeft = Math.max(relativeLeft, minLeft);
 
       this.toolbar.style.position = 'absolute';
-      this.toolbar.style.left = `${relativeLeft}px`;
+      this.toolbar.style.left = `${adjustedLeft}px`;
       this.toolbar.style.top = `${relativeTop}px`;
       this.toolbar.style.transform = 'translateX(-50%)';
       this.toolbar.classList.add('active');
@@ -210,21 +214,24 @@ export class NewPost {
 
         let formattedText = '';
         switch (format) {
-          case 'bold':
-            formattedText = `**${selectedText}**`;
+          case 'clear':
+            formattedText = selectedText.replace(/[\*_~\[\]\(\)]/g, '');
             break;
-          case 'italic':
-            formattedText = `_${selectedText}_`;
+          case 'underline':
+            formattedText = `__${selectedText}__`;
             break;
           case 'strike':
             formattedText = `~~${selectedText}~~`;
             break;
-          case 'link':
-            const url = prompt('Введите URL:');
-            if (url) {
-              formattedText = `[${selectedText}](${url})`;
-            }
+          case 'italic':
+            formattedText = `_${selectedText}_`;
             break;
+          case 'bold':
+            formattedText = `**${selectedText}**`;
+            break;
+          case 'link':
+            this.showLinkModal(selectedText);
+            return;
         }
 
         if (formattedText) {
@@ -480,6 +487,46 @@ export class NewPost {
         this.hiddenAttachment = null;
         this.hiddenButton.disabled = false;
       }
+    });
+  }
+
+  showLinkModal(selectedText) {
+    const modal = document.querySelector('[data-modal="link"]');
+    if (!modal) return;
+
+    modal.style.display = 'flex';
+
+    const closeModal = () => {
+      modal.style.display = 'none';
+      modal.querySelector('[data-link-input]').value = '';
+    };
+
+    const handleClickOutside = (e) => {
+      const modalContent = modal.querySelector('.modal-content');
+      if (modalContent && !modalContent.contains(e.target)) {
+        closeModal();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    modal.querySelector('.modal-close').addEventListener('click', closeModal);
+    modal.querySelector('.modal-button--cancel').addEventListener('click', closeModal);
+
+    modal.querySelector('.modal-button--add').addEventListener('click', () => {
+      const url = modal.querySelector('[data-link-input]').value;
+      if (!url) return;
+
+      const formattedText = `[${selectedText}](${url})`;
+      const start = this.editor.selectionStart;
+      const end = this.editor.selectionEnd;
+      
+      this.editor.value = this.editor.value.substring(0, start) + 
+                         formattedText + 
+                         this.editor.value.substring(end);
+      
+      this.toolbar.classList.remove('active');
+      closeModal();
     });
   }
 }

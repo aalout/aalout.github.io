@@ -33,14 +33,147 @@
       </a>
     </div>
 
-    <div class='main-empty'>
-      <img src='/images/main/image.png' class='main-empty__image' />
-      <h3 class='main-empty__title'>
-        Создайте новый пост или выберите каналы
-      </h3>
-      <p class='main-empty__text'>
-        Создайте новый пост или выберите каналы
-      </p>
+    <div class="main-tabs">
+      <button class="main-tab active" data-tab="published">Опубликованные</button>
+      <button class="main-tab" data-tab="delayed">Отложенные</button>
+    </div>
+
+    <div class="main-content">
+      <!-- Показываем это только если нет элементов -->
+      <div class='main-empty' style="display: none;">
+        <img src='/images/main/image.png' class='main-empty__image' />
+        <h3 class='main-empty__title'>
+          Создайте новый пост или выберите каналы
+        </h3>
+        <p class='main-empty__text'>
+          Создайте новый пост или выберите каналы
+        </p>
+      </div>
+
+      <!-- Контент для опубликованных постов -->
+      <div class="tab-content active" data-content="published">
+        <!-- Опубликованный пост -->
+        <div class="post-item">
+          <div class="post-header">
+            <div class="post-header-left">
+              <div class="post-image">
+                <img src="/images/preview/channel.png" alt="channel" />
+              </div>
+              <div class="post-title">
+                <h3 class="post-title-name">My Chanel</h3>
+                <span class="post-title-username">@mychanel</span>
+              </div>
+            </div>
+            <div class="post-actions">
+              <button class="post-action-button">
+                <img src="/icons/edit.svg" alt="edit" />
+              </button>
+              <button class="post-action-button">
+                <img src="/icons/garbage.svg" alt="delete" />
+              </button>
+            </div>
+          </div>
+
+          <div class="post-content">
+            <div class="post-content-wrapper">
+              <div class="post-content-image">
+                <img class="post-content-image-img" src="/images/preview/post.png" alt="post" />
+                <p class="post-content-image-text">Привет, друзья! 🎉 Сегодня хотим поделиться с вами новостью! 🥳 Мы рады сообщить о запуске нашего нового продукта 🎉 Это решение, которое изменит вашу жизнь!</p>
+              </div>
+              <div class="post-content-buttons">
+                <button class="post-content-buttons-button">Читать продолжение</button>
+                <button class="post-content-buttons-button-link">Перейти</button>
+                <button class="post-content-buttons-button-link">Ещё ссылка</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-info">
+            <div class="post-info-row">
+              <span class="post-info-label">Настройки</span>
+              <div class="post-info-actions">
+                <img src="/icons/pin.svg" alt="pin" />
+                <img src="/icons/notification.svg" alt="notification" />
+              </div>
+            </div>
+            <div class="post-info-row">
+              <span class="post-info-label">Администратор</span>
+              <span class="post-info-value">Readovka</span>
+            </div>
+            <div class="post-info-row">
+              <span class="post-info-label">Время публикации</span>
+              <span class="post-info-value">02.02.2025, 14:45</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Контент для отложенных постов -->
+      <div class="tab-content" data-content="delayed">
+        <!-- Отложенный пост -->
+        <div class="post-item delayed">
+          <div class="post-header">
+            <div class="post-header-left">
+              <div class="post-image">
+                <img src="/images/preview/channel.png" alt="channel" />
+              </div>
+              <div class="post-title">
+                <h3 class="post-title-name">My Chanel</h3>
+                <span class="post-title-username">@mychanel</span>
+              </div>
+            </div>
+            <div class="post-actions">
+              <button class="post-action-button">
+                <img src="/icons/edit.svg" alt="edit" />
+              </button>
+              <button class="post-action-button">
+                <img src="/icons/garbage.svg" alt="delete" />
+              </button>
+            </div>
+          </div>
+
+          <div class="post-content">
+            <div class="post-content-wrapper">
+              <div class="post-content-image">
+                <img class="post-content-image-img" src="/images/preview/post.png" alt="post" />
+                <p class="post-content-image-text">Привет, друзья! 🎉 Сегодня хотим поделиться с вами новостью!</p>
+              </div>
+              <div class="post-content-buttons">
+                <button class="post-content-buttons-button">Читать продолжение</button>
+                <button class="post-content-buttons-button-link">Перейти</button>
+                <button class="post-content-buttons-button-link">Ещё ссылка</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-info">
+            <div class="post-info-row">
+              <span class="post-info-label">Настройки</span>
+              <div class="post-info-actions">
+                <img src="/icons/pin.svg" alt="pin" />
+                <img src="/icons/notification.svg" alt="notification" />
+              </div>
+            </div>
+            <div class="post-info-row">
+              <span class="post-info-label">Администратор</span>
+              <span class="post-info-value">Readovka</span>
+            </div>
+            <div class="post-info-row-time">
+              <span class="post-info-label-time">Время публикации</span>
+              <div class="time-input-wrapper">
+                <div class="time-input-container">
+                  <input type="datetime-local" class="time-input" value="now">
+                  <img src="/icons/clock.svg" alt="calendar" class="time-input-icon">
+                </div>
+                <button class="time-reset-button">
+                  <img src="/icons/closee.svg" alt="reset">
+                </button>
+              </div>
+            </div>
+            <button class="publish-now-button"><span>Опубликовать сейчас</span><img src="/icons/post.svg" alt="post" /></button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <a href="/new-post" class='main-button'>

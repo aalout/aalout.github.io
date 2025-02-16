@@ -21,7 +21,6 @@
 .create-wrapper {
   padding: 16px;
   padding-bottom: 123px; /* Отступ для кнопки "Показать/Скрыть" */
-  background-color: black;
 }
 
 .create-card-wrapper {

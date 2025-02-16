@@ -259,3 +259,243 @@
   color: rgba(0, 0, 0, 0.45);
   text-align: center;
 }
+
+.main-tabs {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 16px;
+  background-color: rgba(133, 111, 255, 0.1);
+  border-radius: 100px;
+  padding: 4px;
+  gap: 6px;
+}
+
+.main-tab {
+  padding-block: 8px;
+  border-radius: 100px;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: 0px;
+  color: rgba(133, 111, 255, 1);
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.main-tab.active {
+  background-color: rgba(133, 111, 255, 1);
+  color: white;
+}
+
+.post-item {
+  margin-top: 16px;
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0px 4px 30px rgba(24, 23, 30, 0.1);
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.post-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.post-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.post-action-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgba(15, 15, 15, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 1);
+}
+
+.post-info {
+  margin-top: 16px;
+}
+
+.post-info-value {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21.6px;
+  letter-spacing: 0.1px;
+  color: rgba(15, 15, 15, 1);
+}
+
+.post-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.post-info-label-time {
+  color: rgba(15, 15, 15, 1);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21.6px;
+  letter-spacing: 0px;
+}
+
+.post-info-row-time {
+  padding-block: 16px;
+}
+
+
+.post-info-row:last-child {
+  border-bottom: none;
+}
+
+.post-info-label {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21.6px;
+  letter-spacing: 0.1px;
+  color: rgba(165, 165, 165, 1);
+}
+
+.post-info-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.publish-now-button {
+  width: 100%;
+  padding: 17px 24px;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 26px;
+  letter-spacing: 0.1px;
+  color: rgba(15, 15, 15, 1);
+}
+
+/* Стили для поста */
+.post-image {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.post-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-title-name {
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: 0px;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.post-title-username {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: 0px;    
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.post-content {
+  padding: 12px;
+  border-radius: 0px 16px 16px 16px;
+  background-image: url(../../../public/images/preview/tgchat.png);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.post-content-image {
+  max-width: 210px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: #fff;
+  border-radius: 7px;
+  padding: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.post-content-image-img {
+  width: 100%;
+  height: auto;
+}
+
+.post-content-image-text {
+  font-weight: 400;
+  font-size: 10.58px;
+  line-height: 14.65px;
+  letter-spacing: 0px;    
+  color: rgba(0, 0, 0, 0.85);
+  padding: 0 9px 7px 6px;
+}
+
+.post-content-wrapper {
+  max-width: 210px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.post-content-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: 100%;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 15px;
+  letter-spacing: 0px;
+  color: white;
+}
+
+.post-content-buttons-button,
+.post-content-buttons-button-link {
+  background-color: rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(17px);
+  border-radius: 7px;
+  padding-inline: 50px;
+  padding-block: 8px;
+  width: 100%;
+  white-space: nowrap;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.tab-content {
+  display: none;
+  padding-bottom: 108px;
+}
+
+.tab-content.active {
+  display: block;
+}

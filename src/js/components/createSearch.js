@@ -1059,15 +1059,12 @@ export class CreateSearch {
   confirmDeletion(callback) {
     const modal = document.getElementById('confirm-delete-modal');
     if (!modal) {
-      // Если модальное окно не найдено, выполняем callback сразу
       callback();
       return;
     }
-    // Для отображения модального окна устанавливаем display в 'flex'
     modal.style.display = 'flex';
     modal.classList.add('active');
 
-    // Назначаем обработчики для кнопок отмены
     const cancelBtns = modal.querySelectorAll('[data-modal-close-confirm]');
     cancelBtns.forEach(btn => {
       btn.onclick = () => {
@@ -1078,7 +1075,6 @@ export class CreateSearch {
       };
     });
 
-    // Обработчик для подтверждения удаления
     const confirmBtn = modal.querySelector('#confirm-delete-button');
     confirmBtn.onclick = () => {
       callback();
