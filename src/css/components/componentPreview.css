@@ -240,14 +240,6 @@ input:checked + .slider:before {
     flex-grow: 1;
 }
 
-.time-input-hidden {
-    position: absolute;
-    width: 0;
-    height: 0;
-    opacity: 0;
-    pointer-events: none;
-}
-
 .time-input {
     width: 100%;
     padding: 16px;
@@ -278,7 +270,7 @@ input:checked + .slider:before {
 }
 
 /* Стилизация для состояния "Сейчас" */
-.time-input[value="Сейчас"] {
+.time-input[data-is-now="true"] {
     color: rgba(0, 0, 0, 0.5);
 }
 

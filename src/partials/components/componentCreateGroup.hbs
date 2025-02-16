@@ -1,0 +1,44 @@
+<section class="create-group">
+    <div class="create-group__header">
+        <h3 class="create-group__title">Название группы</h3>
+        <input class="create-group__input" placeholder="Введите название" />
+    </div>
+
+    <div class="create-group__content">
+        <div class="create-group__content-header">
+            <div class="create-group__content-header-title">
+                <h3 class="create-group__content-header-title-text">Выбранные каналы</h3>
+                <span class="create-group__content-header-title-count">0</span>
+            </div>
+            <button class="create-group__content-header-button">
+                <span>Выбрать все</span>
+            </button>
+        </div>
+        <div class="create-group__content-search">
+            <input class="create-group__content-search-input" placeholder="Поиск каналов" />
+            <button class="create-group__content-search-button">
+                <img src="/icons/search.svg" alt="Поиск" />
+            </button>
+        </div>
+        <div class="create-group__content-channels">
+            <div class="channel-card">
+                      <div class="channel-card__header">
+                        <img src="{{avatar}}" class="channel-card__avatar" alt="Channel avatar" />
+                        <input
+                          type="checkbox"
+                          class="card-select-checkbox checkbox-hidden"
+                        />
+                      </div>
+                      <div class="channel-card__body">
+                        <h5 class="channel-card__title">{{title}}</h5>
+                        <p class="channel-card__username">{{username}}</p>
+                      </div>
+                    </div>
+        </div>
+    </div>
+
+    <button class="create-group__button">
+        <img class="create-group__button-icon" src="/icons/purpleplus.svg" alt="Добавить канал" />
+        <span>Создать группу</span>
+    </button>
+</section>

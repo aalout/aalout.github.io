@@ -109,7 +109,7 @@
         <div class="create-card__header">
           <h4 class="create-card__title">Группы</h4>
           <div class="create-card__counter">{{groups.length}}</div>
-          <img class="create-card__add" src="/icons/plusnew.svg" alt="Add" />
+          <a href="/create-group"><img class="create-card__add" src="/icons/plusnew.svg" alt="Add" /></a>
         </div>
 
         <div class="create-card__content" data-groups-content>
@@ -286,25 +286,24 @@
           <span class="modal__counter">24</span>
         </div>
         <div class="modal__channels">
-          <div class="modal__channel">
+                    <div class="modal__channel">
             <span>• Риа новости</span>
           </div>
         </div>
-        <div class="modal__groups-list">
-          <div class="modal__group-item">
-            <div class="modal__group-info">
-              <img src="/images/create/default.png" alt="Группа" class="modal__group-avatar">
-              <div class="modal__group-details">
-                <h3 class="modal__group-title">Название группы</h3>
-                <p class="modal__group-count">12 каналов</p>
-              </div>
-            </div>
-            <input type="radio" name="group" class="modal__group-radio">
+        <div class="modal__search-wrapper">
+          <input 
+            type="text" 
+            class="modal__search-input" 
+            placeholder="Выберите группу"
+          >
+          <img src="/icons/chevron.svg" class="modal__search-arrow" alt="Стрелка">
+          <div class="modal__search-dropdown">
+            <!-- Группы будут добавлены динамически -->
           </div>
         </div>
         <div class="modal__buttons">
           <button class="modal__button modal__button--cancel" data-modal-close-add-to-group>Отмена</button>
-          <button class="modal__button modal__button--add">Добавить</button>
+          <button class="modal__button modal__button--add" disabled>Добавить</button>
         </div>
       </div>
     </div>

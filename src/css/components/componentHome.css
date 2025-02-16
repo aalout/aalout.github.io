@@ -153,9 +153,9 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  white-space: nowrap; /* Все теги в одну строку */
-  overflow: hidden;    /* Лишние теги (если вдруг) обрезаются */
-  max-width: 70%;      /* Можно регулировать по необходимости */
+  white-space: nowrap;
+  overflow: hidden; 
+  max-width: 70%;   
   z-index: 2;
   flex-wrap: nowrap !important;
 }

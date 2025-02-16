@@ -39,13 +39,18 @@ export default defineConfig({
           resolve(__dirname, 'src/partials/components/componentPreview.hbs'),
           'utf-8'
         );
+        const componentCreateGroup = await fs.promises.readFile(
+          resolve(__dirname, 'src/partials/components/componentCreateGroup.hbs'),
+          'utf-8'
+        );
+
 
         Handlebars.registerPartial('componentHome', componentHome);
         Handlebars.registerPartial('componentCreate', componentCreate);
         Handlebars.registerPartial('componentNewPost', componentNewPost);
         Handlebars.registerPartial('componentPreview', componentPreview);
         Handlebars.registerPartial('componentHelp', componentHelp);
-
+        Handlebars.registerPartial('componentCreateGroup', componentCreateGroup);
         const defaultData = {
           channels: [
             { title: 'РИА Новости', username: '@rian_ru', avatar: '/images/create/default.png' },
@@ -92,6 +97,9 @@ export default defineConfig({
               </template>
               <template id="route-/help">
                 ${Handlebars.compile(componentHelp)(defaultData)}
+              </template>
+              <template id="route-/create-group">
+                ${Handlebars.compile(componentCreateGroup)(defaultData)}
               </template>
               <div id="app"></div>
               <div id="global-data" 

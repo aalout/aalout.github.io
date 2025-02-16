@@ -1,8 +1,8 @@
-import Handlebars from 'handlebars';
 import { CreateSearch } from './components/createSearch.js';
 import { Search } from './components/search.js';
 import { NewPost } from './components/newPost.js';
 import { Preview } from './components/preview.js';
+import { CreateGroup } from './components/createGroup.js';
 
 export class Router {
   constructor(routes) {
@@ -18,6 +18,9 @@ export class Router {
       },
       '/preview': (appEl) => {
         new Preview();
+      },
+      '/create-group': (appEl) => {
+        new CreateGroup();
       }
     };
     this.currentPath = '';
