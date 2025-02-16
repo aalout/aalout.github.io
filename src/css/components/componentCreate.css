@@ -20,6 +20,7 @@
 
 .create-wrapper {
   padding: 16px;
+  padding-bottom: 123px; /* Отступ для кнопки "Показать/Скрыть" */
 }
 
 .create-card-wrapper {
@@ -398,6 +399,7 @@ letter-spacing: 0px;
   overflow-y: hidden;
   padding-bottom: 36px; /* Отступ для кнопки "Показать/Скрыть" */
   box-sizing: border-box;
+
 }
 
 .channel-cards-grid {
@@ -468,6 +470,7 @@ letter-spacing: 0px;
   padding: 16px;
   background: rgba(15, 15, 15, 1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 }
 
 .group-card:not(.selected) {
@@ -487,6 +490,7 @@ letter-spacing: 0px;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  position: relative;
 }
 
 .group-card__avatar {
@@ -807,6 +811,7 @@ padding: 4px;
   align-items: center;
   padding-bottom: 16px;
   border-bottom: 1px solid rgba(222, 222, 222, 1);
+  margin-bottom: 24px;
 }
 
 .actions-left {
@@ -880,6 +885,7 @@ padding: 4px;
   align-items: center;
   padding-bottom: 16px;
   border-bottom: 1px solid rgba(222, 222, 222, 1);
+  margin-bottom: 24px;
 }
 
 .group-select-checkbox {
@@ -897,28 +903,54 @@ padding: 4px;
 /* Стили для чекбоксов — по умолчанию скрыты */
 .card-select-checkbox,
 .group-select-checkbox {
-  width: 16px;
-  height: 16px;
-  cursor: pointer;
   position: absolute;
   top: 8px;
   right: 8px;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  z-index: 2;
 }
 
+.group-select-checkbox {
+  border: none;
+}
+
+/* Стили для отмеченного состояния чекбоксов */
+.card-select-checkbox:checked,
+.group-select-checkbox:checked {
+  background-color: transparent;
+  border-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4L3.5 6.5L9 1' stroke='rgba(133, 111, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Скрытие чекбоксов по умолчанию */
 .checkbox-hidden {
   display: none;
 }
 
-.visible {
-  display: inline-block;
+/* Отображение чекбоксов в режиме мультивыбора */
+.multi-select .card-select-checkbox,
+.multi-select .group-select-checkbox {
+  display: block;
 }
 
-/* Стили для выделенной карточки каналов */
-.channel-card.selected {
-  border: 2px solid #8571ff;
+/* Скрытие меню в режиме мультивыбора */
+.multi-select .channel-card__menu,
+.multi-select .group-card__menu {
+  display: none;
 }
 
-/* Добавляем аналогичное правило для групп */
+/* Стили для выделенных карточек */
+.channel-card.selected,
 .group-card.selected {
   border: 2px solid #8571ff;
 }
@@ -1162,6 +1194,33 @@ padding: 4px;
   padding-top: 16px;
   position: relative;
   z-index: 2;
+}
+
+/* Добавьте эти стили */
+.channel-card__menu,
+.group-card__menu {
+  display: block;
+}
+
+.multi-select .channel-card__menu,
+.multi-select .group-card__menu {
+  display: none;
+}
+
+.card-select-checkbox,
+.group-select-checkbox {
+  display: none;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.multi-select .card-select-checkbox,
+.multi-select .group-select-checkbox {
+  display: block;
 }
 
 

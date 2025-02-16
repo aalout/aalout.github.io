@@ -223,6 +223,10 @@ export class CreateSearch {
           <button class="channel-card__menu" data-dropdown-trigger>
             <img src="/icons/dots.svg" alt="Menu" />
           </button>
+          <input
+            type="checkbox"
+            class="card-select-checkbox checkbox-hidden"
+          />
         </div>
         <div class="channel-card__body">
           <h5 class="channel-card__title">${channel.title}</h5>
@@ -368,6 +372,10 @@ export class CreateSearch {
           <button class="group-card__menu" data-group-dropdown-trigger>
             <img src="/icons/dotswhite.svg" alt="Menu" />
           </button>
+          <input
+            type="checkbox"
+            class="group-select-checkbox checkbox-hidden"
+          />
         </div>
         <div class="group-card__body">
           <h5 class="group-card__title">${group.title}</h5>
@@ -490,21 +498,18 @@ export class CreateSearch {
     this.bottomMenu.querySelectorAll('[data-bottom-menu-close]').forEach(el => {
       el.addEventListener('click', () => this.closeBottomMenu());
     });
-    
-    const deleteBtn = this.bottomMenu.querySelector('[data-bottom-menu-delete]');
-    if (deleteBtn) {
-      deleteBtn.addEventListener('click', () => {
-        if (this.activeCard) {
-          if (this.activeCard.classList.contains('channel-card')) {
-            this.activeCard.remove();
-            this.updateChannelCounter();
-          } else if (this.activeCard.classList.contains('group-card')) {
-            this.activeCard.remove();
-            this.updateGroupCounter();
-          }
-          this.activeCard = null;
-          this.closeBottomMenu();
+    // Добавляем обработчик для кнопки "Добавить в группу"/"Редактировать" 
+    const addToGroupButton = this.bottomMenu.querySelector('[data-bottom-menu-add-group]');
+    if (addToGroupButton) {
+      addToGroupButton.addEventListener('click', () => {
+        if (this.activeCard && this.activeCard.classList.contains('group-card')) {
+          // Если это группа - переходим на страницу редактирования
+          window.location.href = '/edit-group';
+        } else {
+          // Если это канал - открываем модалку добавления в группу
+          this.openAddToGroupModal();
         }
+        this.closeBottomMenu();
       });
     }
     
@@ -837,9 +842,10 @@ export class CreateSearch {
         card.classList.remove('selected');
     });
 
-    // Переинициализируем карточки
+    // Переинициализируем карточки и обработчики
     this.renderChannelCards();
     this.initDropdowns();
+    this.initCardMenuHandlers();
   }
 
   initCardMenuHandlers() {
@@ -902,71 +908,65 @@ export class CreateSearch {
 
   enableGroupMultiSelectMode() {
     this.multiSelectMode = true;
+    
+    // Получаем все необходимые элементы
+    const content = document.querySelector('[data-groups-content]');
+    const header = content.querySelector('.multi-select-header-group');
+    const actions = content.querySelector('.multi-select-actions-group');
+    const cards = content.querySelectorAll('.group-card');
+    const selectAllBtn = content.querySelector('.select-all-btn-group');
+    const deleteBtn = content.querySelector('.action-delete-group');
+    const cancelBtn = content.querySelector('.action-cancel-group');
+    
+    // Показываем панель мультивыбора
+    if (header) header.style.display = 'flex';
+    if (actions) actions.style.display = 'flex';
+    
+    // Очищаем выбранные карточки
     this.selectedCards.clear();
-
-    const multiSelectHeader = document.querySelector('.multi-select-header-group');
-    if (multiSelectHeader) {
-      multiSelectHeader.style.display = 'flex';
-      const selectAllBtn = multiSelectHeader.querySelector('.select-all-btn-group');
+    
+    // Добавляем класс multi-select к контейнеру
+    content.classList.add('multi-select');
+    
+    // Обработчик для кнопки "Выбрать все"
+    if (selectAllBtn) {
       selectAllBtn.addEventListener('click', () => {
-        const cards = document.querySelectorAll('.group-card');
-        if (this.selectedCards.size === cards.length && cards.length > 0) {
-          cards.forEach(card => {
-            const checkbox = card.querySelector('.group-select-checkbox');
-            if (checkbox) {
-              checkbox.checked = false;
-            }
-            card.classList.remove('selected');
-          });
+        const isAllSelected = this.selectedCards.size === cards.length;
+        
+        cards.forEach(card => {
+          const checkbox = card.querySelector('.group-select-checkbox');
+          if (checkbox) {
+            checkbox.checked = !isAllSelected;
+            card.classList.toggle('selected', !isAllSelected);
+          }
+        });
+        
+        if (isAllSelected) {
           this.selectedCards.clear();
         } else {
-          cards.forEach(card => {
-            const checkbox = card.querySelector('.group-select-checkbox');
-            if (checkbox) {
-              checkbox.checked = true;
-            }
-            card.classList.add('selected');
-            this.selectedCards.add(card);
-          });
+          cards.forEach(card => this.selectedCards.add(card));
         }
+        
         this.updateGroupMultiSelectHeader();
         this.updateGroupMultiSelectActions();
       });
     }
-
-    const multiSelectActions = document.querySelector('.multi-select-actions-group');
-    if (multiSelectActions) {
-      multiSelectActions.style.display = 'flex';
-      multiSelectActions.querySelector('.action-cancel-group')
-        .addEventListener('click', () => {
-          this.disableGroupMultiSelectMode();
-        });
-      multiSelectActions.querySelector('.action-delete-group')
-        .addEventListener('click', () => {
-          this.confirmDeletion(() => {
-            this.selectedCards.forEach(card => card.remove());
-            this.selectedCards.clear();
-            this.updateGroupMultiSelectHeader();
-            this.updateGroupMultiSelectActions();
-            this.updateGroupCounter();
-            this.disableGroupMultiSelectMode();
-          });
-        });
+    
+    // Обработчик для кнопки "Отмена"
+    if (cancelBtn) {
+      cancelBtn.addEventListener('click', () => {
+        this.disableGroupMultiSelectMode();
+      });
     }
-
-    const groupsContent = document.querySelector('[data-groups-content]');
-    if (groupsContent) {
-      groupsContent.classList.add('multi-select');
-    }
-
-    const cards = document.querySelectorAll('.group-card');
+    
+    // Для каждой карточки группы показываем чекбокс и добавляем обработчики
     cards.forEach(card => {
       const checkbox = card.querySelector('.group-select-checkbox');
       if (checkbox) {
-        // Показываем чекбокс, убирая класс скрытия
         checkbox.classList.remove('checkbox-hidden');
         checkbox.classList.add('visible');
         checkbox.checked = card.classList.contains('selected');
+        
         checkbox.addEventListener('click', (e) => {
           e.stopPropagation();
           card.classList.toggle('selected');
@@ -979,6 +979,7 @@ export class CreateSearch {
           this.updateGroupMultiSelectActions();
         });
       }
+      
       card.addEventListener('click', (e) => {
         if (e.target.tagName.toLowerCase() === 'input') return;
         if (checkbox) {
@@ -997,68 +998,39 @@ export class CreateSearch {
   }
 
   disableGroupMultiSelectMode() {
-    this.multiSelectMode = false;
-    this.selectedCards.clear();
-
-    const header = document.querySelector('.multi-select-header-group');
-    if (header) {
-        header.style.display = 'none';
-    }
-    const actions = document.querySelector('.multi-select-actions-group');
-    if (actions) {
-        actions.style.display = 'none';
-    }
-    const groupsContent = document.querySelector('[data-groups-content]');
-    if (groupsContent) {
-        groupsContent.classList.remove('multi-select');
-    }
+    const content = document.querySelector('[data-groups-content]');
+    const header = content.querySelector('.multi-select-header-group');
+    const actions = content.querySelector('.multi-select-actions-group');
     
-    // Удаляем все обработчики событий с карточек групп
-    const cards = document.querySelectorAll('.group-card');
-    cards.forEach(card => {
-        const checkbox = card.querySelector('.group-select-checkbox');
-        if (checkbox) {
-            checkbox.checked = false;
-            checkbox.classList.remove('visible');
-            checkbox.classList.add('checkbox-hidden');
-            
-            // Удаляем все обработчики событий
-            const newCheckbox = checkbox.cloneNode(true);
-            checkbox.parentNode.replaceChild(newCheckbox, checkbox);
-        }
-        card.classList.remove('selected');
-        
-        // Удаляем обработчик клика с карточки
-        const newCard = card.cloneNode(true);
-        card.parentNode.replaceChild(newCard, card);
+    content.classList.remove('multi-select');
+    if (header) header.style.display = 'none';
+    if (actions) actions.style.display = 'none';
+    
+    const checkboxes = content.querySelectorAll('.group-select-checkbox');
+    checkboxes.forEach(checkbox => {
+      checkbox.classList.remove('visible');
+      checkbox.classList.add('checkbox-hidden');
     });
-
-    // Переинициализируем обработчики меню
-    this.initCardMenuHandlers();
+    
+    const cards = content.querySelectorAll('.group-card');
+    cards.forEach(card => card.classList.remove('selected'));
+    
+    this.selectedCards.clear();
+    this.multiSelectMode = false;
   }
 
   updateGroupMultiSelectHeader() {
-    const header = document.querySelector('.multi-select-header-group');
-    if (header) {
-      const countElem = header.querySelector('.selected-count');
-      countElem.textContent = this.selectedCards.size;
-      const selectAllBtn = header.querySelector('.select-all-btn-group');
-      const cards = document.querySelectorAll('.group-card');
-      selectAllBtn.textContent = (this.selectedCards.size === cards.length && cards.length > 0)
-        ? 'Сбросить'
-        : 'Выбрать все';
+    const header = document.querySelector('[data-groups-content] .multi-select-header-group');
+    const counter = header?.querySelector('.selected-count');
+    if (counter) {
+      counter.textContent = this.selectedCards.size;
     }
   }
 
   updateGroupMultiSelectActions() {
-    const actions = document.querySelector('.multi-select-actions-group');
-    if (actions) {
-      const deleteBtn = actions.querySelector('.action-delete-group');
-      if (this.selectedCards.size > 0) {
-        deleteBtn.disabled = false;
-      } else {
-        deleteBtn.disabled = true;
-      }
+    const deleteBtn = document.querySelector('[data-groups-content] .action-delete-group');
+    if (deleteBtn) {
+      deleteBtn.disabled = this.selectedCards.size === 0;
     }
   }
 
