@@ -183,6 +183,20 @@ letter-spacing: 0px;
   border-radius: 16px 0 0 0;
 }
 
+.modal__title-hidden {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0px;  
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 16px 0 0 0;
+}
+
+.modal__header-graph {
+  height: 72px;
+}
+
 .modal__close {
   background: none;
   border: none;
@@ -418,8 +432,20 @@ letter-spacing: 0px;
   margin-bottom: 52px;
 }
 
-/* В неразвернутом состоянии показываем только 2 первые карточки */
-.channel-cards-grid .channel-card:nth-child(n+3) {
+/* По умолчанию показываем только 2 первые карточки */
+.channel-cards-grid .channel-card:nth-child(n+3),
+.group-cards-grid .group-card:nth-child(n+3) {
+  display: none;
+}
+
+/* В режиме мультивыбора показываем 4 карточки */
+.multi-select .channel-cards-grid .channel-card:nth-child(n+3),
+.multi-select .group-cards-grid .group-card:nth-child(n+3) {
+  display: block;
+}
+
+.multi-select .channel-cards-grid .channel-card:nth-child(n+5),
+.multi-select .group-cards-grid .group-card:nth-child(n+5) {
   display: none;
 }
 

@@ -105,16 +105,16 @@
         </div>
       </div>
 
-      <div class="create-card {{#if groupsExpanded}}expanded{{/if}}">
-        <div class='create-card-wrapper'>
-          <div class='create-card-wrapper__header'>
-            <div class='create-card__header'>
-              <h4 class='create-card__title'>Группы</h4>
-              <div class='create-card__counter'>{{groups.length}}</div>
-              <a href="/create-group"><img class='create-card__add' src='/icons/plusnew.svg' alt='Add' /></a>
-            </div>
-            <img class='create-card__add-icon' src='/images/create/graph.png' alt='graph' />
+      <div class='create-card-wrapper'>
+        <div class='create-card-wrapper__header'>
+          <div class='create-card__header'>
+            <h4 class='create-card__title'>Группы</h4>
+            <div class='create-card__counter'>{{groups.length}}</div>
+            <a href="/create-group"><img class='create-card__add' src='/icons/plusnew.svg' alt='Add' /></a>
           </div>
+          <img class='create-card__add-icon' src='/images/create/graph.png' alt='graph' />
+        </div>
+        <div class='create-card {{#if groupsExpanded}}expanded{{/if}}'>
           <div class="create-card__content" data-groups-content>
             <div class="multi-select-header-group" style="display: none;">
               <span>Выбранные группы <span class="selected-count">0</span></span>

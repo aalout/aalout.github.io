@@ -116,9 +116,14 @@
 <!-- Модальное окно для кнопки со ссылкой -->
 <div class="modal" data-modal="button" style="display: none;">
   <div class="modal-content">
-    <div class="modal-header">
-      <h3>Добавить кнопку</h3>
-      <button class="modal-close">×</button>
+    <div class="modal__header">
+      <div class="modal__header-wrapper">
+        <h2 class="modal__title">Добавить кнопку</h2>
+        <img src="/images/create/graph.png" alt="graph"/>
+      </div>
+      <button class="modal__close">
+        <img src="/icons/closemodal.svg" alt="Закрыть">
+      </button>
     </div>
     <div class="modal-body">
       <input type="text" class="modal-input" placeholder="Текст" data-button-text>
@@ -134,9 +139,14 @@
 <!-- Модальное окно для скрытого продолжения -->
 <div class="modal" data-modal="hidden" style="display: none;">
   <div class="modal-content">
-    <div class="modal-header">
-      <h3>Добавить скрытое продолжение</h3>
-      <button class="modal-close">×</button>
+    <div class="modal__header">
+      <div class="modal__header-wrapper">
+        <h2 class="modal__title-hidden">Добавить скрытое продолжение</h2>
+        <img src="/images/create/graphbig.png" class="modal__header-graph" alt="graph"/>
+      </div>
+      <button class="modal__close">
+        <img src="/icons/closemodal.svg" alt="Закрыть">
+      </button>
     </div>
     <div class="modal-body-hidden">
       <div class="modal-textarea-wrapper">
@@ -151,7 +161,7 @@
           maxlength="4000"
         ></textarea>
         <div class="modal-textarea-counter">
-          <span data-hidden-counter>0</span> / 4000
+          <span data-hidden-counter="non-subscriber">0</span> / 4000
         </div>
       </div>
       <div class="modal-textarea-wrapper">
@@ -176,9 +186,14 @@
 <!-- Добавим модальное окно для ссылки -->
 <div class="modal" data-modal="link" style="display: none;">
   <div class="modal-content">
-    <div class="modal-header">
-      <h3>Добавить ссылку</h3>
-      <button class="modal-close">×</button>
+    <div class="modal__header">
+      <div class="modal__header-wrapper">
+        <h2 class="modal__title">Добавить ссылку</h2>
+        <img src="/images/create/graph.png" alt="graph"/>
+      </div>
+      <button class="modal__close">
+        <img src="/icons/closemodal.svg" alt="Закрыть">
+      </button>
     </div>
     <div class="modal-body">
       <input type="text" class="modal-input" placeholder="Введите ссылку" data-link-input>

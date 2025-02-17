@@ -355,6 +355,19 @@ export class NewPost {
     if (this.hiddenButton) {
       this.hiddenButton.addEventListener('click', () => {
         this.showModal('hidden');
+        // Инициализируем счетчики для текстовых полей
+        const textareas = document.querySelectorAll('[data-modal="hidden"] .modal-textarea');
+        const counters = document.querySelectorAll('[data-modal="hidden"] [data-hidden-counter]');
+        
+        textareas.forEach((textarea, index) => {
+          // Устанавливаем начальное значение счетчика
+          counters[index].textContent = textarea.value.length;
+          
+          // Добавляем обработчик события input
+          textarea.addEventListener('input', () => {
+            counters[index].textContent = textarea.value.length;
+          });
+        });
       });
     }
   }
@@ -387,8 +400,7 @@ export class NewPost {
 
     // Обработчик клика вне модального окна
     const handleClickOutside = (e) => {
-      const modalContent = modal.querySelector('.modal-content');
-      if (modalContent && !modalContent.contains(e.target)) {
+      if (e.target === modal) {
         closeModal();
       }
     };
@@ -396,8 +408,8 @@ export class NewPost {
     // Добавляем обработчик клика
     document.addEventListener('mousedown', handleClickOutside);
 
-    // Обработчики закрытия
-    modal.querySelector('.modal-close').addEventListener('click', closeModal);
+    // Обработчики закрытия - обновленные селекторы
+    modal.querySelector('.modal__close').addEventListener('click', closeModal);
     modal.querySelector('.modal-button--cancel').addEventListener('click', closeModal);
 
     // Обработчик добавления
@@ -427,6 +439,16 @@ export class NewPost {
       }
       closeModal();
     });
+
+    // Обновляем счетчики при редактировании
+    if (editData && type === 'hidden') {
+      const textareas = modal.querySelectorAll('.modal-textarea');
+      const counters = modal.querySelectorAll('[data-hidden-counter]');
+      
+      textareas.forEach((textarea, index) => {
+        counters[index].textContent = textarea.value.length;
+      });
+    }
   }
 
   renderAttachment(data, isEdit = false) {
@@ -499,18 +521,19 @@ export class NewPost {
     const closeModal = () => {
       modal.style.display = 'none';
       modal.querySelector('[data-link-input]').value = '';
+      document.removeEventListener('mousedown', handleClickOutside);
     };
 
     const handleClickOutside = (e) => {
-      const modalContent = modal.querySelector('.modal-content');
-      if (modalContent && !modalContent.contains(e.target)) {
+      if (e.target === modal) {
         closeModal();
       }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
 
-    modal.querySelector('.modal-close').addEventListener('click', closeModal);
+    // Обновленные селекторы для закрытия
+    modal.querySelector('.modal__close').addEventListener('click', closeModal);
     modal.querySelector('.modal-button--cancel').addEventListener('click', closeModal);
 
     modal.querySelector('.modal-button--add').addEventListener('click', () => {

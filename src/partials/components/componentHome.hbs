@@ -186,3 +186,82 @@
     </a>
   </div>
 </section>
+
+<!-- Добавляем разметку для onboarding в конец файла -->
+<div class="onboarding" data-onboarding style="display: none;">
+  <canvas class="onboarding-canvas" data-onboarding-canvas></canvas>
+  
+  <!-- Модальное окно для первого шага -->
+  <div class="onboarding-modal" data-onboarding-step="1" style="display: none;">
+    <div class="modal__header">
+      <div class="modal__header-wrapper">
+        <h2 class="modal__title">Настройки</h2>
+        <img src="/images/create/graph.png" alt="graph"/>
+      </div>
+      <button class="modal__close" data-onboarding-close>
+        <img src="/icons/closemodal.svg" alt="Закрыть">
+      </button>
+    </div>
+    <div class="modal__body">
+      <p>В настройках можно добавить каналы и создать группы каналов, чтобы быстрее постить.</p>
+      <div class="onboarding-buttons">
+        <button class="modal__button modal__button--add" data-onboarding-next>Далее</button>
+      </div>
+      <div class="onboarding-progress">
+        <span class="active"></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно для второго шага -->
+  <div class="onboarding-modal" data-onboarding-step="2" style="display: none;">
+    <div class="modal__header">
+      <div class="modal__header-wrapper">
+        <h2 class="modal__title">Создание поста</h2>
+        <img src="/images/create/graph.png" alt="graph"/>
+      </div>
+      <button class="modal__close" data-onboarding-close>
+        <img src="/icons/closemodal.svg" alt="Закрыть">
+      </button>
+    </div>
+    <div class="modal__body">
+      <p>Чтобы добавить новый пост, нажмите на кнопку</p>
+      <div class="onboarding-buttons">
+        <button class="modal__button modal__button--cancel" data-onboarding-back>Назад</button>
+        <button class="modal__button modal__button--add" data-onboarding-next>Далее</button>
+      </div>
+      <div class="onboarding-progress">
+        <span></span>
+        <span class="active"></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно для третьего шага -->
+  <div class="onboarding-modal" data-onboarding-step="3" style="display: none;">
+    <div class="modal__header">
+      <div class="modal__header-wrapper">
+        <h2 class="modal__title">Каналы</h2>
+        <img src="/images/create/graph.png" alt="graph"/>
+      </div>
+      <button class="modal__close" data-onboarding-close>
+        <img src="/icons/closemodal.svg" alt="Закрыть">
+      </button>
+    </div>
+    <div class="modal__body">
+      <p>После того как вы добавите каналы, они добавятся в список каналов.</p>
+      <div class="onboarding-buttons">
+        <button class="modal__button modal__button--cancel" data-onboarding-back>Назад</button>
+        <button class="modal__button modal__button--add" data-onboarding-finish>Понятно!</button>
+      </div>
+      <div class="onboarding-progress">
+        <span></span>
+        <span></span>
+        <span class="active"></span>
+      </div>
+    </div>
+  </div>
+</div>

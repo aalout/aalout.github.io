@@ -4,6 +4,7 @@ import { NewPost } from './components/newPost.js';
 import { Preview } from './components/preview.js';
 import { CreateGroup } from './components/createGroup.js';
 import { Tabs } from './components/tabs.js';
+import { Onboarding } from './components/onboarding.js';
 
 export class Router {
   constructor(routes) {
@@ -11,6 +12,7 @@ export class Router {
       '/': (appEl) => {
         new Search(window.channels?.map(c => c.title) || [], true);
         new Tabs();
+        new Onboarding();
       },
       '/create': (appEl) => {
         new CreateSearch();

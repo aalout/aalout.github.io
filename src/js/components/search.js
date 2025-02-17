@@ -15,7 +15,7 @@ export class Search {
     this.bindEvents();
     this.renderDropdown('');
     if (this.input) {
-      this.input.placeholder = this.isMainPage ? 'Выберите каналы' : 'Поиск каналов';
+      this.input.placeholder = this.isMainPage ? '' : 'Поиск каналов';
     }
     if (this.tags.length > 0) {
       this.tags.forEach(tag => {
