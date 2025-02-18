@@ -5,6 +5,7 @@ export class NewPost {
     this.attachments = new Set();
     this.photoPosition = 'left'; // Просто для отображения активной кнопки
     this.init();
+    this.initExitConfirmation();
   }
 
   init() {
@@ -551,5 +552,61 @@ export class NewPost {
       this.toolbar.classList.remove('active');
       closeModal();
     });
+  }
+
+  initExitConfirmation() {
+    // Обработка клика по кнопке назад в браузере
+    window.addEventListener('popstate', (e) => {
+      e.preventDefault();
+      history.pushState(null, '', window.location.pathname);
+      this.showExitConfirmation();
+    });
+
+    // Добавляем начальную запись в историю
+    history.pushState(null, '', window.location.pathname);
+
+    // Обработка клика по кнопке назад в интерфейсе
+    const backButton = document.querySelector('.new-post-header__back');
+    if (backButton) {
+      backButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.showExitConfirmation();
+      });
+    }
+  }
+
+  showExitConfirmation() {
+    const modal = document.querySelector('[data-modal="exit"]');
+    if (!modal) return;
+
+    const handleExit = () => {
+      window.location.href = '/';
+    };
+
+    const closeModal = () => {
+      modal.style.display = 'none';
+      // Удаляем обработчики
+      modal.removeEventListener('click', handleClickOutside);
+      cancelButton.removeEventListener('click', closeModal);
+      exitButton.removeEventListener('click', handleExit);
+    };
+
+    const handleClickOutside = (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    };
+
+    // Показываем модальное окно
+    modal.style.display = 'flex';
+
+    // Получаем кнопки
+    const cancelButton = modal.querySelector('.modal-button--cancel');
+    const exitButton = modal.querySelector('.modal-button--exit');
+
+    // Добавляем обработчики
+    modal.addEventListener('click', handleClickOutside);
+    cancelButton.addEventListener('click', closeModal);
+    exitButton.addEventListener('click', handleExit);
   }
 }
