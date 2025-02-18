@@ -1110,14 +1110,24 @@ padding: 4px;
 .modal-add-to-group .modal__header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 24px;
+}
+
+.modal-add-to-group .modal__header-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .modal-add-to-group .modal__title {
   font-weight: 600;
   font-size: 18px;
   line-height: 24px;
+  letter-spacing: 0px;
+  padding: 10px 16px 14px;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 16px 0 0 0;
 }
 
 .modal-add-to-group .modal__close {
@@ -1189,7 +1199,6 @@ padding: 4px;
 }
 
 .modal-add-to-group .modal__search-dropdown {
-  position: absolute;
   top: calc(100% + 8px);
   left: 0;
   width: 100%;

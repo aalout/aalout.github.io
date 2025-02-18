@@ -39,7 +39,7 @@
           <div class='create-card__header'>
             <h4 class='create-card__title'>Каналы</h4>
             <div class='create-card__counter'>{{channels.length}}</div>
-            <img class='create-card__add' src='/icons/plusnew.svg' alt='Add' />
+            <img class='create-card__add' src='/icons/plusnew.svg' alt='Add' data-modal-trigger />
           </div>
           <img class='create-card__add-icon' src='/images/create/graph.png' alt='graph' />
         </div>
@@ -278,15 +278,17 @@
 
   <!-- Добавляем новую модалку для добавления в группу -->
   <div class="modal modal-add-to-group" id="add-to-group-modal" data-modal-add-to-group style="display: none;">
-    <div class="modal__content">
-      <div class="modal__header">
+          <div class="modal__header">
         <div class="modal__header-wrapper">
           <h2 class="modal__title">Добавить в группу</h2>
+          <img src="/images/create/graph.png" alt="graph"/>
         </div>
         <button class="modal__close" data-modal-close-add-to-group>
           <img src="/icons/close.svg" alt="Закрыть">
         </button>
       </div>
+    <div class="modal__content">
+
       <div class="modal__body">
         <div class="modal__header-wrapper">
           <p class="modal__text-choosen">Каналы</p>
