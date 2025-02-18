@@ -88,7 +88,6 @@ export class CreateSearch {
     this.dropdown.classList.add('active');
     if (this.arrowIcon) {
       this.arrowIcon.style.display = 'flex';
-      this.arrowIcon.classList.add('active');
     }
   }
 
@@ -96,7 +95,6 @@ export class CreateSearch {
     this.dropdown.classList.remove('active');
     if (this.arrowIcon) {
       this.arrowIcon.style.display = 'none';
-      this.arrowIcon.classList.remove('active');
     }
   }
 
@@ -590,119 +588,141 @@ export class CreateSearch {
     const modal = document.getElementById('add-to-group-modal');
     if (!modal) return;
 
-    modal.style.display = 'flex';
-    setTimeout(() => modal.classList.add('active'), 0);
+    let selectedGroup = null;
+    let isDropdownOpen = false;
 
-    // Отображаем выбранные каналы
+    const searchInput = modal.querySelector('.modal__search-input');
+    const dropdown = modal.querySelector('.modal__search-dropdown');
+    const addButton = modal.querySelector('.modal__button--add');
+    const arrow = modal.querySelector('.modal__search-arrow');
+
+    // Отображение выбранных каналов
     const channelsList = modal.querySelector('.modal__channels');
     const counter = modal.querySelector('.modal__counter');
     if (channelsList && this.selectedCards.size > 0) {
       channelsList.innerHTML = Array.from(this.selectedCards)
         .map(card => {
           const title = card.querySelector('.channel-card__title')?.textContent || '';
-          return `<div class="modal__channel"><span>• ${title}</span></div>`;
+          return `<div class="modal__channel">• ${title}</div>`;
         })
         .join('');
       counter.textContent = this.selectedCards.size;
     }
 
-    // Инициализация поиска групп и другая логика модального окна
-    const searchInput = modal.querySelector('.modal__search-input');
-    const dropdown = modal.querySelector('.modal__search-dropdown');
-    const arrow = modal.querySelector('.modal__search-arrow');
-    const addButton = modal.querySelector('.modal__button--add');
-    
-    let selectedGroup = null;
-
-    // Функция для отрисовки списка групп
     const renderGroups = (searchValue = '') => {
       const filteredGroups = this.groups
-        .filter(group => 
-          group.title.toLowerCase().includes(searchValue.toLowerCase())
-        )
-        .slice(0, 7);
+        .filter(group => group.title.toLowerCase().includes((searchValue || '').toLowerCase()));
 
-      if (!filteredGroups.length) {
+      if (filteredGroups.length === 0) {
         dropdown.innerHTML = '<div class="modal__search-item-empty">Ничего не найдено</div>';
         return;
       }
 
       dropdown.innerHTML = filteredGroups
-        .map(group => `
-          <div class="modal__search-item" data-group-id="${group.id}">
-            ${group.title}
-          </div>
-        `)
+        .map(group => {
+          const isSelected = selectedGroup && selectedGroup.username === group.username;
+          return `
+            <div 
+              class="modal__search-item ${isSelected ? 'selected' : ''}" 
+              data-group-id="${group.username}"
+              data-group-title="${group.title}"
+            >
+              ${group.title}
+            </div>
+          `;
+        })
         .join('');
     };
 
-    // Обработчики событий
-    const handleSearch = (e) => {
-      renderGroups(e.target.value);
+    const showDropdown = () => {
+      isDropdownOpen = true;
       dropdown.classList.add('active');
-      arrow.classList.add('active');
+      renderGroups(searchInput.value);
     };
 
-    const handleInputFocus = () => {
-      dropdown.classList.add('active');
-      arrow.classList.add('active');
-      renderGroups(searchInput.value);
+    const hideDropdown = () => {
+      isDropdownOpen = false;
+      dropdown.classList.remove('active');
+    };
+
+    const handleSearchClick = (e) => {
+      e.stopPropagation();
+      if (!isDropdownOpen) {
+        showDropdown();
+      }
+    };
+
+    const handleSearchInput = (e) => {
+      renderGroups(e.target.value);
+      if (!isDropdownOpen) {
+        showDropdown();
+      }
     };
 
     const handleDropdownClick = (e) => {
       const item = e.target.closest('.modal__search-item');
       if (item) {
-        const groupId = parseInt(item.dataset.groupId);
-        selectedGroup = this.groups.find(g => g.id === groupId);
-        
-        if (selectedGroup) {
-          searchInput.value = selectedGroup.title;
-          dropdown.classList.remove('active');
-          arrow.classList.remove('active');
-          addButton.disabled = false;
+        const groupId = item.dataset.groupId;
+        const group = this.groups.find(g => g.username === groupId);
 
-          const items = dropdown.querySelectorAll('.modal__search-item');
-          items.forEach(i => i.classList.remove('selected'));
-          item.classList.add('selected');
+        if (group) {
+          selectedGroup = group;
+          searchInput.value = group.title;
+          addButton.disabled = false;
+          renderGroups();
+          hideDropdown();
         }
       }
     };
 
-    // Очистка и закрытие модального окна
-    const closeModal = () => {
+    const handleDocumentClick = (e) => {
+      if (!dropdown.contains(e.target) && !searchInput.contains(e.target)) {
+        hideDropdown();
+      }
+    };
+
+    const cleanup = () => {
+      selectedGroup = null;
+      searchInput.value = '';
+      addButton.disabled = true;
+      hideDropdown();
+      
+      searchInput.removeEventListener('click', handleSearchClick);
+      searchInput.removeEventListener('input', handleSearchInput);
+      dropdown.removeEventListener('click', handleDropdownClick);
+      document.removeEventListener('click', handleDocumentClick);
+      
+      modal.style.display = 'none';
       modal.classList.remove('active');
-      setTimeout(() => {
-        modal.style.display = 'none';
-        searchInput.value = '';
-        dropdown.innerHTML = '';
-        addButton.disabled = true;
-        selectedGroup = null;
-        
-        searchInput.removeEventListener('input', handleSearch);
-        searchInput.removeEventListener('focus', handleInputFocus);
-        dropdown.removeEventListener('click', handleDropdownClick);
-      }, 300);
     };
 
     // Добавляем обработчики событий
-    searchInput.addEventListener('input', handleSearch);
-    searchInput.addEventListener('focus', handleInputFocus);
+    searchInput.addEventListener('click', handleSearchClick);
+    searchInput.addEventListener('input', handleSearchInput);
     dropdown.addEventListener('click', handleDropdownClick);
+    document.addEventListener('click', handleDocumentClick);
 
-    // Обработчики закрытия
+    // Обработчики для кнопок закрытия
     const closeButtons = modal.querySelectorAll('[data-modal-close-add-to-group]');
     closeButtons.forEach(button => {
-      button.addEventListener('click', closeModal);
+      button.addEventListener('click', cleanup);
     });
 
-    // Обработчик добавления в группу
+    // Обработчик для кнопки "Добавить"
     addButton.addEventListener('click', () => {
       if (selectedGroup) {
-        console.log('Добавление в группу:', selectedGroup);
-        closeModal();
-        this.disableChannelMultiSelectMode(); // Выключаем режим выбора после добавления
+        // Здесь ваша логика добавления каналов в группу
+        console.log('Добавление каналов в группу:', {
+          group: selectedGroup,
+          channels: Array.from(this.selectedCards)
+        });
+        cleanup();
       }
     });
+
+    // Показываем модальное окно
+    modal.style.display = 'flex';
+    setTimeout(() => modal.classList.add('active'), 0);
   }
 
   // ***************** Методы для режима множественного выделения каналов *****************

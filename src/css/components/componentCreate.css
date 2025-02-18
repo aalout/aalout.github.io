@@ -158,7 +158,7 @@ letter-spacing: 0px;
 .modal__content {
   width: 100%;
   background: #fff;
-  border-radius: 0px 16px 16px 16px;
+  border-radius: 0px 16px 16px 16px !important;
   padding: 16px;
   position: relative;
   overflow: hidden;
@@ -263,7 +263,7 @@ letter-spacing: 0px;
   display: flex;
   gap: 12px;
   margin-top: 24px;
-  margin-bottom: 20px;
+  padding-top: 0 !important;
 }
 
 .modal__button {
@@ -1178,6 +1178,25 @@ padding: 4px;
   line-height: 24px;
   background: #fff;
   cursor: text;
+  transition: border-color 0.2s ease;
+}
+
+.modal__header-add {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.modal__header-wrapper-channels {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.modal__header-wrapper-add {
+  display: flex;
+  align-items: center;
 }
 
 .modal-add-to-group .modal__search-input:focus {
@@ -1190,12 +1209,7 @@ padding: 4px;
   right: 12px;
   top: 50%;
   transform: translateY(-50%);
-  transition: transform 0.2s ease;
   pointer-events: none;
-}
-
-.modal-add-to-group .modal__search-arrow.active {
-  transform: translateY(-50%) rotate(180deg);
 }
 
 .modal-add-to-group .modal__search-dropdown {
@@ -1281,6 +1295,33 @@ padding: 4px;
   padding-bottom: 13px;
   border-radius: 16px 0 0 0;
   background: rgba(255, 255, 255, 1);
+}
+
+.modal__search-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background-color 0.2s ease;
+}
+
+.modal__search-item:hover {
+  background-color: rgba(245, 245, 245, 1);
+}
+
+.modal__search-item.selected {
+  position: relative;
+}
+
+.modal__search-item.selected::after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background-image: url("data:image/svg+xml,%3Csvg width='14' height='10' viewBox='0 0 14 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 5L5 9L13 1' stroke='%238571FF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 8px;
 }
 
 
