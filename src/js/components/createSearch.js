@@ -180,6 +180,24 @@ export class CreateSearch {
     this.initDeleteButtons();
     this.checkShowMoreVisibility();
     
+    // Добавляем обработчик для кнопки плюса в карточке каналов
+    const addChannelIcon = document.querySelector('.create-card__add');
+    if (addChannelIcon) {
+      addChannelIcon.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.openModal();
+      });
+    }
+
+    // Добавляем обработчик для кнопки "Подключить канал"
+    const mainAddButton = document.querySelector('.main-button[data-modal-trigger]');
+    if (mainAddButton) {
+      mainAddButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.openModal();
+      });
+    }
+    
     // Добавляем обработчик для кнопки "Добавить в группу" в режиме множественного выбора
     const addToGroupBtn = document.querySelector('.action-add-group');
     if (addToGroupBtn) {
@@ -1103,5 +1121,14 @@ export class CreateSearch {
         modal.style.display = 'none';
       }, 30);
     };
+  }
+
+  // Добавляем метод для открытия модального окна
+  openModal() {
+    const modal = document.querySelector('[data-modal]');
+    if (modal) {
+      modal.style.display = 'flex';
+      modal.classList.add('active');
+    }
   }
 } 

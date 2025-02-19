@@ -555,6 +555,17 @@ export class NewPost {
   }
 
   initExitConfirmation() {
+    // Обработка попытки покинуть страницу
+    window.addEventListener('beforeunload', (e) => {
+      // Отменяем стандартное поведение
+      e.preventDefault();
+      // Chrome требует returnValue
+      e.returnValue = '';
+      
+      this.showExitConfirmation();
+      return '';
+    });
+
     // Обработка клика по кнопке назад в браузере
     window.addEventListener('popstate', (e) => {
       e.preventDefault();
@@ -566,7 +577,7 @@ export class NewPost {
     history.pushState(null, '', window.location.pathname);
 
     // Обработка клика по кнопке назад в интерфейсе
-    const backButton = document.querySelector('.new-post-header__back');
+    const backButton = document.querySelector('.back-button');
     if (backButton) {
       backButton.addEventListener('click', (e) => {
         e.preventDefault();
@@ -579,34 +590,39 @@ export class NewPost {
     const modal = document.querySelector('[data-modal="exit"]');
     if (!modal) return;
 
-    const handleExit = () => {
-      window.location.href = '/';
-    };
+    // Показываем модальное окно
+    modal.style.display = 'flex';
+    modal.classList.add('active');
 
     const closeModal = () => {
-      modal.style.display = 'none';
-      // Удаляем обработчики
-      modal.removeEventListener('click', handleClickOutside);
-      cancelButton.removeEventListener('click', closeModal);
-      exitButton.removeEventListener('click', handleExit);
+      modal.classList.remove('active');
+      setTimeout(() => {
+        modal.style.display = 'none';
+      }, 300);
     };
 
+    // Очищаем предыдущие обработчики
+    const cancelButton = modal.querySelector('.modal-button--cancel');
+    const exitButton = modal.querySelector('.modal-button--exit');
+    const newCancelButton = cancelButton.cloneNode(true);
+    const newExitButton = exitButton.cloneNode(true);
+    cancelButton.parentNode.replaceChild(newCancelButton, cancelButton);
+    exitButton.parentNode.replaceChild(newExitButton, exitButton);
+
+    // Добавляем новые обработчики
+    newCancelButton.addEventListener('click', closeModal);
+    newExitButton.addEventListener('click', () => {
+      window.removeEventListener('beforeunload', this.showExitConfirmation);
+      window.location.href = '/';
+    });
+
+    // Обработчик клика вне модального окна
     const handleClickOutside = (e) => {
       if (e.target === modal) {
         closeModal();
       }
     };
 
-    // Показываем модальное окно
-    modal.style.display = 'flex';
-
-    // Получаем кнопки
-    const cancelButton = modal.querySelector('.modal-button--cancel');
-    const exitButton = modal.querySelector('.modal-button--exit');
-
-    // Добавляем обработчики
     modal.addEventListener('click', handleClickOutside);
-    cancelButton.addEventListener('click', closeModal);
-    exitButton.addEventListener('click', handleExit);
   }
 }

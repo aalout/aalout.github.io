@@ -72,6 +72,7 @@ export default defineConfig({
           groups: [
             { title: 'Чат РИА', username: '@ria_chat', avatar: '/images/create/default.png', members: 1234 },
             { title: 'Чат ТАСС', username: '@tass_chat', avatar: '/images/create/default.png', members: 567 },
+            { title: 'Чат ТАСС2', username: '@tass_chat2', avatar: '/images/create/default.png', members: 57 },
           ]
         };
 
