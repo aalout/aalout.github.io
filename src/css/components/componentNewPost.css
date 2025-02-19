@@ -668,7 +668,7 @@ color: rgba(165, 165, 165, 1);
 
 .modal.modal-exit .modal-button--cancel {
   color: rgba(15, 15, 15, 1);
-  border: 1px solid rgba(234, 235, 239, 1);
+  border: 1px solid var(--background-primary);
   background: white;
 }
 

@@ -178,7 +178,7 @@
 }
 
 .edit-group__button:disabled {
-    background: rgba(234, 235, 239, 1);
+    background: var(--background-primary);
     color: rgba(165, 165, 165, 1);
     cursor: not-allowed;
 
