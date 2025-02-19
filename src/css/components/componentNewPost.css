@@ -3,11 +3,11 @@
   flex-direction: column;
   overflow: hidden;
   min-height: 100svh;
-  background-color: white;
+  background-color: var(--background-tertiary);
 }
 
 .new-post-wrapper {
-    padding: 16px;
+  padding: 16px;
   flex: 1;
 }
 
@@ -23,20 +23,20 @@
 }
 
 .new-post-section-title {
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 21.6px;
-    letter-spacing: 0px;
-    
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21.6px;
+  letter-spacing: 0px;
+
   margin-bottom: 8px;
 }
 
 .new-post-section-title-post {
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 21.6px;
-    letter-spacing: 0px;
-    margin-top: 16px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21.6px;
+  letter-spacing: 0px;
+  margin-top: 16px;
   margin-bottom: 8px;
 }
 
@@ -60,7 +60,7 @@
   width: 100%;
   min-height: 240px;
   padding: 16px;
-  border: 1px solid rgba(225, 226, 235, 1);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   resize: none;
   box-sizing: border-box;
@@ -81,15 +81,15 @@
   bottom: 8px;
   right: 12px;
   font-size: 12px;
-  color: #6B7280;
-  background: white;
+  color: #6b7280;
+  background: var(--background-tertiary);
   padding: 4px;
 }
 
 .editor-toolbar {
   position: fixed;
   display: none;
-  background: white;
+  background: var(--background-tertiary);
   border-radius: 12px;
   padding: 8px 0;
   z-index: 1000;
@@ -103,7 +103,7 @@
 }
 
 .editor-toolbar button {
-  color: rgba(15, 15, 15, 1);
+  color: var(--background-secondary);
   padding: 11px 16px;
   border: none;
   background: none;
@@ -123,7 +123,7 @@
 .new-post-upload {
   width: 100%;
   padding: 16px;
-  border: 2px dashed rgba(225, 226, 235, 1);
+  border: 2px dashed var(--border-color);
   border-radius: 16px;
   background: none;
   display: flex;
@@ -165,19 +165,18 @@
   bottom: 32px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(15, 15, 15, 1);
-  color: white;
+  background: var(--background-secondary);
+  color: var(--background-tertiary);
   padding: 17px 32px;
   border-radius: 100px;
   border: none;
   cursor: pointer;
   box-shadow: 0px 4px 30px 0px rgba(24, 23, 30, 0.3);
-font-weight: 400;
-font-size: 17px;
-line-height: 26px;
-letter-spacing: 0.1px;
-text-align: center;
-
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 26px;
+  letter-spacing: 0.1px;
+  text-align: center;
 }
 
 .attachments-tags {
@@ -192,7 +191,7 @@ text-align: center;
   align-items: center;
   gap: 8px;
   padding: 6px 12px;
-  background: rgba(133, 111, 255, 0.1);
+  background: var(--accent-transparent);
   border-radius: 6px;
   font-size: 14px;
   line-height: 20px;
@@ -218,29 +217,29 @@ text-align: center;
 }
 
 .new-post-upload__text {
-font-weight: 400;
-font-size: 17px;
-line-height: 20.4px;
-letter-spacing: 0.1px;
-color: rgba(15, 15, 15, 1);
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-gap: 6px;
-text-align: left;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 20.4px;
+  letter-spacing: 0.1px;
+  color: var(--background-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  text-align: left;
 }
 
 .new-post-upload__text-or {
-font-weight: 400;
-font-size: 13px;
-line-height: 13px;
-letter-spacing: 0.1px;
-color: rgba(165, 165, 165, 1);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 13px;
+  letter-spacing: 0.1px;
+  color: rgba(165, 165, 165, 1);
 }
 
 .photo-position-container {
   border-radius: 8px;
-  background: #fff;
+  background: var(--background-tertiary);
 }
 
 .photo-position-header {
@@ -263,7 +262,7 @@ color: rgba(165, 165, 165, 1);
   font-size: 24px;
   cursor: pointer;
   padding: 0;
-  color: rgba(15, 15, 15, 1);
+  color: var(--background-secondary);
 }
 
 .photo-position-buttons {
@@ -275,7 +274,7 @@ color: rgba(165, 165, 165, 1);
 .photo-position-button {
   flex: 1;
   padding: 12px;
-  border: 1px solid rgba(225, 226, 235, 1);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   background: none;
   cursor: pointer;
@@ -402,7 +401,7 @@ color: rgba(165, 165, 165, 1);
   font-size: 18px;
   line-height: 24px;
   letter-spacing: 0px;
-  color: black;
+  color: var(--text-primary);
 }
 
 .modal-close {
@@ -411,13 +410,13 @@ color: rgba(165, 165, 165, 1);
   font-size: 24px;
   cursor: pointer;
   padding: 0;
-  color: rgba(15, 15, 15, 1);
+  color: var(--background-secondary);
 }
 
 .modal-body {
   padding: 16px;
   box-sizing: border-box;
-  background-color: #fff;
+  background-color: var(--background-tertiary);
   border-radius: 0 16px 16px 16px !important;
 }
 
@@ -428,7 +427,7 @@ color: rgba(165, 165, 165, 1);
   flex-direction: column;
   gap: 16px;
   border-radius: 0 16px 0 0;
-  background-color: #fff;
+  background-color: var(--background-tertiary);
 }
 
 .modal-input,
@@ -436,7 +435,7 @@ color: rgba(165, 165, 165, 1);
   width: 100%;
   box-sizing: border-box;
   padding: 14px 16px;
-  border: 1px solid rgba(225, 226, 235, 1);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   margin-bottom: 8px;
   font-size: 15px;
@@ -472,7 +471,7 @@ color: rgba(165, 165, 165, 1);
   font-size: 15px;
   line-height: 18px;
   letter-spacing: 0px;
-  color: rgba(15, 15, 15, 1);
+  color: var(--background-secondary);
 }
 
 .modal-textarea-wrapper {
@@ -486,7 +485,7 @@ color: rgba(165, 165, 165, 1);
   width: 100%;
   box-sizing: border-box;
   padding: 14px 16px;
-  border: 1px solid rgba(225, 226, 235, 1);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   margin-bottom: 8px;
   font-size: 15px;
@@ -501,7 +500,7 @@ color: rgba(165, 165, 165, 1);
   width: 100%;
   box-sizing: border-box;
   padding: 14px 16px;
-  border: 1px solid rgba(225, 226, 235, 1);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   margin-bottom: 8px;
   font-size: 15px;
@@ -521,19 +520,19 @@ color: rgba(165, 165, 165, 1);
   bottom: 20px;
   right: 12px;
   font-size: 12px;
-  color: #6B7280;
-  background: white;
+  color: #6b7280;
+  background: var(--background-tertiary);
   padding: 4px;
 }
 
 .modal-button--cancel {
-  color: rgba(15, 15, 15, 1);
-  border: 1px solid rgba(234, 235, 239, 1)
+  color: var(--background-secondary);
+  border: 1px solid rgba(234, 235, 239, 1);
 }
 
 .modal-button--add {
-  background: rgba(15, 15, 15, 1);
-  color: white;
+  background: var(--background-secondary);
+  color: var(--background-tertiary);
 }
 
 .new-post-attachments-container {
@@ -566,7 +565,7 @@ color: rgba(165, 165, 165, 1);
   font-size: 15px;
   line-height: 18px;
   letter-spacing: 0px;
-  color: rgba(15, 15, 15, 1);
+  color: var(--background-secondary);
 }
 
 .new-post-attachments-container__item-controls {
@@ -609,7 +608,7 @@ color: rgba(165, 165, 165, 1);
   max-width: none !important;
   border-radius: 0 16px 16px 16px;
   overflow: hidden;
-  background: white;
+  background: var(--background-tertiary);
 }
 
 .modal.modal-exit .modal__header {
@@ -628,7 +627,7 @@ color: rgba(165, 165, 165, 1);
   font-size: 18px;
   line-height: 24px;
   letter-spacing: 0px;
-  color: black;
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -637,11 +636,11 @@ color: rgba(165, 165, 165, 1);
   font-size: 18px;
   line-height: 24px;
   letter-spacing: 0px;
-  color: black;
+  color: var(--text-primary);
   margin: 0;
   white-space: nowrap;
   padding: 10px 16px 14px;
-  background-color: #fff;
+  background-color: var(--background-tertiary);
   border-radius: 16px 0 0 0;
 }
 
@@ -657,24 +656,24 @@ color: rgba(165, 165, 165, 1);
   font-size: 14px;
   line-height: 18px;
   letter-spacing: 0px;
-  color: rgba(0, 0, 0, 0.85);
+  color: var(--text-head);
   margin-bottom: 24px;
 }
 
 .modal.modal-exit .modal-body {
   padding: 16px;
-  background: white;
+  background: var(--background-tertiary);
 }
 
 .modal.modal-exit .modal-button--cancel {
-  color: rgba(15, 15, 15, 1);
+  color: var(--background-secondary);
   border: 1px solid var(--background-primary);
-  background: white;
+  background: var(--background-tertiary);
 }
 
 .modal.modal-exit .modal-button--exit {
-  background: rgba(15, 15, 15, 1);
-  color: white;
+  background: var(--background-secondary);
+  color: var(--background-tertiary);
   border: none;
 }
 
@@ -690,7 +689,7 @@ color: rgba(165, 165, 165, 1);
   align-items: center;
   gap: 8px;
   padding: 6px 12px;
-  background: rgba(133, 111, 255, 0.1);
+  background: var(--accent-transparent);
   border-radius: 6px;
   font-size: 14px;
   line-height: 20px;

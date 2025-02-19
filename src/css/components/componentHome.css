@@ -39,7 +39,7 @@
 .main-search-section__settings {
   border-radius: 8px;
   padding: 12px;
-  background-color: rgba(15, 15, 15, 1);
+  background-color: var(--background-secondary);
   box-shadow: 0px 4px 30px 0px rgba(24, 23, 30, 0.3);
   display: flex;
   align-items: center;
@@ -65,7 +65,7 @@
   font-size: 24px;
   font-weight: 600;
   line-height: 24px;
-  color: rgba(0, 0, 0, 1);
+  color: var(--text-primary);
   padding-block-start: 24px;
 }
 
@@ -78,7 +78,7 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 18px;
-  color: rgba(0, 0, 0, 0.85);
+  color: var(--text-head);
   padding-block-start: 16px;
 }
 
@@ -88,7 +88,7 @@
   left: 50%;
   transform: translateX(-50%);
   border-radius: 100px;
-  background-color: rgba(15, 15, 15, 1);
+  background-color: var(--background-secondary);
   padding: 8px;
   padding-inline-end: 32px;
   display: flex;
@@ -98,7 +98,7 @@
   font-weight: 400;
   line-height: 26px;
   letter-spacing: 0.1px;
-  color: rgba(255, 255, 255, 1);
+  color: var(--background-tertiary);
   white-space: nowrap;
   z-index: 1000;
 }
@@ -116,10 +116,10 @@
 }
 
 .search-input-wrapper {
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--search-color);
   position: relative;
   border-radius: 8px;
-  border: 1px solid rgba(225, 226, 235, 1);
+  border: 1px solid var(--border-color);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -155,8 +155,8 @@
   align-items: center;
   gap: 8px;
   white-space: nowrap;
-  overflow: hidden; 
-  max-width: 70%;   
+  overflow: hidden;
+  max-width: 70%;
   z-index: 2;
   flex-wrap: nowrap !important;
 }
@@ -189,7 +189,6 @@
   align-items: center;
   gap: 8px;
   flex-shrink: 0;
-
 }
 
 /* Чтобы кнопка удаления корректно отображалась */
@@ -207,7 +206,7 @@
 .search-input {
   background: none;
   border: none;
-  color: white;
+  color: var(--background-tertiary);
   flex: 1;
   min-width: 100px;
   padding-left: 120px; /* Подберите значение, чтобы текст не пересекался с тегами */
@@ -232,7 +231,7 @@
   top: 100%;
   left: 0;
   right: 0;
-  background: white;
+  background: var(--background-tertiary);
   border-radius: 8px;
   margin-top: 8px;
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
@@ -240,7 +239,7 @@
   max-height: 300px;
   overflow-y: auto;
   z-index: 1000;
-  border: 1px solid rgba(225, 226, 235, 1);
+  border: 1px solid var(--border-color);
 }
 
 .search-dropdown.active {
@@ -250,7 +249,7 @@
 .search-item {
   padding: 12px 16px;
   cursor: pointer;
-  color: rgba(0, 0, 0, 0.85);
+  color: var(--text-head);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -272,7 +271,7 @@
 
 .search-item-empty {
   padding: 12px 16px;
-  color: rgba(0, 0, 0, 0.45);
+  color: var(--channel-card);
   text-align: center;
 }
 
@@ -281,7 +280,7 @@
   width: 100%;
   justify-content: space-between;
   margin-top: 16px;
-  background-color: rgba(133, 111, 255, 0.1);
+  background-color: var(--accent-transparent);
   border-radius: 100px;
   padding: 4px;
   gap: 6px;
@@ -303,7 +302,7 @@
 
 .main-tab.active {
   background-color: rgba(133, 111, 255, 1);
-  color: white;
+  color: var(--background-tertiary);
 }
 
 .post-item {
@@ -337,7 +336,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 1);
+  border: 1px solid var(--background-tertiary);
 }
 
 .post-info {
@@ -349,7 +348,7 @@
   font-size: 18px;
   line-height: 21.6px;
   letter-spacing: 0.1px;
-  color: rgba(15, 15, 15, 1);
+  color: var(--background-secondary);
 }
 
 .post-info-row {
@@ -360,7 +359,7 @@
 }
 
 .post-info-label-time {
-  color: rgba(15, 15, 15, 1);
+  color: var(--background-secondary);
   font-weight: 500;
   font-size: 18px;
   line-height: 21.6px;
@@ -370,7 +369,6 @@
 .post-info-row-time {
   padding-block: 16px;
 }
-
 
 .post-info-row:last-child {
   border-bottom: none;
@@ -392,7 +390,7 @@
 .publish-now-button {
   width: 100%;
   padding: 17px 24px;
-  color: white;
+  color: var(--background-tertiary);
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -403,7 +401,7 @@
   font-size: 17px;
   line-height: 26px;
   letter-spacing: 0.1px;
-  color: rgba(15, 15, 15, 1);
+  color: var(--background-secondary);
 }
 
 /* Стили для поста */
@@ -423,15 +421,15 @@
   font-size: 13px;
   line-height: 18px;
   letter-spacing: 0px;
-  color: rgba(0, 0, 0, 0.85);
+  color: var(--text-head);
 }
 
 .post-title-username {
   font-weight: 400;
   font-size: 11px;
   line-height: 16px;
-  letter-spacing: 0px;    
-  color: rgba(0, 0, 0, 0.3);
+  letter-spacing: 0px;
+  color: var(--text-description);
 }
 
 .post-content {
@@ -449,7 +447,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  background-color: #fff;
+  background-color: var(--background-tertiary);
   border-radius: 7px;
   padding: 2px;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -464,8 +462,8 @@
   font-weight: 400;
   font-size: 10.58px;
   line-height: 14.65px;
-  letter-spacing: 0px;    
-  color: rgba(0, 0, 0, 0.85);
+  letter-spacing: 0px;
+  color: var(--text-head);
   padding: 0 9px 7px 6px;
 }
 
@@ -486,7 +484,7 @@
   font-size: 11px;
   line-height: 15px;
   letter-spacing: 0px;
-  color: white;
+  color: var(--background-tertiary);
 }
 
 .post-content-buttons-button,
@@ -498,7 +496,7 @@
   padding-block: 8px;
   width: 100%;
   white-space: nowrap;
-  color: white;
+  color: var(--background-tertiary);
   border: none;
   cursor: pointer;
 }
@@ -551,11 +549,11 @@
   font-size: 14px;
   line-height: 18px;
   letter-spacing: 0px;
-  color: rgba(0, 0, 0, 0.85);
+  color: var(--text-head);
 }
 
 .modal__body {
-  background: white;
+  background: var(--background-tertiary);
   border-radius: 0px 16px 16px 16px;
 }
 
@@ -579,7 +577,7 @@
 }
 
 .onboarding-progress span.active {
-  background: rgba(0, 0, 0, 0.85);
+  background: var(--text-head);
 }
 
 /* Подсветка элементов */

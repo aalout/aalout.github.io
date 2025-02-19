@@ -9,26 +9,38 @@
 @import './components/componentEditGroup.css';
 
 :root {
-  --background-primary: #EAEBEF;
+  --background-primary: #eaebef;
   --text-primary: #000000;
-  --background-secondary: #0F0F0F;
-  --background-tertiary: #FFFFFF;
+  --background-secondary: #0f0f0f;
+  --background-tertiary: #ffffff;
   --accent-transparent: rgba(133, 111, 255, 0.1);
-  --text-secondary: #C3C3C3;
-  --border-color: #E1E2EB;
+  --text-secondary: #c3c3c3;
+  --border-color: #e1e2eb;
   --text-contrast: #232324;
+  --gray-color: rgba(169, 169, 169, 1);
+  --gray-color-background: rgba(237, 237, 237, 1);
+  --search-color: rgba(255, 255, 255, 0.6);
+  --channel-card: rgba(0, 0, 0, 0.45);
+  --text-head: rgba(0, 0, 0, 0.85);
+  --text-description: rgba(0, 0, 0, 0.3);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background-primary: #0F0F0F;
-    --text-primary: #FFFFFF;
-    --background-secondary: #F3F1FF;
+    --background-primary: #0f0f0f;
+    --text-primary: #ffffff;
+    --background-secondary: #f3f1ff;
     --background-tertiary: #222222;
     --accent-transparent: rgba(231, 230, 255, 0.1);
     --text-secondary: #000000;
     --border-color: #454545;
-    --text-contrast: #FFFFFF;
+    --text-contrast: #ffffff;
+    --gray-color: rgba(69, 69, 69, 1);
+    --gray-color-background: rgba(69, 69, 69, 1);
+    --search-color: rgba(34, 34, 34, 0.6);
+    --channel-card: rgba(195, 195, 195, 1);
+    --text-head: rgba(255, 255, 255, 0.85);
+    --text-description: rgba(255, 255, 255, 0.3);
   }
 }
 

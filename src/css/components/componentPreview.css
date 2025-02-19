@@ -1,305 +1,304 @@
 .preview-wrapper {
-    padding-bottom: 108px;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+  padding-bottom: 108px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .preview-post {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .preview-post-header {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .preview-post-image {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    margin-inline-end: 8px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-inline-end: 8px;
 }
 
 .preview-post-title {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .preview-post-header-graph {
-    height: 55px;
+  height: 55px;
 }
 
 .preview-post-header-wrapper {
-    display: flex;
-    align-items: center;
-    padding: 10px 16px;
-    background-color: #fff;
-    border-radius: 16px 0 0 0;
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  background-color: var(--background-tertiary);
+  border-radius: 16px 0 0 0;
 }
 
 .preview-post-title-name {
-    font-weight: 600;
-    font-size: 13px;
-    line-height: 18px;
-    letter-spacing: 0px;
-    color: rgba(0, 0, 0, 0.85);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: 0px;
+  color: var(--text-head);
 }
 
 .preview-post-title-username {
-    font-weight: 400;
-    font-size: 11px;
-    line-height: 16px;
-    letter-spacing: 0px;    
-    color: rgba(0, 0, 0, 0.3);
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: 0px;
+  color: var(--text-description);
 }
 
 .preview-post-content {
-    padding: 12px;
-    border-radius: 0px 16px 16px 16px;
-    background-image: url(../../../public/images/preview/tgchat.png);
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    box-sizing: border-box;
+  padding: 12px;
+  border-radius: 0px 16px 16px 16px;
+  background-image: url(../../../public/images/preview/tgchat.png);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .preview-post-content-wrapper {
-    max-width: 210px;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+  max-width: 210px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .preview-post-content-image {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    background-color: #fff;
-    border-radius: 7px;
-    padding: 2px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: var(--background-tertiary);
+  border-radius: 7px;
+  padding: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .preview-post-content-image-img {
-    width: 100%;
-    height: auto;
+  width: 100%;
+  height: auto;
 }
 
 .preview-post-content-image-text {
-    font-weight: 400;
-    font-size: 10.58px;
-    line-height: 14.65px;
-    letter-spacing: 0px;    
-    color: rgba(0, 0, 0, 0.85);
-    padding-top: 0;
-    padding-bottom: 7px;
-    padding-left: 6px;
-    padding-right: 9px;
+  font-weight: 400;
+  font-size: 10.58px;
+  line-height: 14.65px;
+  letter-spacing: 0px;
+  color: var(--text-head);
+  padding-top: 0;
+  padding-bottom: 7px;
+  padding-left: 6px;
+  padding-right: 9px;
 }
 
 .preview-post-content-buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    width: 100%;
-    font-weight: 400;
-    font-size: 11px;
-    line-height: 15px;
-    letter-spacing: 0px;
-    color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: 100%;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 15px;
+  letter-spacing: 0px;
+  color: var(--background-tertiary);
 }
 
 .preview-post-content-buttons-button,
 .preview-post-content-buttons-button-link {
-    background-color: rgba(0, 0, 0, 0.05);
-    backdrop-filter: blur(17px);
-    border-radius: 7px;
-    padding-inline: 50px;
-    padding-block: 8px;
-    width: 100%;
-    white-space: nowrap;
-    color: white;
+  background-color: rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(17px);
+  border-radius: 7px;
+  padding-inline: 50px;
+  padding-block: 8px;
+  width: 100%;
+  white-space: nowrap;
+  color: var(--background-tertiary);
 }
 
 .preview-post-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
 }
 
 .preview-post-buttons-item {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .preview-post-buttons-item-title,
 .preview-post-buttons-item-time {
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 21.6px;
-    letter-spacing: 0px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21.6px;
+  letter-spacing: 0px;
 }
 
 .preview-post-button {
-    position: absolute;
-    margin-bottom: 32px;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 8px;
-    width: 353px;
-    background-color: rgba(15, 15, 15, 1);
-    border-radius: 100px;
-    display: flex;
-    align-items: start;
-    gap: 12px;
-    white-space: nowrap;
+  position: absolute;
+  margin-bottom: 32px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px;
+  width: 353px;
+  background-color: var(--background-secondary);
+  border-radius: 100px;
+  display: flex;
+  align-items: start;
+  gap: 12px;
+  white-space: nowrap;
 }
 
 .preview-post-button-icon {
-    width: 44px;
-    height: 44px;
+  width: 44px;
+  height: 44px;
 }
 
 .preview-post-button-text {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
 }
 
 .preview-post-button-title {
-    font-weight: 400;
-    font-size: 17px;
-    line-height: 26px;
-    letter-spacing: 0.1px;
-    color: white;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 26px;
+  letter-spacing: 0.1px;
+  color: var(--background-tertiary);
 }
 
 .preview-post-button-text {
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 14.4px;
-    letter-spacing: 0.1px;
-    color: rgba(165, 165, 165, 1);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.4px;
+  letter-spacing: 0.1px;
+  color: rgba(165, 165, 165, 1);
 }
-
 
 /* Стили для switch */
 .switch {
-    position: relative;
-    display: inline-block;
-    width: 48px;
-    height: 26px;
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 26px;
 }
 
 .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--Base-Generic-Hover, rgba(0, 0, 0, 0.15));
-    transition: .3s;
-    border-radius: 34px;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--Base-Generic-Hover, rgba(0, 0, 0, 0.15));
+  transition: 0.3s;
+  border-radius: 34px;
 }
 
 .slider:before {
-    position: absolute;
-    content: "";
-    height: 21px;
-    width: 21px;
-    left: 3px;
-    bottom: 3px;
-    background-color: white;
-    transition: .3s;
-    border-radius: 50%;
+  position: absolute;
+  content: '';
+  height: 21px;
+  width: 21px;
+  left: 3px;
+  bottom: 3px;
+  background-color: var(--background-tertiary);
+  transition: 0.3s;
+  border-radius: 50%;
 }
 
 input:checked + .slider {
-    background: rgba(133, 111, 255, 1);
+  background: rgba(133, 111, 255, 1);
 }
 
 input:checked + .slider:before {
-    transform: translateX(21px);
+  transform: translateX(21px);
 }
 
 .time-input-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
 }
 
 .time-input-container {
-    position: relative;
-    flex-grow: 1;
+  position: relative;
+  flex-grow: 1;
 }
 
 .time-input {
-    width: 100%;
-    padding: 16px;
-    padding-right: 40px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    font-size: 14px;
-    box-sizing: border-box;
-    cursor: pointer;
-    background-color: transparent;
-    position: relative;
-    z-index: 1;
+  width: 100%;
+  padding: 16px;
+  padding-right: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+  cursor: pointer;
+  background-color: transparent;
+  position: relative;
+  z-index: 1;
 }
 
 .time-input-icon {
-    width: 21px;
-    height: 21px;
+  width: 21px;
+  height: 21px;
 }
 
 .time-input::-webkit-calendar-picker-indicator {
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    cursor: pointer;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  cursor: pointer;
 }
 
 /* Стилизация для состояния "Сейчас" */
-.time-input[data-is-now="true"] {
-    color: rgba(0, 0, 0, 0.5);
+.time-input[data-is-now='true'] {
+  color: rgba(0, 0, 0, 0.5);
 }
 
 /* Стилизация для выбранной даты */
-.time-input[data-is-now="false"] {
-    color: rgba(0, 0, 0, 0.85);
+.time-input[data-is-now='false'] {
+  color: var(--text-head);
 }
 
 .time-input-icon {
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 16px;
-    height: 16px;
-    pointer-events: none;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
 }
 
 .time-reset-button {
-    width: 48px;
-    height: 48px;
-    cursor: pointer;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
 }

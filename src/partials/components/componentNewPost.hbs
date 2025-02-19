@@ -3,23 +3,19 @@
 
     <div class='new-post-content'>
       <h4 class='new-post-section-title'>Выбранные каналы</h4>
-      
+
       <div class='main-search-section'>
         <div class='search-container'>
           <div class='search-input-wrapper'>
             <div class='search-input-container'>
               <div class='search-tags'></div>
-              <input 
-                type='text' 
-                class='search-input' 
+              <input
+                type='text'
+                class='search-input'
                 placeholder='Выберите каналы'
                 data-search-input
-              >
-              <img 
-                src='/icons/chevron.svg' 
-                class='search-arrow-icon' 
-                data-search-arrow
               />
+              <img src='/icons/chevron.svg' class='search-arrow-icon' data-search-arrow />
             </div>
             <div class='search-dropdown' data-search-dropdown></div>
           </div>
@@ -27,17 +23,18 @@
       </div>
 
       <h4 class='new-post-section-title-post'>Текст поста</h4>
-      
+
       <div class='new-post-editor'>
         <div class='editor-container' data-editor-container>
-          <textarea 
-            class='editor-textarea' 
+          <textarea
+            class='editor-textarea'
             placeholder='Введите текст'
             maxlength='4000'
             data-editor
           ></textarea>
           <div class='editor-counter'>
-            <span data-counter>0</span> / 4000
+            <span data-counter>0</span>
+            / 4000
           </div>
           <div class='editor-toolbar' data-toolbar>
             <button data-format='clear'>Убрать форматирование</button>
@@ -48,7 +45,7 @@
             <button data-format='link'>Ссылка</button>
           </div>
         </div>
-        
+
         <div class='photo-position-container' data-photo-position style='display: none;'>
           <div class='photo-position-header'>
             <h4>Выберите расположение фото</h4>
@@ -59,18 +56,18 @@
               <div class='photo-position-content-top'>
                 <img src='/icons/imagepos.svg' alt='top' />
               </div>
-              <div class="photo-position-content-top-text-wrapper">
-                <div class="photo-position-content-top-text-1">
+              <div class='photo-position-content-top-text-wrapper'>
+                <div class='photo-position-content-top-text-1'>
                 </div>
-                <div class="photo-position-content-top-text-2">
+                <div class='photo-position-content-top-text-2'>
                 </div>
               </div>
             </button>
             <button class='photo-position-button' data-position='right'>
-                            <div class="photo-position-content-top-text-wrapper">
-                <div class="photo-position-content-top-text-1">
+              <div class='photo-position-content-top-text-wrapper'>
+                <div class='photo-position-content-top-text-1'>
                 </div>
-                <div class="photo-position-content-top-text-2">
+                <div class='photo-position-content-top-text-2'>
                 </div>
               </div>
               <div class='photo-position-content-bottom'>
@@ -80,9 +77,9 @@
           </div>
         </div>
 
-      <div class='new-post-attachments-container' data-attachments-list>
-        <!-- Элементы будут добавляться динамически -->
-      </div>
+        <div class='new-post-attachments-container' data-attachments-list>
+          <!-- Элементы будут добавляться динамически -->
+        </div>
       </div>
 
       <button class='new-post-upload'>
@@ -93,14 +90,13 @@
           <span>Прикрепить фото/видео</span>
           <span class='new-post-upload__text-or'>Размер не более 20Мб · PNG, JPEG, MP4</span>
         </div>
-        <input 
-          type='file' 
-          accept='.png,.jpg,.jpeg,.mp4' 
-
+        <input
+          type='file'
+          accept='.png,.jpg,.jpeg,.mp4'
           class='new-post-upload__input'
           data-file-input
           multiple
-        >
+        />
       </button>
 
       <div class='new-post-attachments' data-attachments-container>
@@ -109,7 +105,7 @@
 
       <div class='new-post-buttons'>
         <button class='new-post-button new-post-button--link' data-button-trigger>
-          <span>Кнопка <br/> со ссылкой</span>
+          <span>Кнопка <br /> со ссылкой</span>
           <img src='/icons/purpleplus.svg' alt='Link' />
         </button>
         <button class='new-post-button new-post-button--hidden' data-hidden-trigger>
@@ -126,113 +122,111 @@
 </section>
 
 <!-- Модальное окно для кнопки со ссылкой -->
-<div class="modal" data-modal="button" style="display: none;">
-  <div class="modal-content">
-    <div class="modal__header">
-      <div class="modal__header-wrapper">
-        <h2 class="modal__title">Добавить кнопку</h2>
-        <img src="/images/create/graph.png" alt="graph"/>
+<div class='modal' data-modal='button' style='display: none;'>
+  <div class='modal-content'>
+    <div class='modal__header'>
+      <div class='modal__header-wrapper'>
+        <h2 class='modal__title'>Добавить кнопку</h2>
+        <img src='/images/create/graph.svg' alt='graph' />
       </div>
-      <button class="modal__close">
-        <img src="/icons/closemodal.svg" alt="Закрыть">
+      <button class='modal__close'>
+        <img src='/icons/closemodal.svg' alt='Закрыть' />
       </button>
     </div>
-    <div class="modal-body">
-      <input type="text" class="modal-input" placeholder="Текст" data-button-text>
-      <input type="text" class="modal-input" placeholder="Ссылка" data-button-link>
-      <div class="modal-buttons">
-        <button class="modal-button modal-button--cancel">Отмена</button>
-        <button class="modal-button modal-button--add">Добавить</button>
+    <div class='modal-body'>
+      <input type='text' class='modal-input' placeholder='Текст' data-button-text />
+      <input type='text' class='modal-input' placeholder='Ссылка' data-button-link />
+      <div class='modal-buttons'>
+        <button class='modal-button modal-button--cancel'>Отмена</button>
+        <button class='modal-button modal-button--add'>Добавить</button>
       </div>
     </div>
   </div>
 </div>
 
 <!-- Модальное окно для скрытого продолжения -->
-<div class="modal" data-modal="hidden" style="display: none;">
-  <div class="modal-content">
-    <div class="modal__header">
-      <div class="modal__header-wrapper">
-        <h2 class="modal__title-hidden">Добавить скрытое продолжение</h2>
-        <img src="/images/create/graphbig.png" class="modal__header-graph" alt="graph"/>
+<div class='modal' data-modal='hidden' style='display: none;'>
+  <div class='modal-content'>
+    <div class='modal__header'>
+      <div class='modal__header-wrapper'>
+        <h2 class='modal__title-hidden'>Добавить скрытое продолжение</h2>
+        <img src='/images/create/graphbig.svg' class='modal__header-graph' alt='graph' />
       </div>
-      <button class="modal__close">
-        <img src="/icons/closemodal.svg" alt="Закрыть">
+      <button class='modal__close'>
+        <img src='/icons/closemodal.svg' alt='Закрыть' />
       </button>
     </div>
-    <div class="modal-body-hidden">
-      <div class="modal-textarea-wrapper">
-        <span class="modal-textarea-wrapper-title">Текст кнопки</span>
-        <input class="modal-input" placeholder="Текст кнопки">
+    <div class='modal-body-hidden'>
+      <div class='modal-textarea-wrapper'>
+        <span class='modal-textarea-wrapper-title'>Текст кнопки</span>
+        <input class='modal-input' placeholder='Текст кнопки' />
       </div>
-      <div class="modal-textarea-wrapper">
-        <span class="modal-textarea-wrapper-title">Текст НЕ для подписчиков</span>
-        <textarea 
-          class="modal-textarea" 
-          placeholder="Введите текст" 
-          maxlength="4000"
-        ></textarea>
-        <div class="modal-textarea-counter">
-          <span data-hidden-counter="non-subscriber">0</span> / 4000
+      <div class='modal-textarea-wrapper'>
+        <span class='modal-textarea-wrapper-title'>Текст НЕ для подписчиков</span>
+        <textarea class='modal-textarea' placeholder='Введите текст' maxlength='4000'></textarea>
+        <div class='modal-textarea-counter'>
+          <span data-hidden-counter='non-subscriber'>0</span>
+          / 4000
         </div>
       </div>
-      <div class="modal-textarea-wrapper">
-        <span class="modal-textarea-wrapper-title">Текст для подписчиков</span>
-        <textarea 
-          class="modal-textarea" 
-          placeholder="Текст для подписчиков" 
-          maxlength="4000"
+      <div class='modal-textarea-wrapper'>
+        <span class='modal-textarea-wrapper-title'>Текст для подписчиков</span>
+        <textarea
+          class='modal-textarea'
+          placeholder='Текст для подписчиков'
+          maxlength='4000'
         ></textarea>
-        <div class="modal-textarea-counter">
-          <span data-hidden-counter>0</span> / 4000
+        <div class='modal-textarea-counter'>
+          <span data-hidden-counter>0</span>
+          / 4000
         </div>
       </div>
-      <div class="modal-buttons">
-        <button class="modal-button modal-button--cancel">Отмена</button>
-        <button class="modal-button modal-button--add">Добавить</button>
+      <div class='modal-buttons'>
+        <button class='modal-button modal-button--cancel'>Отмена</button>
+        <button class='modal-button modal-button--add'>Добавить</button>
       </div>
     </div>
   </div>
 </div>
 
 <!-- Добавим модальное окно для ссылки -->
-<div class="modal" data-modal="link" style="display: none;">
-  <div class="modal-content">
-    <div class="modal__header">
-      <div class="modal__header-wrapper">
-        <h2 class="modal__title">Добавить ссылку</h2>
-        <img src="/images/create/graph.png" alt="graph"/>
+<div class='modal' data-modal='link' style='display: none;'>
+  <div class='modal-content'>
+    <div class='modal__header'>
+      <div class='modal__header-wrapper'>
+        <h2 class='modal__title'>Добавить ссылку</h2>
+        <img src='/images/create/graph.svg' alt='graph' />
       </div>
-      <button class="modal__close">
-        <img src="/icons/closemodal.svg" alt="Закрыть">
+      <button class='modal__close'>
+        <img src='/icons/closemodal.svg' alt='Закрыть' />
       </button>
     </div>
-    <div class="modal-body">
-      <input type="text" class="modal-input" placeholder="Введите ссылку" data-link-input>
-      <div class="modal-buttons">
-        <button class="modal-button modal-button--cancel">Отмена</button>
-        <button class="modal-button modal-button--add">Добавить</button>
+    <div class='modal-body'>
+      <input type='text' class='modal-input' placeholder='Введите ссылку' data-link-input />
+      <div class='modal-buttons'>
+        <button class='modal-button modal-button--cancel'>Отмена</button>
+        <button class='modal-button modal-button--add'>Добавить</button>
       </div>
     </div>
   </div>
 </div>
 
-<div class="modal modal-exit" data-modal="exit">
-      <div class="modal__header">
-      <div class="modal__header-wrapper">
-        <h2 class="modal__title-exit">Выйти из редактора?</h2>
-        <img src="/images/create/graph.png" alt="graph"/>
-      </div>
-      <button class="modal__close">
-        <img src="/icons/closemodal.svg" alt="Закрыть">
-      </button>
+<div class='modal modal-exit' data-modal='exit'>
+  <div class='modal__header'>
+    <div class='modal__header-wrapper'>
+      <h2 class='modal__title-exit'>Выйти из редактора?</h2>
+      <img src='/images/create/graph.svg' alt='graph' />
     </div>
-  <div class="modal-content">
-    <div class="modal-body">
-      <div class="modal__text">Если вы выйдите, все изменения будут потеряны.</div>
-      <div class="modal-buttons">
-        <button class="modal-button modal-button--cancel">Отмена</button>
-        <button class="modal-button modal-button--exit">Выйти</button>
+    <button class='modal__close'>
+      <img src='/icons/closemodal.svg' alt='Закрыть' />
+    </button>
+  </div>
+  <div class='modal-content'>
+    <div class='modal-body'>
+      <div class='modal__text'>Если вы выйдите, все изменения будут потеряны.</div>
+      <div class='modal-buttons'>
+        <button class='modal-button modal-button--cancel'>Отмена</button>
+        <button class='modal-button modal-button--exit'>Выйти</button>
       </div>
     </div>
   </div>

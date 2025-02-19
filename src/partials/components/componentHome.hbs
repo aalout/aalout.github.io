@@ -2,7 +2,7 @@
   <div class='main-wrapper'>
     <div class='main-header'>
       <h3 class='main-header__title'>Главная</h3>
-      <a href="/help" class='main-header__help'>
+      <a href='/help' class='main-header__help'>
         <h4 class='main-header__help__text'>Помощь</h4>
         <img src='/icons/info.svg' class='main-header__help__icon' />
       </a>
@@ -13,34 +13,26 @@
         <div class='search-input-wrapper'>
           <div class='search-input-container'>
             <div class='search-tags'></div>
-            <div class="search-placeholder" data-search-placeholder>Выберите каналы</div>
-            <input 
-              type='text' 
-              class='search-input' 
-              data-search-input
-            >
-            <img 
-              src='/icons/chevron.svg' 
-              class='search-arrow-icon' 
-              data-search-arrow
-            />
+            <div class='search-placeholder' data-search-placeholder>Выберите каналы</div>
+            <input type='text' class='search-input' data-search-input />
+            <img src='/icons/chevron.svg' class='search-arrow-icon' data-search-arrow />
           </div>
           <div class='search-dropdown' data-search-dropdown></div>
         </div>
       </div>
-      <a href="/create" class='main-search-section__settings'>
+      <a href='/create' class='main-search-section__settings'>
         <img src='/icons/settings.svg' class='main-search-section__settings__icon' />
       </a>
     </div>
 
-    <div class="main-tabs">
-      <button class="main-tab active" data-tab="published">Опубликованные</button>
-      <button class="main-tab" data-tab="delayed">Отложенные</button>
+    <div class='main-tabs'>
+      <button class='main-tab active' data-tab='published'>Опубликованные</button>
+      <button class='main-tab' data-tab='delayed'>Отложенные</button>
     </div>
 
-    <div class="main-content">
+    <div class='main-content'>
       <!-- Показываем это только если нет элементов -->
-      <div class='main-empty' style="display: none;">
+      <div class='main-empty' style='display: none;'>
         <img src='/images/main/image.png' class='main-empty__image' />
         <h3 class='main-empty__title'>
           Создайте новый пост или выберите каналы
@@ -51,138 +43,144 @@
       </div>
 
       <!-- Контент для опубликованных постов -->
-      <div class="tab-content active" data-content="published">
+      <div class='tab-content active' data-content='published'>
         <!-- Опубликованный пост -->
-        <div class="post-item">
-          <div class="post-header">
-                    <div class="preview-post-header">
-            <div class="preview-post-header-wrapper">
-                <div class="preview-post-image">
-                    <img src="/images/preview/channel.png" alt="channel" />
+        <div class='post-item'>
+          <div class='post-header'>
+            <div class='preview-post-header'>
+              <div class='preview-post-header-wrapper'>
+                <div class='preview-post-image'>
+                  <img src='/images/preview/channel.png' alt='channel' />
                 </div>
-                <div class="preview-post-title">
-                    <h3 class="preview-post-title-name">My Chanel</h3>
-                    <span class="preview-post-title-username">@mychanel</span>
+                <div class='preview-post-title'>
+                  <h3 class='preview-post-title-name'>My Chanel</h3>
+                  <span class='preview-post-title-username'>@mychanel</span>
                 </div>
+              </div>
+              <img class='preview-post-header-graph' src='/images/create/graph.svg' alt='graph' />
             </div>
-            <img class="preview-post-header-graph" src="/images/create/graph.png" alt="graph" />
-        </div>
-            <div class="post-actions">
-              <button class="post-action-button">
-                <img src="/icons/edit.svg" alt="edit" />
+            <div class='post-actions'>
+              <button class='post-action-button'>
+                <img src='/icons/edit.svg' alt='edit' />
               </button>
-              <button class="post-action-button">
-                <img src="/icons/garbage.svg" alt="delete" />
+              <button class='post-action-button'>
+                <img src='/icons/garbage.svg' alt='delete' />
               </button>
             </div>
           </div>
 
-          <div class="post-content">
-            <div class="post-content-wrapper">
-              <div class="post-content-image">
-                <img class="post-content-image-img" src="/images/preview/post.png" alt="post" />
-                <p class="post-content-image-text">Привет, друзья! 🎉 Сегодня хотим поделиться с вами новостью! 🥳 Мы рады сообщить о запуске нашего нового продукта 🎉 Это решение, которое изменит вашу жизнь!</p>
+          <div class='post-content'>
+            <div class='post-content-wrapper'>
+              <div class='post-content-image'>
+                <img class='post-content-image-img' src='/images/preview/post.png' alt='post' />
+                <p class='post-content-image-text'>Привет, друзья! 🎉 Сегодня хотим поделиться с
+                  вами новостью! 🥳 Мы рады сообщить о запуске нашего нового продукта 🎉 Это
+                  решение, которое изменит вашу жизнь!</p>
               </div>
-              <div class="post-content-buttons">
-                <button class="post-content-buttons-button">Читать продолжение</button>
-                <button class="post-content-buttons-button-link">Перейти</button>
-                <button class="post-content-buttons-button-link">Ещё ссылка</button>
+              <div class='post-content-buttons'>
+                <button class='post-content-buttons-button'>Читать продолжение</button>
+                <button class='post-content-buttons-button-link'>Перейти</button>
+                <button class='post-content-buttons-button-link'>Ещё ссылка</button>
               </div>
             </div>
           </div>
 
-          <div class="post-info">
-            <div class="post-info-row">
-              <span class="post-info-label">Настройки</span>
-              <div class="post-info-actions">
-                <img src="/icons/pin.svg" alt="pin" />
-                <img src="/icons/notification.svg" alt="notification" />
+          <div class='post-info'>
+            <div class='post-info-row'>
+              <span class='post-info-label'>Настройки</span>
+              <div class='post-info-actions'>
+                <img src='/icons/pin.svg' alt='pin' />
+                <img src='/icons/notification.svg' alt='notification' />
               </div>
             </div>
-            <div class="post-info-row">
-              <span class="post-info-label">Администратор</span>
-              <span class="post-info-value">Readovka</span>
+            <div class='post-info-row'>
+              <span class='post-info-label'>Администратор</span>
+              <span class='post-info-value'>Readovka</span>
             </div>
-            <div class="post-info-row">
-              <span class="post-info-label">Время публикации</span>
-              <span class="post-info-value">02.02.2025, 14:45</span>
+            <div class='post-info-row'>
+              <span class='post-info-label'>Время публикации</span>
+              <span class='post-info-value'>02.02.2025, 14:45</span>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Контент для отложенных постов -->
-      <div class="tab-content" data-content="delayed">
+      <div class='tab-content' data-content='delayed'>
         <!-- Отложенный пост -->
-        <div class="post-item delayed">
-          <div class="post-header">
-                    <div class="preview-post-header">
-            <div class="preview-post-header-wrapper">
-                <div class="preview-post-image">
-                    <img src="/images/preview/channel.png" alt="channel" />
+        <div class='post-item delayed'>
+          <div class='post-header'>
+            <div class='preview-post-header'>
+              <div class='preview-post-header-wrapper'>
+                <div class='preview-post-image'>
+                  <img src='/images/preview/channel.png' alt='channel' />
                 </div>
-                <div class="preview-post-title">
-                    <h3 class="preview-post-title-name">My Chanel</h3>
-                    <span class="preview-post-title-username">@mychanel</span>
+                <div class='preview-post-title'>
+                  <h3 class='preview-post-title-name'>My Chanel</h3>
+                  <span class='preview-post-title-username'>@mychanel</span>
                 </div>
+              </div>
+              <img class='preview-post-header-graph' src='/images/create/graph.svg' alt='graph' />
             </div>
-            <img class="preview-post-header-graph" src="/images/create/graph.png" alt="graph" />
-        </div>
-            <div class="post-actions">
-              <button class="post-action-button">
-                <img src="/icons/edit.svg" alt="edit" />
+            <div class='post-actions'>
+              <button class='post-action-button'>
+                <img src='/icons/edit.svg' alt='edit' />
               </button>
-              <button class="post-action-button">
-                <img src="/icons/garbage.svg" alt="delete" />
+              <button class='post-action-button'>
+                <img src='/icons/garbage.svg' alt='delete' />
               </button>
             </div>
           </div>
 
-          <div class="post-content">
-            <div class="post-content-wrapper">
-              <div class="post-content-image">
-                <img class="post-content-image-img" src="/images/preview/post.png" alt="post" />
-                <p class="post-content-image-text">Привет, друзья! 🎉 Сегодня хотим поделиться с вами новостью!</p>
+          <div class='post-content'>
+            <div class='post-content-wrapper'>
+              <div class='post-content-image'>
+                <img class='post-content-image-img' src='/images/preview/post.png' alt='post' />
+                <p class='post-content-image-text'>Привет, друзья! 🎉 Сегодня хотим поделиться с
+                  вами новостью!</p>
               </div>
-              <div class="post-content-buttons">
-                <button class="post-content-buttons-button">Читать продолжение</button>
-                <button class="post-content-buttons-button-link">Перейти</button>
-                <button class="post-content-buttons-button-link">Ещё ссылка</button>
+              <div class='post-content-buttons'>
+                <button class='post-content-buttons-button'>Читать продолжение</button>
+                <button class='post-content-buttons-button-link'>Перейти</button>
+                <button class='post-content-buttons-button-link'>Ещё ссылка</button>
               </div>
             </div>
           </div>
 
-          <div class="post-info">
-            <div class="post-info-row">
-              <span class="post-info-label">Настройки</span>
-              <div class="post-info-actions">
-                <img src="/icons/pin.svg" alt="pin" />
-                <img src="/icons/notification.svg" alt="notification" />
+          <div class='post-info'>
+            <div class='post-info-row'>
+              <span class='post-info-label'>Настройки</span>
+              <div class='post-info-actions'>
+                <img src='/icons/pin.svg' alt='pin' />
+                <img src='/icons/notification.svg' alt='notification' />
               </div>
             </div>
-            <div class="post-info-row">
-              <span class="post-info-label">Администратор</span>
-              <span class="post-info-value">Readovka</span>
+            <div class='post-info-row'>
+              <span class='post-info-label'>Администратор</span>
+              <span class='post-info-value'>Readovka</span>
             </div>
-            <div class="post-info-row-time">
-              <span class="post-info-label-time">Время публикации</span>
-              <div class="time-input-wrapper">
-                <div class="time-input-container">
-                  <input type="datetime-local" class="time-input" value="now">
-                  <img src="/icons/clock.svg" alt="calendar" class="time-input-icon">
+            <div class='post-info-row-time'>
+              <span class='post-info-label-time'>Время публикации</span>
+              <div class='time-input-wrapper'>
+                <div class='time-input-container'>
+                  <input type='datetime-local' class='time-input' value='now' />
+                  <img src='/icons/clock.svg' alt='calendar' class='time-input-icon' />
                 </div>
-                <button class="time-reset-button">
-                  <img src="/icons/closee.svg" alt="reset">
+                <button class='time-reset-button'>
+                  <img src='/icons/closee.svg' alt='reset' />
                 </button>
               </div>
             </div>
-            <button class="publish-now-button"><span>Опубликовать сейчас</span><img src="/icons/post.svg" alt="post" /></button>
+            <button class='publish-now-button'><span>Опубликовать сейчас</span><img
+                src='/icons/post.svg'
+                alt='post'
+              /></button>
           </div>
         </div>
       </div>
     </div>
 
-    <a href="/new-post" class='main-button'>
+    <a href='/new-post' class='main-button'>
       <div class='main-button__icon'>
         <img src='/icons/plus.svg' class='main-button__icon__plus' />
       </div>
@@ -194,27 +192,27 @@
 </section>
 
 <!-- Добавляем разметку для onboarding в конец файла -->
-<div class="onboarding" data-onboarding style="display: none;">
-  <canvas class="onboarding-canvas" data-onboarding-canvas></canvas>
-  
+<div class='onboarding' data-onboarding style='display: none;'>
+  <canvas class='onboarding-canvas' data-onboarding-canvas></canvas>
+
   <!-- Модальное окно для первого шага -->
-  <div class="onboarding-modal" data-onboarding-step="1" style="display: none;">
-    <div class="modal__header">
-      <div class="modal__header-wrapper">
-        <h2 class="modal__title">Настройки</h2>
-        <img src="/images/create/graph.png" alt="graph"/>
+  <div class='onboarding-modal' data-onboarding-step='1' style='display: none;'>
+    <div class='modal__header'>
+      <div class='modal__header-wrapper'>
+        <h2 class='modal__title'>Настройки</h2>
+        <img src='/images/create/graph.svg' alt='graph' />
       </div>
-      <button class="modal__close" data-onboarding-close>
-        <img src="/icons/closemodal.svg" alt="Закрыть">
+      <button class='modal__close' data-onboarding-close>
+        <img src='/icons/closemodal.svg' alt='Закрыть' />
       </button>
     </div>
-    <div class="modal__body">
+    <div class='modal__body'>
       <p>В настройках можно добавить каналы и создать группы каналов, чтобы быстрее постить.</p>
-      <div class="onboarding-buttons">
-        <button class="modal__button modal__button--add" data-onboarding-next>Далее</button>
+      <div class='onboarding-buttons'>
+        <button class='modal__button modal__button--add' data-onboarding-next>Далее</button>
       </div>
-      <div class="onboarding-progress">
-        <span class="active"></span>
+      <div class='onboarding-progress'>
+        <span class='active'></span>
         <span></span>
         <span></span>
       </div>
@@ -222,51 +220,51 @@
   </div>
 
   <!-- Модальное окно для второго шага -->
-  <div class="onboarding-modal" data-onboarding-step="2" style="display: none;">
-    <div class="modal__header">
-      <div class="modal__header-wrapper">
-        <h2 class="modal__title">Создание поста</h2>
-        <img src="/images/create/graph.png" alt="graph"/>
+  <div class='onboarding-modal' data-onboarding-step='2' style='display: none;'>
+    <div class='modal__header'>
+      <div class='modal__header-wrapper'>
+        <h2 class='modal__title'>Создание поста</h2>
+        <img src='/images/create/graph.svg' alt='graph' />
       </div>
-      <button class="modal__close" data-onboarding-close>
-        <img src="/icons/closemodal.svg" alt="Закрыть">
+      <button class='modal__close' data-onboarding-close>
+        <img src='/icons/closemodal.svg' alt='Закрыть' />
       </button>
     </div>
-    <div class="modal__body">
+    <div class='modal__body'>
       <p>Чтобы добавить новый пост, нажмите на кнопку</p>
-      <div class="onboarding-buttons">
-        <button class="modal__button modal__button--cancel" data-onboarding-back>Назад</button>
-        <button class="modal__button modal__button--add" data-onboarding-next>Далее</button>
+      <div class='onboarding-buttons'>
+        <button class='modal__button modal__button--cancel' data-onboarding-back>Назад</button>
+        <button class='modal__button modal__button--add' data-onboarding-next>Далее</button>
       </div>
-      <div class="onboarding-progress">
+      <div class='onboarding-progress'>
         <span></span>
-        <span class="active"></span>
+        <span class='active'></span>
         <span></span>
       </div>
     </div>
   </div>
 
   <!-- Модальное окно для третьего шага -->
-  <div class="onboarding-modal" data-onboarding-step="3" style="display: none;">
-    <div class="modal__header">
-      <div class="modal__header-wrapper">
-        <h2 class="modal__title">Каналы</h2>
-        <img src="/images/create/graph.png" alt="graph"/>
+  <div class='onboarding-modal' data-onboarding-step='3' style='display: none;'>
+    <div class='modal__header'>
+      <div class='modal__header-wrapper'>
+        <h2 class='modal__title'>Каналы</h2>
+        <img src='/images/create/graph.svg' alt='graph' />
       </div>
-      <button class="modal__close" data-onboarding-close>
-        <img src="/icons/closemodal.svg" alt="Закрыть">
+      <button class='modal__close' data-onboarding-close>
+        <img src='/icons/closemodal.svg' alt='Закрыть' />
       </button>
     </div>
-    <div class="modal__body">
+    <div class='modal__body'>
       <p>После того как вы добавите каналы, они добавятся в список каналов.</p>
-      <div class="onboarding-buttons">
-        <button class="modal__button modal__button--cancel" data-onboarding-back>Назад</button>
-        <button class="modal__button modal__button--add" data-onboarding-finish>Понятно!</button>
+      <div class='onboarding-buttons'>
+        <button class='modal__button modal__button--cancel' data-onboarding-back>Назад</button>
+        <button class='modal__button modal__button--add' data-onboarding-finish>Понятно!</button>
       </div>
-      <div class="onboarding-progress">
+      <div class='onboarding-progress'>
         <span></span>
         <span></span>
-        <span class="active"></span>
+        <span class='active'></span>
       </div>
     </div>
   </div>
