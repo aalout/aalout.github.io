@@ -4,7 +4,10 @@ export class NewPost {
   constructor() {
     this.attachments = new Set();
     this.photoPosition = 'left'; // Просто для отображения активной кнопки
+    this.hasChanges = false; // Добавляем флаг для отслеживания изменений
+    this.handleBeforeUnload = this.handleBeforeUnload.bind(this); // Привязываем контекст
     this.init();
+    this.initExitConfirmation();
   }
 
   init() {
@@ -31,6 +34,21 @@ export class NewPost {
     this.initFileUpload();
     this.initPhotoPosition();
     this.initButtons();
+
+    // Добавляем отслеживание изменений в редакторе
+    if (this.editor) {
+      this.editor.addEventListener('input', () => {
+        this.hasChanges = true;
+      });
+    }
+
+    // Отслеживаем изменения в поиске каналов
+    const searchInput = document.querySelector('[data-search-input]');
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        this.hasChanges = true;
+      });
+    }
   }
 
   /**
@@ -250,8 +268,24 @@ export class NewPost {
     const uploadButton = document.querySelector('.new-post-upload');
     const fileInput = document.querySelector('[data-file-input]');
     const photoPosition = document.querySelector('[data-photo-position]');
+    const attachmentsContainer = document.querySelector('[data-attachments-container]');
     
-    if (!uploadButton || !fileInput || !photoPosition) return;
+    if (!uploadButton || !fileInput || !photoPosition || !attachmentsContainer) return;
+
+    // Убедимся, что у нас есть контейнер для photo-tags
+    let photoTags = attachmentsContainer.querySelector('.photo-tags');
+    if (!photoTags) {
+        // Удаляем старый контейнер с неправильными классами, если он есть
+        const oldTags = attachmentsContainer.querySelector('.search-tags.attachments-tags');
+        if (oldTags) {
+            oldTags.remove();
+        }
+        
+        // Создаем новый контейнер с правильным классом
+        photoTags = document.createElement('div');
+        photoTags.className = 'photo-tags';
+        attachmentsContainer.appendChild(photoTags);
+    }
 
     uploadButton.addEventListener('click', () => {
       fileInput.click();
@@ -260,6 +294,7 @@ export class NewPost {
     fileInput.addEventListener('change', (e) => {
       const files = Array.from(e.target.files || []);
       if (files.length > 0) {
+        this.hasChanges = true; // Отмечаем изменения при загрузке файлов
         // Показываем меню выбора позиции
         photoPosition.style.display = 'block';
         
@@ -273,13 +308,14 @@ export class NewPost {
           if (!isFileAlreadyAdded) {
             const attachment = {
               file,
-              type: 'photo'
+              position: this.photoPosition
             };
             this.attachments.add(attachment);
             this.renderPhotoTag(file.name);
           }
         });
       }
+      // Очищаем input
       fileInput.value = '';
     });
   }
@@ -313,28 +349,26 @@ export class NewPost {
 
   renderPhotoTag(fileName) {
     const container = document.querySelector('[data-attachments-container]');
-    if (!container) return;
+    const photoTags = container?.querySelector('.photo-tags');
+    if (!photoTags) return;
 
-    const attachmentId = `attachment-${Date.now()}`;
     const tag = document.createElement('div');
-    tag.classList.add('search-tag');
-    tag.dataset.attachmentId = attachmentId;
-    
+    tag.className = 'photo-tag';
     tag.innerHTML = `
-      <span class="search-tag-text">Фото "${fileName}"</span>
-      <button class="search-tag-remove">×</button>
+        <span class="photo-tag-text">Фото "${fileName}"</span>
+        <button class="photo-tag-remove">×</button>
     `;
 
-    container.querySelector('.attachments-tags').appendChild(tag);
+    photoTags.appendChild(tag);
 
-    tag.querySelector('.search-tag-remove').addEventListener('click', () => {
-      tag.remove();
-      // Находим и удаляем attachment по имени файла
-      const attachmentToRemove = Array.from(this.attachments)
-        .find(attachment => attachment.file.name === fileName);
-      if (attachmentToRemove) {
-        this.attachments.delete(attachmentToRemove);
-      }
+    tag.querySelector('.photo-tag-remove').addEventListener('click', () => {
+        tag.remove();
+        // Находим и удаляем attachment по имени файла
+        const attachmentToRemove = Array.from(this.attachments)
+            .find(attachment => attachment.file.name === fileName);
+        if (attachmentToRemove) {
+            this.attachments.delete(attachmentToRemove);
+        }
     });
   }
 
@@ -437,6 +471,7 @@ export class NewPost {
           subscriberText
         }, editData ? true : false);
       }
+      this.hasChanges = true; // Отмечаем изменения при добавлении через модальное окно
       closeModal();
     });
 
@@ -510,6 +545,8 @@ export class NewPost {
         this.hiddenButton.disabled = false;
       }
     });
+
+    this.hasChanges = true; // Отмечаем изменения при добавлении вложений
   }
 
   showLinkModal(selectedText) {
@@ -551,5 +588,103 @@ export class NewPost {
       this.toolbar.classList.remove('active');
       closeModal();
     });
+  }
+
+  initExitConfirmation() {
+    // Добавляем обработчик beforeunload
+    window.addEventListener('beforeunload', this.handleBeforeUnload);
+
+    // Обработка клика по кнопке назад в браузере
+    window.addEventListener('popstate', (e) => {
+      if (!this.hasChanges) return;
+      
+      e.preventDefault();
+      history.pushState(null, '', window.location.pathname);
+      this.showExitConfirmation();
+    });
+
+    history.pushState(null, '', window.location.pathname);
+
+    // Обработка клика по всем ссылкам
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a');
+      if (!link) return;
+
+      const href = link.getAttribute('href');
+      if (!href || href === '/preview') return;
+
+      if (this.hasChanges) {
+        e.preventDefault();
+        this.showExitConfirmation();
+      }
+    });
+  }
+
+  showExitConfirmation() {
+    const modal = document.querySelector('[data-modal="exit"]');
+    if (!modal) return;
+
+    // Показываем модальное окно
+    modal.style.display = 'flex';
+    modal.style.opacity = '0';
+    
+    // Принудительный reflow
+    modal.offsetHeight;
+    
+    // Анимация появления
+    modal.style.opacity = '1';
+    modal.classList.add('active');
+
+    const closeModal = () => {
+      modal.style.opacity = '0';
+      modal.classList.remove('active');
+      
+      setTimeout(() => {
+        modal.style.display = 'none';
+      }, 300);
+    };
+
+    // Очищаем предыдущие обработчики
+    const cancelButton = modal.querySelector('.modal-button--cancel');
+    const exitButton = modal.querySelector('.modal-button--exit');
+    const closeButton = modal.querySelector('.modal__close');
+    
+    const newCancelButton = cancelButton.cloneNode(true);
+    const newExitButton = exitButton.cloneNode(true);
+    const newCloseButton = closeButton.cloneNode(true);
+    
+    cancelButton.parentNode.replaceChild(newCancelButton, cancelButton);
+    exitButton.parentNode.replaceChild(newExitButton, exitButton);
+    closeButton.parentNode.replaceChild(newCloseButton, closeButton);
+
+    // Добавляем новые обработчики
+    newCancelButton.addEventListener('click', closeModal);
+    newCloseButton.addEventListener('click', closeModal);
+    
+    newExitButton.addEventListener('click', () => {
+      window.removeEventListener('beforeunload', this.handleBeforeUnload);
+      window.location.href = '/';
+    });
+
+    // Обработчик клика вне модального окна
+    const handleClickOutside = (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    };
+
+    modal.addEventListener('click', handleClickOutside);
+  }
+
+  // Добавляем метод handleBeforeUnload
+  handleBeforeUnload(e) {
+    if (!this.hasChanges) return;
+    
+    const targetPath = window.location.pathname;
+    if (targetPath === '/preview') return;
+    
+    e.preventDefault();
+    e.returnValue = '';
+    return '';
   }
 }

@@ -9,13 +9,42 @@
 @import './components/componentEditGroup.css';
 
 :root {
-  --primary-color: #42b983;
+  --background-primary: #EAEBEF;
+  --text-primary: #000000;
+  --background-secondary: #0F0F0F;
+  --background-tertiary: #FFFFFF;
+  --accent-transparent: rgba(133, 111, 255, 0.1);
+  --text-secondary: #C3C3C3;
+  --border-color: #E1E2EB;
+  --text-contrast: #232324;
 }
 
-body,
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-primary: #0F0F0F;
+    --text-primary: #FFFFFF;
+    --background-secondary: #F3F1FF;
+    --background-tertiary: #222222;
+    --accent-transparent: rgba(231, 230, 255, 0.1);
+    --text-secondary: #000000;
+    --border-color: #454545;
+    --text-contrast: #FFFFFF;
+  }
+}
+
+body {
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+  width: 100%;
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 14px;
+}
+
 main {
   width: 100%;
   font-family: Inter;
   font-weight: 400;
   font-size: 14px;
+  background-color: rgba(0, 0, 0, 0.05);
 }

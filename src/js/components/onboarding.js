@@ -19,11 +19,22 @@ export class Onboarding {
     }
   }
 
+  disableScroll() {
+    document.body.style.overflow = 'hidden';
+    document.body.style.paddingRight = `${window.innerWidth - document.documentElement.clientWidth}px`;
+  }
+
+  enableScroll() {
+    document.body.style.overflow = '';
+    document.body.style.paddingRight = '';
+  }
+
   start() {
     this.container.style.display = 'block';
     this.canvas.width = window.innerWidth;
     this.canvas.height = window.innerHeight;
     
+    this.disableScroll(); // Блокируем скролл при старте онбординга
     this.showStep(1);
     this.bindEvents();
   }
@@ -90,20 +101,31 @@ export class Onboarding {
     this.ctx.stroke();
     
     // Рисуем галочку вместо треугольника
-    const angle = Math.atan2(endY - startY, endX - startX);
+    let angle;
+    
+    if (this.currentStep === 2) {
+      // Для второго шага вычисляем угол по последнему сегменту кривой
+      angle = Math.atan2(endY - (endY + curvature), endX - endX);
+    } else {
+      // Для обычной кривой вычисляем угол по последнему сегменту
+      const lastSegmentY = endY + curvature;
+      const lastSegmentX = endX;
+      angle = Math.atan2(endY - lastSegmentY, endX - lastSegmentX);
+    }
+    
     const arrowLength = 12;
-    const checkmarkAngle = Math.PI / 4; // 45 градусов для галочки
+    const checkmarkAngle = Math.PI / 4;
     
     this.ctx.beginPath();
-    this.ctx.setLineDash([]); // Убираем пунктир для галочки
+    this.ctx.setLineDash([]);
     
-    // Первая линия галочки
+    // Первая линия галочки с скорректированным углом
     const x1 = endX - arrowLength * Math.cos(angle - checkmarkAngle);
     const y1 = endY - arrowLength * Math.sin(angle - checkmarkAngle);
     this.ctx.moveTo(x1, y1);
     this.ctx.lineTo(endX, endY);
     
-    // Вторая линия галочки
+    // Вторая линия галочки с скорректированным углом
     const x2 = endX - arrowLength * Math.cos(angle + checkmarkAngle);
     const y2 = endY - arrowLength * Math.sin(angle + checkmarkAngle);
     this.ctx.lineTo(x2, y2);
@@ -209,6 +231,7 @@ export class Onboarding {
     this.searchInput?.classList.remove('highlight');
     
     this.container.style.display = 'none';
+    this.enableScroll(); // Разблокируем скролл при закрытии
     localStorage.setItem('onboardingCompleted', 'true');
   }
 

@@ -59,8 +59,20 @@
               <div class='photo-position-content-top'>
                 <img src='/icons/imagepos.svg' alt='top' />
               </div>
+              <div class="photo-position-content-top-text-wrapper">
+                <div class="photo-position-content-top-text-1">
+                </div>
+                <div class="photo-position-content-top-text-2">
+                </div>
+              </div>
             </button>
             <button class='photo-position-button' data-position='right'>
+                            <div class="photo-position-content-top-text-wrapper">
+                <div class="photo-position-content-top-text-1">
+                </div>
+                <div class="photo-position-content-top-text-2">
+                </div>
+              </div>
               <div class='photo-position-content-bottom'>
                 <img src='/icons/imagepos.svg' alt='bottom' />
               </div>
@@ -92,12 +104,12 @@
       </button>
 
       <div class='new-post-attachments' data-attachments-container>
-        <div class='search-tags attachments-tags'></div>
+        <div class='photo-tags'></div>
       </div>
 
       <div class='new-post-buttons'>
         <button class='new-post-button new-post-button--link' data-button-trigger>
-          <span>Кнопка со ссылкой</span>
+          <span>Кнопка <br/> со ссылкой</span>
           <img src='/icons/purpleplus.svg' alt='Link' />
         </button>
         <button class='new-post-button new-post-button--hidden' data-hidden-trigger>
@@ -200,6 +212,27 @@
       <div class="modal-buttons">
         <button class="modal-button modal-button--cancel">Отмена</button>
         <button class="modal-button modal-button--add">Добавить</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal-exit" data-modal="exit">
+      <div class="modal__header">
+      <div class="modal__header-wrapper">
+        <h2 class="modal__title-exit">Выйти из редактора?</h2>
+        <img src="/images/create/graph.png" alt="graph"/>
+      </div>
+      <button class="modal__close">
+        <img src="/icons/closemodal.svg" alt="Закрыть">
+      </button>
+    </div>
+  <div class="modal-content">
+    <div class="modal-body">
+      <div class="modal__text">Если вы выйдите, все изменения будут потеряны.</div>
+      <div class="modal-buttons">
+        <button class="modal-button modal-button--cancel">Отмена</button>
+        <button class="modal-button modal-button--exit">Выйти</button>
       </div>
     </div>
   </div>

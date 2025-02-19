@@ -180,6 +180,24 @@ export class CreateSearch {
     this.initDeleteButtons();
     this.checkShowMoreVisibility();
     
+    // Добавляем обработчик для кнопки плюса в карточке каналов
+    const addChannelIcon = document.querySelector('.create-card__add');
+    if (addChannelIcon) {
+      addChannelIcon.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.openModal();
+      });
+    }
+
+    // Добавляем обработчик для кнопки "Подключить канал"
+    const mainAddButton = document.querySelector('.main-button[data-modal-trigger]');
+    if (mainAddButton) {
+      mainAddButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.openModal();
+      });
+    }
+    
     // Добавляем обработчик для кнопки "Добавить в группу" в режиме множественного выбора
     const addToGroupBtn = document.querySelector('.action-add-group');
     if (addToGroupBtn) {
@@ -258,28 +276,28 @@ export class CreateSearch {
     if (!channelsContent) return;
     const channelsCard = channelsContent.closest('.create-card');
     const groupsContent = document.querySelector('[data-groups-content]');
-    const groupsCard = groupsContent ? groupsContent.closest('.create-card') : null;
+    const groupsCardWrapper = groupsContent ? groupsContent.closest('.create-card-wrapper') : null;
     
     if (!showMoreBtn || !cardsGrid || !channelsCard) return;
     
     const channelCards = cardsGrid.querySelectorAll('.channel-card');
     if (channelCards.length <= 2) {
-      showMoreBtn.style.display = 'none';
-      return;
+        showMoreBtn.style.display = 'none';
+        return;
     }
     showMoreBtn.style.display = 'flex';
     
     showMoreBtn.addEventListener('click', () => {
-      const isExpanded = channelsCard.classList.contains('expanded');
-      channelsCard.classList.toggle('expanded');
-      
-      if (groupsCard) {
-        groupsCard.style.display = isExpanded ? 'block' : 'none';
-      }
-      
-      const span = showMoreBtn.querySelector('span');
-      span.textContent = isExpanded ? 'Показать' : 'Скрыть';
-      showMoreBtn.classList.toggle('active');
+        const isExpanded = channelsCard.classList.contains('expanded');
+        channelsCard.classList.toggle('expanded');
+        
+        if (groupsCardWrapper) {
+            groupsCardWrapper.style.display = isExpanded ? 'block' : 'none';
+        }
+        
+        const span = showMoreBtn.querySelector('span');
+        span.textContent = isExpanded ? 'Показать' : 'Скрыть';
+        showMoreBtn.classList.toggle('active');
     });
   }
 
@@ -1103,5 +1121,14 @@ export class CreateSearch {
         modal.style.display = 'none';
       }, 30);
     };
+  }
+
+  // Добавляем метод для открытия модального окна
+  openModal() {
+    const modal = document.querySelector('[data-modal]');
+    if (modal) {
+      modal.style.display = 'flex';
+      modal.classList.add('active');
+    }
   }
 } 
