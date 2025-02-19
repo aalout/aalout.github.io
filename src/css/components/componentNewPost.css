@@ -239,7 +239,6 @@ color: rgba(165, 165, 165, 1);
 }
 
 .photo-position-container {
-  margin-bottom: 16px;
   border-radius: 8px;
   background: #fff;
 }
@@ -270,7 +269,7 @@ color: rgba(165, 165, 165, 1);
 .photo-position-buttons {
   display: flex;
   gap: 12px;
-  padding: 0 16px 16px;
+  padding: 0 16px;
 }
 
 .photo-position-button {
@@ -677,4 +676,43 @@ color: rgba(165, 165, 165, 1);
   background: rgba(15, 15, 15, 1);
   color: white;
   border: none;
+}
+
+.photo-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.photo-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: rgba(133, 111, 255, 0.1);
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(133, 111, 255, 1);
+}
+
+.photo-tag-remove {
+  background: none;
+  border: none;
+  padding: 0;
+  color: rgba(133, 111, 255, 1);
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-tag-text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(133, 111, 255, 1);
 }
