@@ -276,28 +276,28 @@ export class CreateSearch {
     if (!channelsContent) return;
     const channelsCard = channelsContent.closest('.create-card');
     const groupsContent = document.querySelector('[data-groups-content]');
-    const groupsCard = groupsContent ? groupsContent.closest('.create-card') : null;
+    const groupsCardWrapper = groupsContent ? groupsContent.closest('.create-card-wrapper') : null;
     
     if (!showMoreBtn || !cardsGrid || !channelsCard) return;
     
     const channelCards = cardsGrid.querySelectorAll('.channel-card');
     if (channelCards.length <= 2) {
-      showMoreBtn.style.display = 'none';
-      return;
+        showMoreBtn.style.display = 'none';
+        return;
     }
     showMoreBtn.style.display = 'flex';
     
     showMoreBtn.addEventListener('click', () => {
-      const isExpanded = channelsCard.classList.contains('expanded');
-      channelsCard.classList.toggle('expanded');
-      
-      if (groupsCard) {
-        groupsCard.style.display = isExpanded ? 'block' : 'none';
-      }
-      
-      const span = showMoreBtn.querySelector('span');
-      span.textContent = isExpanded ? 'Показать' : 'Скрыть';
-      showMoreBtn.classList.toggle('active');
+        const isExpanded = channelsCard.classList.contains('expanded');
+        channelsCard.classList.toggle('expanded');
+        
+        if (groupsCardWrapper) {
+            groupsCardWrapper.style.display = isExpanded ? 'block' : 'none';
+        }
+        
+        const span = showMoreBtn.querySelector('span');
+        span.textContent = isExpanded ? 'Показать' : 'Скрыть';
+        showMoreBtn.classList.toggle('active');
     });
   }
 

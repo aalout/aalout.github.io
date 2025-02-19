@@ -62,6 +62,9 @@
     transform-origin: top;
     animation: closeAccordion 0.3s ease-out forwards;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .help__accordion-item[open] .help__accordion-panel {
@@ -71,10 +74,6 @@
 .help__accordion-panel > div {
     overflow: hidden;
     min-height: 0;
-}
-
-.help__accordion-panel-title {
-    margin-bottom: 8px;
 }
 
 .help__accordion-panel-text {

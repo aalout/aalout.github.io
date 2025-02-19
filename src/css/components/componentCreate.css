@@ -5,6 +5,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  min-height: 100svh;
 }
 
 .create__background {
@@ -302,6 +303,14 @@ text-align: center;
   align-items: center;
   justify-content: center;
   gap: 8px;
+}
+
+.modal__link-wrapper-instruction {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
 }
 
 .modal__link {
