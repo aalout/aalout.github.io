@@ -60,3 +60,7 @@ main {
   font-size: 14px;
   background-color: rgba(0, 0, 0, 0.05);
 }
+
+img {
+  color: inherit;
+}

@@ -14,69 +14,88 @@ export default defineConfig({
       }
     }
   },
-  plugins: [{
-    name: 'handlebars',
-    transformIndexHtml: {
-      enforce: 'pre',
-      async transform() {
-        const componentHome = await fs.promises.readFile(
-          resolve(__dirname, 'src/partials/components/componentHome.hbs'),
-          'utf-8'
-        );
-        const componentHelp = await fs.promises.readFile(
-          resolve(__dirname, 'src/partials/components/componentHelp.hbs'),
-          'utf-8'
-        );
-        const componentCreate = await fs.promises.readFile(
-          resolve(__dirname, 'src/partials/components/componentCreate.hbs'),
-          'utf-8'
-        );
-        const componentNewPost = await fs.promises.readFile(
-          resolve(__dirname, 'src/partials/components/componentNewPost.hbs'),
-          'utf-8'
-        );
-        const componentPreview = await fs.promises.readFile(
-          resolve(__dirname, 'src/partials/components/componentPreview.hbs'),
-          'utf-8'
-        );
-        const componentCreateGroup = await fs.promises.readFile(
-          resolve(__dirname, 'src/partials/components/componentCreateGroup.hbs'),
-          'utf-8'
-        );
-        const componentEditGroup = await fs.promises.readFile(
-          resolve(__dirname, 'src/partials/components/componentEditGroup.hbs'),
-          'utf-8'
-        );
+  plugins: [
+    {
+      name: 'handlebars',
+      transformIndexHtml: {
+        enforce: 'pre',
+        async transform() {
+          const componentHome = await fs.promises.readFile(
+            resolve(__dirname, 'src/partials/components/componentHome.hbs'),
+            'utf-8'
+          );
+          const componentHelp = await fs.promises.readFile(
+            resolve(__dirname, 'src/partials/components/componentHelp.hbs'),
+            'utf-8'
+          );
+          const componentCreate = await fs.promises.readFile(
+            resolve(__dirname, 'src/partials/components/componentCreate.hbs'),
+            'utf-8'
+          );
+          const componentNewPost = await fs.promises.readFile(
+            resolve(__dirname, 'src/partials/components/componentNewPost.hbs'),
+            'utf-8'
+          );
+          const componentPreview = await fs.promises.readFile(
+            resolve(__dirname, 'src/partials/components/componentPreview.hbs'),
+            'utf-8'
+          );
+          const componentCreateGroup = await fs.promises.readFile(
+            resolve(__dirname, 'src/partials/components/componentCreateGroup.hbs'),
+            'utf-8'
+          );
+          const componentEditGroup = await fs.promises.readFile(
+            resolve(__dirname, 'src/partials/components/componentEditGroup.hbs'),
+            'utf-8'
+          );
 
+          Handlebars.registerPartial('componentHome', componentHome);
+          Handlebars.registerPartial('componentCreate', componentCreate);
+          Handlebars.registerPartial('componentNewPost', componentNewPost);
+          Handlebars.registerPartial('componentPreview', componentPreview);
+          Handlebars.registerPartial('componentHelp', componentHelp);
+          Handlebars.registerPartial('componentCreateGroup', componentCreateGroup);
+          Handlebars.registerPartial('componentEditGroup', componentEditGroup);
+          const defaultData = {
+            channels: [
+              { title: 'РИА Новости', username: '@rian_ru', avatar: '/images/create/default.svg' },
+              { title: 'ТАСС', username: '@tass_agency', avatar: '/images/create/default.svg' },
+              { title: 'Интерфакс', username: '@interfax', avatar: '/images/create/default.svg' },
+              {
+                title: 'Коммерсантъ',
+                username: '@kommersant',
+                avatar: '/images/create/default.svg'
+              },
+              { title: 'Ведомости', username: '@vedomosti', avatar: '/images/create/default.svg' },
+              { title: 'Forbes', username: '@forbes_ru', avatar: '/images/create/default.svg' },
+              { title: 'РБК', username: '@rbc_news', avatar: '/images/create/default.svg' },
+              { title: 'Медуза', username: '@meduzalive', avatar: '/images/create/default.svg' },
+              { title: 'Дождь', username: '@tvrain', avatar: '/images/create/default.svg' },
+              { title: 'BBC Russia', username: '@bbcrussian', avatar: '/images/create/default.svg' }
+            ],
+            groups: [
+              {
+                title: 'Чат РИА',
+                username: '@ria_chat',
+                avatar: '/images/create/group.png',
+                members: 1234
+              },
+              {
+                title: 'Чат ТАСС',
+                username: '@tass_chat',
+                avatar: '/images/create/group.png',
+                members: 567
+              },
+              {
+                title: 'Чат ТАСС2',
+                username: '@tass_chat2',
+                avatar: '/images/create/group.png',
+                members: 57
+              }
+            ]
+          };
 
-        Handlebars.registerPartial('componentHome', componentHome);
-        Handlebars.registerPartial('componentCreate', componentCreate);
-        Handlebars.registerPartial('componentNewPost', componentNewPost);
-        Handlebars.registerPartial('componentPreview', componentPreview);
-        Handlebars.registerPartial('componentHelp', componentHelp);
-        Handlebars.registerPartial('componentCreateGroup', componentCreateGroup);
-        Handlebars.registerPartial('componentEditGroup', componentEditGroup);
-        const defaultData = {
-          channels: [
-            { title: 'РИА Новости', username: '@rian_ru', avatar: '/images/create/default.png' },
-            { title: 'ТАСС', username: '@tass_agency', avatar: '/images/create/default.png' },
-            { title: 'Интерфакс', username: '@interfax', avatar: '/images/create/default.png' },
-            { title: 'Коммерсантъ', username: '@kommersant', avatar: '/images/create/default.png' },
-            { title: 'Ведомости', username: '@vedomosti', avatar: '/images/create/default.png' },
-            { title: 'Forbes', username: '@forbes_ru', avatar: '/images/create/default.png' },
-            { title: 'РБК', username: '@rbc_news', avatar: '/images/create/default.png' },
-            { title: 'Медуза', username: '@meduzalive', avatar: '/images/create/default.png' },
-            { title: 'Дождь', username: '@tvrain', avatar: '/images/create/default.png' },
-            { title: 'BBC Russia', username: '@bbcrussian', avatar: '/images/create/default.png' }
-          ],
-          groups: [
-            { title: 'Чат РИА', username: '@ria_chat', avatar: '/images/create/default.png', members: 1234 },
-            { title: 'Чат ТАСС', username: '@tass_chat', avatar: '/images/create/default.png', members: 567 },
-            { title: 'Чат ТАСС2', username: '@tass_chat2', avatar: '/images/create/default.png', members: 57 },
-          ]
-        };
-
-        const combinedHtml = `
+          const combinedHtml = `
           <!DOCTYPE html>
           <html lang="ru">
             <head>
@@ -118,25 +137,26 @@ export default defineConfig({
           </html>
         `;
 
-        return combinedHtml;
-      }
-    },
-    configureServer(server) {
-      server.middlewares.use((req, res, next) => {
-        if (req.url.endsWith('.hbs')) {
-          const filePath = resolve(__dirname, req.url.slice(1));
-          try {
-            const content = fs.readFileSync(filePath, 'utf-8');
-            res.setHeader('Content-Type', 'text/plain');
-            res.end(content);
-          } catch (error) {
-            next(error);
-          }
-        } else {
-          next();
+          return combinedHtml;
         }
-      });
+      },
+      configureServer(server) {
+        server.middlewares.use((req, res, next) => {
+          if (req.url.endsWith('.hbs')) {
+            const filePath = resolve(__dirname, req.url.slice(1));
+            try {
+              const content = fs.readFileSync(filePath, 'utf-8');
+              res.setHeader('Content-Type', 'text/plain');
+              res.end(content);
+            } catch (error) {
+              next(error);
+            }
+          } else {
+            next();
+          }
+        });
+      }
     }
-  }],
+  ],
   publicDir: 'public'
 });
