@@ -29,6 +29,21 @@
   gap: 8px;
 }
 
+.preview-post-header-graph {
+  transform: translateX(-1px);
+}
+
+.modal__title-onboarding {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  padding: 10px 16px 14px;
+  background: var(--background-tertiary);
+  border-radius: 16px 0 0 0;
+  white-space: nowrap;
+}
+
 .main-search-section {
   display: flex;
   align-items: flex-start;
@@ -496,7 +511,7 @@
   padding-block: 8px;
   width: 100%;
   white-space: nowrap;
-  color: var(--background-tertiary);
+  color: white;
   border: none;
   cursor: pointer;
 }

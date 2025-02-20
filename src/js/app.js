@@ -1,8 +1,8 @@
 import { Router } from './router.js';
 
 window.addEventListener('DOMContentLoaded', () => {
-  const globalDataEl = document.getElementById("global-data");
-  
+  const globalDataEl = document.getElementById('global-data');
+
   if (globalDataEl) {
     try {
       if (globalDataEl.dataset.channels) {

@@ -11,7 +11,20 @@
             <span class='preview-post-title-username'>@mychanel</span>
           </div>
         </div>
-        <img class='preview-post-header-graph' src='/images/create/graph.svg' alt='graph' />
+        <div class='preview-post-header-graph'>
+          <svg
+            width='80'
+            height='55'
+            viewBox='0 0 80 55'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
+          >
+            <path
+              d='M40.2085 24.0625C34.4772 15.8125 25.8802 0 11.5518 0H0.805542V55H80.8055C64.7805 55 50.8256 39.3452 40.2085 24.0625Z'
+              fill='var(--background-tertiary)'
+            />
+          </svg>
+        </div>
       </div>
       <div class='preview-post-content'>
         <div class='preview-post-content-wrapper'>
@@ -49,11 +62,30 @@
         <h3 class='preview-post-buttons-item-time-title'>Время публикации</h3>
         <div class='time-input-wrapper'>
           <div class='time-input-container'>
-            <input type='datetime-local' class='time-input' value='now' />
+            <input
+              type='datetime-local'
+              class='time-input'
+              value='now'
+              style='color-scheme: light dark'
+            />
             <img src='/icons/clock.svg' alt='calendar' class='time-input-icon' />
           </div>
           <button class='time-reset-button'>
-            <img src='/icons/closee.svg' alt='reset' />
+            <svg
+              width='48'
+              height='48'
+              viewBox='0 0 48 48'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <path
+                fill-rule='evenodd'
+                clip-rule='evenodd'
+                d='M15.5145 15.5155C16.0769 14.9532 16.9887 14.9532 17.551 15.5155L23.9998 21.9643L30.4486 15.5155C31.011 14.9532 31.9227 14.9532 32.4851 15.5155C33.0475 16.0779 33.0475 16.9896 32.4851 17.552L26.0363 24.0008L32.4851 30.4496C33.0475 31.012 33.0475 31.9237 32.4851 32.4861C31.9227 33.0484 31.011 33.0484 30.4486 32.4861L23.9998 26.0373L17.551 32.4861C16.9887 33.0484 16.0769 33.0484 15.5145 32.4861C14.9522 31.9237 14.9522 31.012 15.5145 30.4496L21.9634 24.0008L15.5145 17.552C14.9522 16.9896 14.9522 16.0779 15.5145 15.5155Z'
+                fill='var(--text-primary)'
+              />
+            </svg>
+
           </button>
         </div>
       </div>

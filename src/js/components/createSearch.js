@@ -9,27 +9,75 @@ if (!window.channels || !window.channels.length) {
     { title: 'Новый канал', username: '@newchannel', avatar: '/images/create/default.png' },
     { title: 'Новый канал', username: '@newchannel', avatar: '/images/create/default.png' },
     { title: 'Новый канал', username: '@newchannel', avatar: '/images/create/default.png' },
-    { title: 'Новый канал', username: '@newchannel', avatar: '/images/create/default.png' },
+    { title: 'Новый канал', username: '@newchannel', avatar: '/images/create/default.png' }
   ];
 }
 
 if (!window.groups || !window.groups.length) {
   window.groups = [
-    { id: 1, title: 'Чат РИА', username: '@ria_chat', avatar: '/images/create/default.png', members: 1234 },
-    { id: 2, title: 'Чат ТАСС', username: '@tass_chat', avatar: '/images/create/default.png', members: 567 },
-    { id: 3, title: 'Медиа группа', username: '@media_group', avatar: '/images/create/default.png', members: 890 },
-    { id: 4, title: 'Новостной агрегатор', username: '@news_agg', avatar: '/images/create/default.png', members: 234 },
-    { id: 5, title: 'Бизнес каналы', username: '@business', avatar: '/images/create/default.png', members: 567 },
-    { id: 6, title: 'Спортивные каналы', username: '@sport', avatar: '/images/create/default.png', members: 890 },
-    { id: 7, title: 'Развлекательные каналы', username: '@entertainment', avatar: '/images/create/default.png', members: 123 },
-    { id: 8, title: 'Образовательные каналы', username: '@education', avatar: '/images/create/default.png', members: 456 },
+    {
+      id: 1,
+      title: 'Чат РИА',
+      username: '@ria_chat',
+      avatar: '/images/create/default.png',
+      members: 1234
+    },
+    {
+      id: 2,
+      title: 'Чат ТАСС',
+      username: '@tass_chat',
+      avatar: '/images/create/default.png',
+      members: 567
+    },
+    {
+      id: 3,
+      title: 'Медиа группа',
+      username: '@media_group',
+      avatar: '/images/create/default.png',
+      members: 890
+    },
+    {
+      id: 4,
+      title: 'Новостной агрегатор',
+      username: '@news_agg',
+      avatar: '/images/create/default.png',
+      members: 234
+    },
+    {
+      id: 5,
+      title: 'Бизнес каналы',
+      username: '@business',
+      avatar: '/images/create/default.png',
+      members: 567
+    },
+    {
+      id: 6,
+      title: 'Спортивные каналы',
+      username: '@sport',
+      avatar: '/images/create/default.png',
+      members: 890
+    },
+    {
+      id: 7,
+      title: 'Развлекательные каналы',
+      username: '@entertainment',
+      avatar: '/images/create/default.png',
+      members: 123
+    },
+    {
+      id: 8,
+      title: 'Образовательные каналы',
+      username: '@education',
+      avatar: '/images/create/default.png',
+      members: 456
+    }
   ];
 }
 
 export class CreateSearch {
   constructor() {
     // Получаем данные из глобального элемента
-    const globalDataEl = document.getElementById("global-data");
+    const globalDataEl = document.getElementById('global-data');
     if (globalDataEl) {
       try {
         if (globalDataEl.dataset.channels) {
@@ -45,10 +93,10 @@ export class CreateSearch {
 
     this.channels = window.channels || [];
     this.groups = window.groups || [];
-    
+
     this.multiSelectMode = false;
     this.selectedCards = new Set();
-    
+
     this.init();
     this.initCardMenuHandlers();
     this.initModal();
@@ -62,11 +110,11 @@ export class CreateSearch {
     this.input = document.querySelector('[data-search-input]');
     this.dropdown = document.querySelector('[data-search-dropdown]');
     this.arrowIcon = document.querySelector('[data-search-arrow]');
-    
+
     if (!this.input || !this.dropdown) return;
-    
+
     new Search(this.channels);
-    
+
     this.bindEvents();
   }
 
@@ -75,7 +123,7 @@ export class CreateSearch {
       this.showDropdown();
     });
 
-    document.addEventListener('click', (e) => this.handleClickOutside(e));
+    document.addEventListener('click', e => this.handleClickOutside(e));
   }
 
   handleSearch() {
@@ -99,9 +147,12 @@ export class CreateSearch {
   }
 
   handleClickOutside(e) {
-    if (!this.dropdown.contains(e.target) && 
-        !this.input.contains(e.target) && 
-        (!document.querySelector('[data-search-button]') || !document.querySelector('[data-search-button]').contains(e.target))) {
+    if (
+      !this.dropdown.contains(e.target) &&
+      !this.input.contains(e.target) &&
+      (!document.querySelector('[data-search-button]') ||
+        !document.querySelector('[data-search-button]').contains(e.target))
+    ) {
       this.hideDropdown();
     }
   }
@@ -140,14 +191,14 @@ export class CreateSearch {
       modal.classList.remove('active');
       setTimeout(() => {
         modal.style.display = 'none';
-      }, 30); 
+      }, 30);
     };
 
     closeButtons.forEach(button => {
       button.addEventListener('click', closeModal);
     });
 
-    modal.addEventListener('click', (e) => {
+    modal.addEventListener('click', e => {
       if (e.target === modal) {
         closeModal();
       }
@@ -155,11 +206,11 @@ export class CreateSearch {
 
     const input = document.querySelector('[data-channel-input]');
     const addButton = modal.querySelector('.modal__button--add');
-    
+
     if (input && addButton) {
       addButton.disabled = true;
-      
-      input.addEventListener('input', (e) => {
+
+      input.addEventListener('input', e => {
         addButton.disabled = !e.target.value.trim();
       });
     }
@@ -179,11 +230,11 @@ export class CreateSearch {
     this.initShowMore();
     this.initDeleteButtons();
     this.checkShowMoreVisibility();
-    
+
     // Добавляем обработчик для кнопки плюса в карточке каналов
     const addChannelIcon = document.querySelector('.create-card__add');
     if (addChannelIcon) {
-      addChannelIcon.addEventListener('click', (e) => {
+      addChannelIcon.addEventListener('click', e => {
         e.preventDefault();
         this.openModal();
       });
@@ -192,12 +243,12 @@ export class CreateSearch {
     // Добавляем обработчик для кнопки "Подключить канал"
     const mainAddButton = document.querySelector('.main-button[data-modal-trigger]');
     if (mainAddButton) {
-      mainAddButton.addEventListener('click', (e) => {
+      mainAddButton.addEventListener('click', e => {
         e.preventDefault();
         this.openModal();
       });
     }
-    
+
     // Добавляем обработчик для кнопки "Добавить в группу" в режиме множественного выбора
     const addToGroupBtn = document.querySelector('.action-add-group');
     if (addToGroupBtn) {
@@ -219,7 +270,7 @@ export class CreateSearch {
       grid.classList.add('channel-cards-grid');
       container.prepend(grid);
     } else {
-      grid.innerHTML = ''; 
+      grid.innerHTML = '';
     }
 
     if (!window.channels || !window.channels.length) {
@@ -237,7 +288,9 @@ export class CreateSearch {
         <div class="channel-card__header">
           <img src="${channel.avatar}" class="channel-card__avatar" alt="Channel avatar" />
           <button class="channel-card__menu" data-dropdown-trigger>
-            <img src="/icons/dots.svg" alt="Menu" />
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--text-primary)" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5C12.8284 8.5 13.5 7.82843 13.5 7C13.5 6.17157 12.8284 5.5 12 5.5C11.1716 5.5 10.5 6.17157 10.5 7C10.5 7.82843 11.1716 8.5 12 8.5ZM13.5 12C13.5 12.8284 12.8284 13.5 12 13.5C11.1716 13.5 10.5 12.8284 10.5 12C10.5 11.1716 11.1716 10.5 12 10.5C12.8284 10.5 13.5 11.1716 13.5 12ZM13.5 17C13.5 17.8284 12.8284 18.5 12 18.5C11.1716 18.5 10.5 17.8284 10.5 17C10.5 16.1716 11.1716 15.5 12 15.5C12.8284 15.5 13.5 16.1716 13.5 17Z" fill="var(--text-primary)" fill-opacity="0.85"/>
+</svg>
           </button>
           <input
             type="checkbox"
@@ -261,7 +314,7 @@ export class CreateSearch {
   initDropdowns() {
     const triggers = document.querySelectorAll('[data-dropdown-trigger]');
     triggers.forEach(trigger => {
-      trigger.addEventListener('click', (e) => {
+      trigger.addEventListener('click', e => {
         e.stopPropagation();
         this.activeCard = trigger.closest('.channel-card');
         this.openBottomMenu();
@@ -277,34 +330,34 @@ export class CreateSearch {
     const channelsCard = channelsContent.closest('.create-card');
     const groupsContent = document.querySelector('[data-groups-content]');
     const groupsCardWrapper = groupsContent ? groupsContent.closest('.create-card-wrapper') : null;
-    
+
     if (!showMoreBtn || !cardsGrid || !channelsCard) return;
-    
+
     const channelCards = cardsGrid.querySelectorAll('.channel-card');
     if (channelCards.length <= 2) {
-        showMoreBtn.style.display = 'none';
-        return;
+      showMoreBtn.style.display = 'none';
+      return;
     }
     showMoreBtn.style.display = 'flex';
-    
+
     showMoreBtn.addEventListener('click', () => {
-        const isExpanded = channelsCard.classList.contains('expanded');
-        channelsCard.classList.toggle('expanded');
-        
-        if (groupsCardWrapper) {
-            groupsCardWrapper.style.display = isExpanded ? 'block' : 'none';
-        }
-        
-        const span = showMoreBtn.querySelector('span');
-        span.textContent = isExpanded ? 'Показать' : 'Скрыть';
-        showMoreBtn.classList.toggle('active');
+      const isExpanded = channelsCard.classList.contains('expanded');
+      channelsCard.classList.toggle('expanded');
+
+      if (groupsCardWrapper) {
+        groupsCardWrapper.style.display = isExpanded ? 'block' : 'none';
+      }
+
+      const span = showMoreBtn.querySelector('span');
+      span.textContent = isExpanded ? 'Показать' : 'Скрыть';
+      showMoreBtn.classList.toggle('active');
     });
   }
 
   checkShowMoreVisibility() {
     const cards = document.querySelectorAll('.channel-card');
     const showMoreBtn = document.querySelector('[data-show-more]');
-    
+
     if (showMoreBtn) {
       if (cards.length > 2) {
         showMoreBtn.style.display = 'flex';
@@ -316,7 +369,7 @@ export class CreateSearch {
 
   initDeleteButtons() {
     document.querySelectorAll('.channel-card__dropdown-item--delete').forEach(btn => {
-      btn.addEventListener('click', (e) => {
+      btn.addEventListener('click', e => {
         const card = e.target.closest('.channel-card');
         if (card) {
           card.remove();
@@ -330,14 +383,14 @@ export class CreateSearch {
   updateChannelCounter() {
     const counter = document.querySelector('.create-card__counter');
     const channels = document.querySelectorAll('.channel-card').length;
-    
+
     if (counter) {
       counter.textContent = channels;
     }
 
     const content = document.querySelector('[data-channels-content]');
     const emptyState = document.querySelector('.create-card__empty');
-    
+
     if (content && emptyState) {
       if (channels === 0) {
         content.style.display = 'none';
@@ -386,7 +439,9 @@ export class CreateSearch {
         <div class="group-card__header">
           <img src="${group.avatar}" class="group-card__avatar" alt="Group avatar" />
           <button class="group-card__menu" data-group-dropdown-trigger>
-            <img src="/icons/dotswhite.svg" alt="Menu" />
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5C12.8284 8.5 13.5 7.82843 13.5 7C13.5 6.17157 12.8284 5.5 12 5.5C11.1716 5.5 10.5 6.17157 10.5 7C10.5 7.82843 11.1716 8.5 12 8.5ZM13.5 12C13.5 12.8284 12.8284 13.5 12 13.5C11.1716 13.5 10.5 12.8284 10.5 12C10.5 11.1716 11.1716 10.5 12 10.5C12.8284 10.5 13.5 11.1716 13.5 12ZM13.5 17C13.5 17.8284 12.8284 18.5 12 18.5C11.1716 18.5 10.5 17.8284 10.5 17C10.5 16.1716 11.1716 15.5 12 15.5C12.8284 15.5 13.5 16.1716 13.5 17Z" fill="var(--dots-white)"/>
+</svg>
           </button>
           <input
             type="checkbox"
@@ -413,7 +468,7 @@ export class CreateSearch {
   initGroupDropdowns() {
     const groupTriggers = document.querySelectorAll('[data-group-dropdown-trigger]');
     groupTriggers.forEach(trigger => {
-      trigger.addEventListener('click', (e) => {
+      trigger.addEventListener('click', e => {
         e.stopPropagation();
         this.activeCard = trigger.closest('.group-card');
         this.openBottomMenu();
@@ -428,7 +483,9 @@ export class CreateSearch {
     const groupsContent = document.querySelector('[data-groups-content]');
     const groupsCard = groupsContent ? groupsContent.closest('.create-card') : null;
     const channelsContent = document.querySelector('[data-channels-content]');
-    const channelsWrapper = channelsContent ? channelsContent.closest('.create-card-wrapper') : null;
+    const channelsWrapper = channelsContent
+      ? channelsContent.closest('.create-card-wrapper')
+      : null;
 
     if (!groupsCard || !channelsWrapper) return;
 
@@ -455,7 +512,7 @@ export class CreateSearch {
 
   initGroupDeleteButtons() {
     document.querySelectorAll('.group-card__dropdown-item--delete').forEach(btn => {
-      btn.addEventListener('click', (e) => {
+      btn.addEventListener('click', e => {
         const card = e.target.closest('.group-card');
         if (card) {
           card.remove();
@@ -509,12 +566,12 @@ export class CreateSearch {
   initBottomMenu() {
     this.bottomMenu = document.getElementById('bottom-menu');
     if (!this.bottomMenu) return;
-    
+
     // Закрытие по клику на overlay и кнопке закрытия
     this.bottomMenu.querySelectorAll('[data-bottom-menu-close]').forEach(el => {
       el.addEventListener('click', () => this.closeBottomMenu());
     });
-    // Добавляем обработчик для кнопки "Добавить в группу"/"Редактировать" 
+    // Добавляем обработчик для кнопки "Добавить в группу"/"Редактировать"
     const addToGroupButton = this.bottomMenu.querySelector('[data-bottom-menu-add-group]');
     if (addToGroupButton) {
       addToGroupButton.addEventListener('click', () => {
@@ -528,7 +585,7 @@ export class CreateSearch {
         this.closeBottomMenu();
       });
     }
-    
+
     // Новый обработчик для кнопки "Выбрать несколько"
     const chooseMultipleBtn = this.bottomMenu.querySelector('[data-bottom-menu-choose-multiple]');
     if (chooseMultipleBtn) {
@@ -543,9 +600,9 @@ export class CreateSearch {
         this.closeBottomMenu();
       });
     }
-    
+
     // Закрытие при клике вне контейнера меню
-    this.bottomMenu.addEventListener('click', (e) => {
+    this.bottomMenu.addEventListener('click', e => {
       if (!e.target.closest('.bottom-menu__container')) {
         this.closeBottomMenu();
       }
@@ -560,7 +617,7 @@ export class CreateSearch {
       });
     }
   }
-  
+
   openBottomMenu() {
     if (this.bottomMenu) {
       // Если активная карточка — группа, меняем текст и иконку первого пункта
@@ -595,7 +652,7 @@ export class CreateSearch {
       this.bottomMenu.classList.add('active');
     }
   }
-  
+
   closeBottomMenu() {
     if (this.bottomMenu) {
       this.bottomMenu.classList.remove('active');
@@ -628,8 +685,9 @@ export class CreateSearch {
     }
 
     const renderGroups = (searchValue = '') => {
-      const filteredGroups = this.groups
-        .filter(group => group.title.toLowerCase().includes((searchValue || '').toLowerCase()));
+      const filteredGroups = this.groups.filter(group =>
+        group.title.toLowerCase().includes((searchValue || '').toLowerCase())
+      );
 
       if (filteredGroups.length === 0) {
         dropdown.innerHTML = '<div class="modal__search-item-empty">Ничего не найдено</div>';
@@ -663,21 +721,21 @@ export class CreateSearch {
       dropdown.classList.remove('active');
     };
 
-    const handleSearchClick = (e) => {
+    const handleSearchClick = e => {
       e.stopPropagation();
       if (!isDropdownOpen) {
         showDropdown();
       }
     };
 
-    const handleSearchInput = (e) => {
+    const handleSearchInput = e => {
       renderGroups(e.target.value);
       if (!isDropdownOpen) {
         showDropdown();
       }
     };
 
-    const handleDropdownClick = (e) => {
+    const handleDropdownClick = e => {
       const item = e.target.closest('.modal__search-item');
       if (item) {
         const groupId = item.dataset.groupId;
@@ -693,7 +751,7 @@ export class CreateSearch {
       }
     };
 
-    const handleDocumentClick = (e) => {
+    const handleDocumentClick = e => {
       if (!dropdown.contains(e.target) && !searchInput.contains(e.target)) {
         hideDropdown();
       }
@@ -704,12 +762,12 @@ export class CreateSearch {
       searchInput.value = '';
       addButton.disabled = true;
       hideDropdown();
-      
+
       searchInput.removeEventListener('click', handleSearchClick);
       searchInput.removeEventListener('input', handleSearchInput);
       dropdown.removeEventListener('click', handleDropdownClick);
       document.removeEventListener('click', handleDocumentClick);
-      
+
       modal.style.display = 'none';
       modal.classList.remove('active');
     };
@@ -784,27 +842,24 @@ export class CreateSearch {
     const multiSelectActions = document.querySelector('.multi-select-actions');
     if (multiSelectActions) {
       multiSelectActions.style.display = 'flex';
-      multiSelectActions.querySelector('.action-cancel')
-        .addEventListener('click', () => {
+      multiSelectActions.querySelector('.action-cancel').addEventListener('click', () => {
+        this.disableChannelMultiSelectMode();
+      });
+      multiSelectActions.querySelector('.action-add-group').addEventListener('click', () => {
+        console.log('Добавить в группу (каналы):', this.selectedCards);
+      });
+      multiSelectActions.querySelector('.action-delete').addEventListener('click', () => {
+        this.confirmDeletion(() => {
+          this.selectedCards.forEach(card => {
+            card.remove();
+          });
+          this.selectedCards.clear();
+          this.updateChannelMultiSelectHeader();
+          this.updateChannelMultiSelectActions();
+          this.updateChannelCounter();
           this.disableChannelMultiSelectMode();
         });
-      multiSelectActions.querySelector('.action-add-group')
-        .addEventListener('click', () => {
-          console.log('Добавить в группу (каналы):', this.selectedCards);
-        });
-      multiSelectActions.querySelector('.action-delete')
-        .addEventListener('click', () => {
-          this.confirmDeletion(() => {
-            this.selectedCards.forEach(card => {
-              card.remove();
-            });
-            this.selectedCards.clear();
-            this.updateChannelMultiSelectHeader();
-            this.updateChannelMultiSelectActions();
-            this.updateChannelCounter();
-            this.disableChannelMultiSelectMode();
-          });
-        });
+      });
     }
 
     // Меняем высоту блока с карточками каналов
@@ -822,7 +877,7 @@ export class CreateSearch {
         checkbox.classList.remove('checkbox-hidden');
         checkbox.classList.add('visible');
         checkbox.checked = card.classList.contains('selected');
-        checkbox.addEventListener('click', (e) => {
+        checkbox.addEventListener('click', e => {
           e.stopPropagation();
           card.classList.toggle('selected');
           if (card.classList.contains('selected')) {
@@ -834,7 +889,7 @@ export class CreateSearch {
           this.updateChannelMultiSelectActions();
         });
       }
-      card.addEventListener('click', (e) => {
+      card.addEventListener('click', e => {
         if (e.target.tagName.toLowerCase() === 'input') return;
         if (checkbox) {
           checkbox.checked = !checkbox.checked;
@@ -857,27 +912,27 @@ export class CreateSearch {
 
     const multiSelectHeader = document.querySelector('.multi-select-header');
     if (multiSelectHeader) {
-        multiSelectHeader.style.display = 'none';
+      multiSelectHeader.style.display = 'none';
     }
     const multiSelectActions = document.querySelector('.multi-select-actions');
     if (multiSelectActions) {
-        multiSelectActions.style.display = 'none';
+      multiSelectActions.style.display = 'none';
     }
     const channelsContent = document.querySelector('[data-channels-content]');
     if (channelsContent) {
-        channelsContent.classList.remove('multi-select');
+      channelsContent.classList.remove('multi-select');
     }
-    
+
     // Очищаем состояние чекбоксов и выделения без пересоздания карточек
     const cards = document.querySelectorAll('.channel-card');
     cards.forEach(card => {
-        const checkbox = card.querySelector('.card-select-checkbox');
-        if (checkbox) {
-            checkbox.checked = false;
-            checkbox.classList.remove('visible');
-            checkbox.classList.add('checkbox-hidden');
-        }
-        card.classList.remove('selected');
+      const checkbox = card.querySelector('.card-select-checkbox');
+      if (checkbox) {
+        checkbox.checked = false;
+        checkbox.classList.remove('visible');
+        checkbox.classList.add('checkbox-hidden');
+      }
+      card.classList.remove('selected');
     });
 
     // Переинициализируем карточки и обработчики
@@ -892,7 +947,7 @@ export class CreateSearch {
     channelCards.forEach(card => {
       const menuButton = card.querySelector('[data-dropdown-trigger]');
       if (menuButton) {
-        menuButton.addEventListener('click', (e) => {
+        menuButton.addEventListener('click', e => {
           e.stopPropagation();
           this.activeCard = card;
           this.showBottomMenu(false);
@@ -905,7 +960,7 @@ export class CreateSearch {
     groupCards.forEach(card => {
       const menuButton = card.querySelector('[data-group-dropdown-trigger]');
       if (menuButton) {
-        menuButton.addEventListener('click', (e) => {
+        menuButton.addEventListener('click', e => {
           e.stopPropagation();
           this.activeCard = card;
           this.showBottomMenu(true);
@@ -921,9 +976,8 @@ export class CreateSearch {
       countElem.textContent = this.selectedCards.size;
       const selectAllBtn = header.querySelector('.select-all-btn');
       const cards = document.querySelectorAll('.channel-card');
-      selectAllBtn.textContent = (this.selectedCards.size === cards.length && cards.length > 0)
-        ? 'Сбросить'
-        : 'Выбрать все';
+      selectAllBtn.textContent =
+        this.selectedCards.size === cards.length && cards.length > 0 ? 'Сбросить' : 'Выбрать все';
     }
   }
 
@@ -946,7 +1000,7 @@ export class CreateSearch {
 
   enableGroupMultiSelectMode() {
     this.multiSelectMode = true;
-    
+
     // Получаем все необходимые элементы
     const content = document.querySelector('[data-groups-content]');
     const header = content.querySelector('.multi-select-header-group');
@@ -955,22 +1009,22 @@ export class CreateSearch {
     const selectAllBtn = content.querySelector('.select-all-btn-group');
     const deleteBtn = content.querySelector('.action-delete-group');
     const cancelBtn = content.querySelector('.action-cancel-group');
-    
+
     // Показываем панель мультивыбора
     if (header) header.style.display = 'flex';
     if (actions) actions.style.display = 'flex';
-    
+
     // Очищаем выбранные карточки
     this.selectedCards.clear();
-    
+
     // Добавляем класс multi-select к контейнеру
     content.classList.add('multi-select');
-    
+
     // Обработчик для кнопки "Выбрать все"
     if (selectAllBtn) {
       selectAllBtn.addEventListener('click', () => {
         const isAllSelected = this.selectedCards.size === cards.length;
-        
+
         cards.forEach(card => {
           const checkbox = card.querySelector('.group-select-checkbox');
           if (checkbox) {
@@ -978,25 +1032,25 @@ export class CreateSearch {
             card.classList.toggle('selected', !isAllSelected);
           }
         });
-        
+
         if (isAllSelected) {
           this.selectedCards.clear();
         } else {
           cards.forEach(card => this.selectedCards.add(card));
         }
-        
+
         this.updateGroupMultiSelectHeader();
         this.updateGroupMultiSelectActions();
       });
     }
-    
+
     // Обработчик для кнопки "Отмена"
     if (cancelBtn) {
       cancelBtn.addEventListener('click', () => {
         this.disableGroupMultiSelectMode();
       });
     }
-    
+
     // Для каждой карточки группы показываем чекбокс и добавляем обработчики
     cards.forEach(card => {
       const checkbox = card.querySelector('.group-select-checkbox');
@@ -1004,8 +1058,8 @@ export class CreateSearch {
         checkbox.classList.remove('checkbox-hidden');
         checkbox.classList.add('visible');
         checkbox.checked = card.classList.contains('selected');
-        
-        checkbox.addEventListener('click', (e) => {
+
+        checkbox.addEventListener('click', e => {
           e.stopPropagation();
           card.classList.toggle('selected');
           if (card.classList.contains('selected')) {
@@ -1017,8 +1071,8 @@ export class CreateSearch {
           this.updateGroupMultiSelectActions();
         });
       }
-      
-      card.addEventListener('click', (e) => {
+
+      card.addEventListener('click', e => {
         if (e.target.tagName.toLowerCase() === 'input') return;
         if (checkbox) {
           checkbox.checked = !checkbox.checked;
@@ -1039,20 +1093,20 @@ export class CreateSearch {
     const content = document.querySelector('[data-groups-content]');
     const header = content.querySelector('.multi-select-header-group');
     const actions = content.querySelector('.multi-select-actions-group');
-    
+
     content.classList.remove('multi-select');
     if (header) header.style.display = 'none';
     if (actions) actions.style.display = 'none';
-    
+
     const checkboxes = content.querySelectorAll('.group-select-checkbox');
     checkboxes.forEach(checkbox => {
       checkbox.classList.remove('visible');
       checkbox.classList.add('checkbox-hidden');
     });
-    
+
     const cards = content.querySelectorAll('.group-card');
     cards.forEach(card => card.classList.remove('selected'));
-    
+
     this.selectedCards.clear();
     this.multiSelectMode = false;
   }
@@ -1076,19 +1130,20 @@ export class CreateSearch {
     const channelsContent = document.querySelector('[data-channels-content]');
     const groupsContent = document.querySelector('[data-groups-content]');
     if (!channelsContent || !groupsContent) return;
-    
+
     const channelsCard = channelsContent.closest('.create-card');
     const groupsCard = groupsContent.closest('.create-card');
-    
+
     if (channelsCard.classList.contains('expanded') && !groupsCard.classList.contains('expanded')) {
       channelsCard.style.display = 'block';
       groupsCard.style.display = 'none';
-    }
-    else if (groupsCard.classList.contains('expanded') && !channelsCard.classList.contains('expanded')) {
+    } else if (
+      groupsCard.classList.contains('expanded') &&
+      !channelsCard.classList.contains('expanded')
+    ) {
       groupsCard.style.display = 'block';
       channelsCard.style.display = 'none';
-    }
-    else {
+    } else {
       channelsCard.style.display = 'block';
       groupsCard.style.display = 'block';
     }
@@ -1131,4 +1186,4 @@ export class CreateSearch {
       modal.classList.add('active');
     }
   }
-} 
+}

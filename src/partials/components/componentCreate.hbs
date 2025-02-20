@@ -39,9 +39,26 @@
           <div class='create-card__header'>
             <h4 class='create-card__title'>Каналы</h4>
             <div class='create-card__counter'>{{channels.length}}</div>
-            <img class='create-card__add' src='/icons/plusnew.svg' alt='Add' data-modal-trigger />
+            <div class='create-card__add' data-modal-trigger>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.625C12.6213 2.625 13.125 3.12868 13.125 3.75V10.875H20.25C20.8713 10.875 21.375 11.3787 21.375 12C21.375 12.6213 20.8713 13.125 20.25 13.125H13.125V20.25C13.125 20.8713 12.6213 21.375 12 21.375C11.3787 21.375 10.875 20.8713 10.875 20.25V13.125H3.75C3.12868 13.125 2.625 12.6213 2.625 12C2.625 11.3787 3.12868 10.875 3.75 10.875H10.875V3.75C10.875 3.12868 11.3787 2.625 12 2.625Z" fill="var(--text-primary)"/>
+</svg>
+</div>
           </div>
-          <img class='create-card__add-icon' src='/images/create/graph.svg' alt='graph' />
+          <div class='create-card__add-icon'>
+                          <svg
+                  width='80'
+                  height='48'
+                  viewBox='0 0 80 48'
+                  fill='none'
+                  xmlns='http://www.w3.org/2000/svg'
+                >
+                  <path
+                    d='M39.403 21C33.6716 13.8 25.0746 0 10.7463 0H0V48H80C63.975 48 50.02 34.3377 39.403 21Z'
+                    fill='var(--background-tertiary)'
+                  />
+                </svg>
+                </div>
         </div>
         <div class='create-card'>
           <div class='create-card__content' data-channels-content>
@@ -67,7 +84,11 @@
                       <div class="channel-card__header">
                         <img src="{{avatar}}" class="channel-card__avatar" alt="Channel avatar" />
                         <button class="channel-card__menu" data-dropdown-trigger>
-                          <img src="/icons/dots.svg" alt="Menu" />
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--text-primary)" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5C12.8284 8.5 13.5 7.82843 13.5 7C13.5 6.17157 12.8284 5.5 12 5.5C11.1716 5.5 10.5 6.17157 10.5 7C10.5 7.82843 11.1716 8.5 12 8.5ZM13.5 12C13.5 12.8284 12.8284 13.5 12 13.5C11.1716 13.5 10.5 12.8284 10.5 12C10.5 11.1716 11.1716 10.5 12 10.5C12.8284 10.5 13.5 11.1716 13.5 12ZM13.5 17C13.5 17.8284 12.8284 18.5 12 18.5C11.1716 18.5 10.5 17.8284 10.5 17C10.5 16.1716 11.1716 15.5 12 15.5C12.8284 15.5 13.5 16.1716 13.5 17Z" fill="var(--text-primary)" fill-opacity="0.85"/>
+</svg>
+
+
                         </button>
                         <input
                           type="checkbox"
@@ -92,7 +113,10 @@
 
             <button class='create-card__show-more' data-show-more>
               <span>Показать</span>
-              <img src='/icons/chevvron.svg' alt='Show more' />
+              <div style="width: 28px; height: 28px;"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M8.96967 11.4697C9.26256 11.1768 9.73744 11.1768 10.0303 11.4697L14 15.4393L17.9697 11.4697C18.2626 11.1768 18.7374 11.1768 19.0303 11.4697C19.3232 11.7626 19.3232 12.2374 19.0303 12.5303L14.5303 17.0303C14.2374 17.3232 13.7626 17.3232 13.4697 17.0303L8.96967 12.5303C8.67678 12.2374 8.67678 11.7626 8.96967 11.4697Z" fill="var(--text-primary)"/>
+</svg></div>
+
             </button>
           </div>
 
@@ -110,9 +134,24 @@
           <div class='create-card__header'>
             <h4 class='create-card__title'>Группы</h4>
             <div class='create-card__counter'>{{groups.length}}</div>
-            <a href="/create-group"><img class='create-card__add' src='/icons/plusnew.svg' alt='Add' /></a>
+            <a href="/create-group"><div class='create-card__add'><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.625C12.6213 2.625 13.125 3.12868 13.125 3.75V10.875H20.25C20.8713 10.875 21.375 11.3787 21.375 12C21.375 12.6213 20.8713 13.125 20.25 13.125H13.125V20.25C13.125 20.8713 12.6213 21.375 12 21.375C11.3787 21.375 10.875 20.8713 10.875 20.25V13.125H3.75C3.12868 13.125 2.625 12.6213 2.625 12C2.625 11.3787 3.12868 10.875 3.75 10.875H10.875V3.75C10.875 3.12868 11.3787 2.625 12 2.625Z" fill="var(--text-primary)"/>
+</svg></div></a>
           </div>
-          <img class='create-card__add-icon' src='/images/create/graph.svg' alt='graph' />
+          <div class='create-card__add-icon'>
+                                    <svg
+                  width='80'
+                  height='48'
+                  viewBox='0 0 80 48'
+                  fill='none'
+                  xmlns='http://www.w3.org/2000/svg'
+                >
+                  <path
+                    d='M39.403 21C33.6716 13.8 25.0746 0 10.7463 0H0V48H80C63.975 48 50.02 34.3377 39.403 21Z'
+                    fill='var(--background-tertiary)'
+                  />
+                </svg>
+                </div>
         </div>
         <div class='create-card {{#if groupsExpanded}}expanded{{/if}}'>
           <div class="create-card__content" data-groups-content>
@@ -138,6 +177,10 @@
                         <img src="{{avatar}}" class="group-card__avatar" alt="Group avatar" />
                         <button class="group-card__menu" data-group-dropdown-trigger>
                           <img src="/icons/dotswhite.svg" alt="Menu" />
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5C12.8284 8.5 13.5 7.82843 13.5 7C13.5 6.17157 12.8284 5.5 12 5.5C11.1716 5.5 10.5 6.17157 10.5 7C10.5 7.82843 11.1716 8.5 12 8.5ZM13.5 12C13.5 12.8284 12.8284 13.5 12 13.5C11.1716 13.5 10.5 12.8284 10.5 12C10.5 11.1716 11.1716 10.5 12 10.5C12.8284 10.5 13.5 11.1716 13.5 12ZM13.5 17C13.5 17.8284 12.8284 18.5 12 18.5C11.1716 18.5 10.5 17.8284 10.5 17C10.5 16.1716 11.1716 15.5 12 15.5C12.8284 15.5 13.5 16.1716 13.5 17Z" fill="var(--dots-white)"/>
+</svg>
+
                         </button>
                         <input
                           type="checkbox"
@@ -157,7 +200,9 @@
               </div>
               <button class="create-card__show-more" data-group-show-more>
                 <span>{{#if groupsExpanded}}Скрыть{{else}}Показать{{/if}}</span>
-                <img src="/icons/chevvron.svg" alt="Toggle" />
+                <div style="width: 28px; height: 28px;"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M8.96967 11.4697C9.26256 11.1768 9.73744 11.1768 10.0303 11.4697L14 15.4393L17.9697 11.4697C18.2626 11.1768 18.7374 11.1768 19.0303 11.4697C19.3232 11.7626 19.3232 12.2374 19.0303 12.5303L14.5303 17.0303C14.2374 17.3232 13.7626 17.3232 13.4697 17.0303L8.96967 12.5303C8.67678 12.2374 8.67678 11.7626 8.96967 11.4697Z" fill="var(--text-primary)"/>
+</svg></div>
               </button>
             {{else}}
               <div class="create-card__empty">
@@ -186,7 +231,18 @@
           <div class="modal__header">
         <div class="modal__header-wrapper">
           <h2 class="modal__title">Добавить канал</h2>
-          <img src="/images/create/graph.svg" alt="graph"/>
+                                   <svg
+                  width='80'
+                  height='48'
+                  viewBox='0 0 80 48'
+                  fill='none'
+                  xmlns='http://www.w3.org/2000/svg'
+                >
+                  <path
+                    d='M39.403 21C33.6716 13.8 25.0746 0 10.7463 0H0V48H80C63.975 48 50.02 34.3377 39.403 21Z'
+                    fill='var(--background-tertiary)'
+                  />
+                </svg>
           </div>
         <button class="modal__close" data-modal-close>
           <img src="/icons/closemodal.svg" alt="Закрыть">
@@ -229,8 +285,13 @@
       </button>
       <h4 class="bottom-menu__title">Выберите действие</h4>
       <ul class="bottom-menu__list">
-        <li><button class="bottom-menu__item" data-bottom-menu-add-group><span>Добавить в группу</span><img src="/icons/iconplus.svg" alt="Добавить"></button></li>
-        <li><button class="bottom-menu__item" data-bottom-menu-choose-multiple><span>Выбрать несколько</span><img src="/icons/ul.svg" alt="Выбрать"></button></li>
+        <li><button class="bottom-menu__item" data-bottom-menu-add-group><span>Добавить в группу</span><div style="width: 44px; height: 44px;"><svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C12 21.3373 12.5373 20.8 13.2 20.8H20.8V13.2C20.8 12.5373 21.3373 12 22 12C22.6627 12 23.2 12.5373 23.2 13.2V20.8H30.8C31.4627 20.8 32 21.3373 32 22C32 22.6627 31.4627 23.2 30.8 23.2H23.2V30.8C23.2 31.4627 22.6627 32 22 32C21.3373 32 20.8 31.4627 20.8 30.8V23.2H13.2C12.5373 23.2 12 22.6627 12 22Z" fill="var(--text-primary)"/>
+</svg></div></button></li>
+        <li><button class="bottom-menu__item" data-bottom-menu-choose-multiple><span>Выбрать несколько</span><div style="width: 44px; height: 44px;"><svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M18.5035 14.2804C18.8801 14.6543 18.8801 15.2606 18.5035 15.6345L15.9321 18.1877C15.5555 18.5616 14.9449 18.5616 14.5683 18.1877L13.2826 16.9111C12.9061 16.5372 12.9061 15.9309 13.2826 15.557C13.6592 15.1831 14.2698 15.1831 14.6463 15.557L15.2502 16.1566L17.1398 14.2804C17.5164 13.9065 18.1269 13.9065 18.5035 14.2804ZM20.0716 16.234C20.0716 16.7628 20.5034 17.1915 21.0359 17.1915H30.0359C30.5685 17.1915 31.0002 16.7628 31.0002 16.234C31.0002 15.7053 30.5685 15.2766 30.0359 15.2766H21.0359C20.5034 15.2766 20.0716 15.7053 20.0716 16.234ZM21.0359 20.7021C20.5034 20.7021 20.0716 21.1308 20.0716 21.6596C20.0716 22.1884 20.5034 22.617 21.0359 22.617H30.0359C30.5685 22.617 31.0002 22.1884 31.0002 21.6596C31.0002 21.1308 30.5685 20.7021 30.0359 20.7021H21.0359ZM18.5035 20.7408C18.8801 20.3669 18.8801 19.7607 18.5035 19.3868C18.1269 19.0129 17.5164 19.0129 17.1398 19.3868L15.2502 21.263L14.6463 20.6634C14.2698 20.2895 13.6592 20.2895 13.2826 20.6634C12.9061 21.0373 12.9061 21.6435 13.2826 22.0174L14.5683 23.294C14.9449 23.6679 15.5555 23.6679 15.9321 23.294L18.5035 20.7408ZM18.5035 24.8123C18.8801 25.1862 18.8801 25.7925 18.5035 26.1664L15.9321 28.7196C15.5555 29.0935 14.9449 29.0935 14.5683 28.7196L13.2826 27.443C12.9061 27.0691 12.9061 26.4628 13.2826 26.0889C13.6592 25.715 14.2698 25.715 14.6463 26.0889L15.2502 26.6885L17.1398 24.8123C17.5164 24.4384 18.1269 24.4384 18.5035 24.8123ZM21.0359 26.1277C20.5034 26.1277 20.0716 26.5563 20.0716 27.0851C20.0716 27.6139 20.5034 28.0426 21.0359 28.0426H30.0359C30.5685 28.0426 31.0002 27.6139 31.0002 27.0851C31.0002 26.5563 30.5685 26.1277 30.0359 26.1277H21.0359Z" fill="var(--text-primary)"/>
+</svg>
+</div></button></li>
         <li><button class="bottom-menu__item" data-bottom-menu-delete><span>Удалить</span><img src="/icons/garbage.svg" alt="Удалить"></button></li>
       </ul> 
     </div>
@@ -281,7 +342,18 @@
           <div class="modal__header-add">
         <div class="modal__header-wrapper-add">
           <h2 class="modal__title">Добавить в группу</h2>
-          <img src="/images/create/graph.svg" alt="graph"/>
+                                    <svg
+                  width='80'
+                  height='48'
+                  viewBox='0 0 80 48'
+                  fill='none'
+                  xmlns='http://www.w3.org/2000/svg'
+                >
+                  <path
+                    d='M39.403 21C33.6716 13.8 25.0746 0 10.7463 0H0V48H80C63.975 48 50.02 34.3377 39.403 21Z'
+                    fill='var(--background-tertiary)'
+                  />
+                </svg>
         </div>
         <button class="modal__close" data-modal-close-add-to-group>
           <img src="/icons/close.svg" alt="Закрыть">

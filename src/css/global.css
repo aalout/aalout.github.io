@@ -23,6 +23,9 @@
   --channel-card: rgba(0, 0, 0, 0.45);
   --text-head: rgba(0, 0, 0, 0.85);
   --text-description: rgba(0, 0, 0, 0.3);
+  --background-tertiarys: #ffffff;
+  --slider: rgba(0, 0, 0, 0.15);
+  --dots-white: #c3c3c3;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -41,7 +44,15 @@
     --channel-card: rgba(195, 195, 195, 1);
     --text-head: rgba(255, 255, 255, 0.85);
     --text-description: rgba(255, 255, 255, 0.3);
+    --background-tertiarys: rgba(255, 255, 255, 1);
+    --slider: rgba(255, 255, 255, 0.15);
+    --dots-white: #000000;
   }
+}
+
+svg {
+  height: 100%;
+  width: 100%;
 }
 
 body {
@@ -63,4 +74,14 @@ main {
 
 img {
   color: inherit;
+}
+
+input {
+  background-color: var(--background-tertiary);
+  color: var(--text-primary);
+}
+
+textarea {
+  background-color: var(--background-tertiary);
+  color: var(--text-primary);
 }

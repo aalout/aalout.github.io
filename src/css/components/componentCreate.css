@@ -11,12 +11,13 @@
 .create__background {
   position: absolute;
   top: -100px;
-  left: 8px;
+  /* left: 100px; */
+  right: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
-  width: 400px;
-  height: 400px;
+  width: 300px;
+  height: auto;
 }
 
 .create-wrapper {
@@ -185,6 +186,12 @@
   padding: 10px 16px 14px;
   background: var(--background-tertiary);
   border-radius: 16px 0 0 0;
+  white-space: nowrap;
+}
+
+.create-card__add-icon {
+  width: auto;
+  height: 51px;
 }
 
 .modal__title-hidden {
