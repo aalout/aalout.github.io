@@ -18,8 +18,8 @@ export default defineConfig({
     {
       name: 'handlebars',
       transformIndexHtml: {
-        enforce: 'pre',
-        async transform() {
+        order: 'pre',
+        async handler() {
           const componentHome = await fs.promises.readFile(
             resolve(__dirname, 'src/partials/components/componentHome.hbs'),
             'utf-8'
