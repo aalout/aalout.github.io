@@ -189,11 +189,12 @@
   line-height: 20px;
   letter-spacing: 0px;
   color: rgba(162, 162, 162, 1);
+  user-select: none;
 }
 
 /* Подгоняем стили для одного тега */
 .search-tag {
-  background: rgba(241, 241, 243, 1);
+  background: var(--background-tertiary);
   border-radius: 4px;
   padding: 4px 8px;
   font-weight: 400;
@@ -450,7 +451,7 @@
 .post-content {
   padding: 12px;
   border-radius: 0px 16px 16px 16px;
-  background-image: url(../../../public/images/preview/tgchat.png);
+  background-image: var(--bg-image);
   background-size: cover;
   background-position: center;
   width: 100%;

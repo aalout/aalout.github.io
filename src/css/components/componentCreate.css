@@ -908,6 +908,15 @@
   border: none;
   font-size: 20px;
   cursor: pointer;
+  color: var(--text-primary);
+}
+
+.action-cancel-group {
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 /* Добавляем правило для изменения высоты всего блока с карточками в режиме множественного выделения */
@@ -919,7 +928,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f0f0f0;
   padding-bottom: 16px;
   font-weight: 400;
   font-size: 17px;
@@ -935,6 +943,7 @@
   line-height: 16.8px;
   letter-spacing: 0.1px;
   border: none;
+  color: var(--text-primary);
 }
 
 .multi-select-actions-group {
@@ -956,6 +965,11 @@
 .multi-select-actions-group .action-delete-group {
   display: flex;
   align-items: center;
+}
+
+.action-delete-group {
+  gap: 6px;
+  color: var(--text-primary);
 }
 
 /* Стили для чекбоксов — по умолчанию скрыты */

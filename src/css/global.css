@@ -26,6 +26,7 @@
   --background-tertiarys: #ffffff;
   --slider: rgba(0, 0, 0, 0.15);
   --dots-white: #c3c3c3;
+  --bg-image: var(--bg-image);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -47,6 +48,7 @@
     --background-tertiarys: rgba(255, 255, 255, 1);
     --slider: rgba(255, 255, 255, 0.15);
     --dots-white: #000000;
+    --bg-image: url(/public/images/preview/tgchatdark.png);
   }
 }
 
