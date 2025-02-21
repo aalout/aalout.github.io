@@ -296,7 +296,7 @@ input:checked + .slider:before {
   transform: translateY(-50%);
   width: 16px;
   height: 16px;
-  z-index: 1111;
+  z-index: 111;
   pointer-events: none;
 }
 

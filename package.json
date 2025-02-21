@@ -4,9 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "vite build",
     "dev": "vite dev",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "pnpm run build",
+    "deploy": "gh-pages -d dist",
+    "build": "parcel build src/pages/*.hbs --public-url /aalout.github.io/"
   },
   "devDependencies": {
     "@handlebars/parser": "^2.1.0",
@@ -14,6 +16,7 @@
     "eslint": "^9.19.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.3",
+    "gh-pages": "^6.3.0",
     "glob": "^11.0.1",
     "handlebars": "^4.7.8",
     "postcss": "^8.5.1",
@@ -25,6 +28,9 @@
     "vite-plugin-html": "^3.2.2"
   },
   "dependencies": {
-    "chokidar": "^4.0.3"
+    "chokidar": "^4.0.3",
+    "parcel": "^2.13.3",
+    "parcel-config-default": "^0.0.0",
+    "parcel-transformer-handlebars": "^1.0.0"
   }
 }

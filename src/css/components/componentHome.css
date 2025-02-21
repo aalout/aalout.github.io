@@ -322,9 +322,8 @@
 }
 
 .post-item {
-  margin-top: 16px;
   border-radius: 12px;
-  padding: 16px;
+  padding-block-start: 16px;
 }
 
 .post-header {
