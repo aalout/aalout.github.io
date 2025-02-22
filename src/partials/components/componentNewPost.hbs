@@ -46,6 +46,19 @@
           </div>
         </div>
 
+        <div class='link-preview-container' data-link-preview style='display: none;'>
+          <div class='link-preview-content'>
+            <div class='link-preview-content-wrapper'>
+              <h4 class='link-preview-title'>Предпросмотр ссылки</h4>
+              <p class='link-preview-url'>https://www.youtube.com/</p>
+            </div>
+            <label class='switch'>
+              <input type='checkbox' data-link-preview-switch checked />
+              <span class='slider'></span>
+            </label>
+          </div>
+        </div>
+
         <div class='photo-position-container' data-photo-position style='display: none;'>
           <div class='photo-position-header'>
             <h4>Выберите расположение фото</h4>
@@ -127,7 +140,19 @@
     <div class='modal__header'>
       <div class='modal__header-wrapper'>
         <h2 class='modal__title'>Добавить кнопку</h2>
-        <img src='/images/create/graph.svg' alt='graph' />
+        <svg
+          width='80'
+          height='48'
+          viewBox='0 0 80 48'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+        >
+          <path
+            d='M39.403 21C33.6716 13.8 25.0746 0 10.7463 0H0V48H80C63.975 48 50.02 34.3377 39.403 21Z'
+            fill='var(--background-tertiary)'
+          />
+        </svg>
+
       </div>
       <button class='modal__close'>
         <img src='/icons/closemodal.svg' alt='Закрыть' />
@@ -149,10 +174,22 @@
   <div class='modal-content'>
     <div class='modal__header'>
       <div class='modal__header-wrapper'>
-        <h2 class='modal__title-hidden'>Добавить скрытое продолжение</h2>
-        <img src='/images/create/graphbig.svg' class='modal__header-graph' alt='graph' />
+        <h2 class='modal__title-hidden'>Добавить <br /> скрытое продолжение</h2>
+        <div style='height: 68px; width: 100%;'><svg
+            width='80'
+            height='68'
+            viewBox='0 0 80 68'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
+          >
+            <path
+              d='M39.403 29.75C33.6716 19.55 25.0746 0 10.7463 0H0V68H80C63.975 68 50.02 48.645 39.403 29.75Z'
+              fill='var(--background-tertiary)'
+            />
+          </svg>
+        </div>
       </div>
-      <button class='modal__close'>
+      <button class='modal__close-big modal__close'>
         <img src='/icons/closemodal.svg' alt='Закрыть' />
       </button>
     </div>
@@ -195,7 +232,18 @@
     <div class='modal__header'>
       <div class='modal__header-wrapper'>
         <h2 class='modal__title'>Добавить ссылку</h2>
-        <img src='/images/create/graph.svg' alt='graph' />
+        <svg
+          width='80'
+          height='48'
+          viewBox='0 0 80 48'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+        >
+          <path
+            d='M39.403 21C33.6716 13.8 25.0746 0 10.7463 0H0V48H80C63.975 48 50.02 34.3377 39.403 21Z'
+            fill='var(--background-tertiary)'
+          />
+        </svg>
       </div>
       <button class='modal__close'>
         <img src='/icons/closemodal.svg' alt='Закрыть' />
@@ -215,9 +263,20 @@
   <div class='modal__header'>
     <div class='modal__header-wrapper'>
       <h2 class='modal__title-exit'>Выйти из редактора?</h2>
-      <img src='/images/create/graph.svg' alt='graph' />
+      <svg
+        width='80'
+        height='48'
+        viewBox='0 0 80 48'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
+      >
+        <path
+          d='M39.403 21C33.6716 13.8 25.0746 0 10.7463 0H0V48H80C63.975 48 50.02 34.3377 39.403 21Z'
+          fill='var(--background-tertiary)'
+        />
+      </svg>
     </div>
-    <button class='modal__close'>
+    <button class='modal__close-exit modal__close'>
       <img src='/icons/closemodal.svg' alt='Закрыть' />
     </button>
   </div>
@@ -225,7 +284,7 @@
     <div class='modal-body'>
       <div class='modal__text'>Если вы выйдите, все изменения будут потеряны.</div>
       <div class='modal-buttons'>
-        <button class='modal-button modal-button--cancel'>Отмена</button>
+        <button class='modal-button-exit modal-button--cancel'>Отмена</button>
         <button class='modal-button modal-button--exit'>Выйти</button>
       </div>
     </div>

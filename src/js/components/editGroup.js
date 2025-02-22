@@ -1,71 +1,104 @@
 export class EditGroup {
-    constructor(groupId) {
-        this.groupId = groupId;
-        this.selectedChannels = new Set();
-        this.init();
+  constructor() {
+    this.selectedChannels = new Set();
+    this.channels = this.getChannels();
+    this.init();
+  }
+
+  getChannels() {
+    const globalData = document.getElementById('global-data');
+    if (globalData && globalData.dataset.channels) {
+      return JSON.parse(globalData.dataset.channels);
+    }
+    return [];
+  }
+
+  init() {
+    this.bindElements();
+    this.bindEvents();
+  }
+
+  bindElements() {
+    this.container = document.querySelector('.edit-group');
+    this.selectAllButton = this.container.querySelector('.edit-group__content-header-button');
+    this.channelCards = this.container.querySelectorAll('.channel-card');
+    this.searchInput = this.container.querySelector('.edit-group__content-search-input');
+    this.channelsContainer = this.container.querySelector('.channel-cards-grid-edit');
+  }
+
+  bindEvents() {
+    this.selectAllButton.addEventListener('click', () => this.handleSelectAll());
+
+    this.channelCards.forEach(card => {
+      card.addEventListener('click', e => {
+        if (e.target.closest('.channel-card__menu')) return;
+        this.toggleChannel(card);
+      });
+    });
+
+    // Добавляем обработчик поиска
+    this.searchInput.addEventListener('input', e => this.handleSearch(e.target.value));
+  }
+
+  toggleChannel(card) {
+    const channelId = card.dataset.channelId;
+
+    if (this.selectedChannels.has(channelId)) {
+      this.selectedChannels.delete(channelId);
+      card.classList.remove('selected');
+    } else {
+      this.selectedChannels.add(channelId);
+      card.classList.add('selected');
     }
 
-    init() {
-        // Получаем данные каналов
-        const globalDataEl = document.getElementById("global-data");
-        this.channels = [];
-        if (globalDataEl && globalDataEl.dataset.channels) {
-            try {
-                this.channels = JSON.parse(globalDataEl.dataset.channels);
-                this.loadGroupData(); // Загружаем данные группы
-            } catch (error) {
-                console.error('Ошибка парсинга данных каналов:', error);
-            }
-        }
+    this.updateSelectAllButton();
+  }
 
-        this.renderChannels();
-        this.initGroupNameInput();
-        this.updateSaveButton();
-    }
+  handleSearch(query) {
+    const normalizedQuery = query.toLowerCase().trim();
 
-    async loadGroupData() {
-        // Здесь должна быть логика загрузки данных группы по this.groupId
-        // Например:
-        // const groupData = await fetchGroupData(this.groupId);
-        // this.selectedChannels = new Set(groupData.channels);
-        // document.querySelector('.edit-group__input').value = groupData.name;
-    }
+    this.channels.forEach(channel => {
+      const card = this.channelsContainer.querySelector(`[data-channel-id="${channel.username}"]`);
+      if (!card) return;
 
-    renderChannels() {
-        const container = document.querySelector('.edit-group__content-channels');
-        if (!container) return;
+      const title = channel.title.toLowerCase();
+      const username = channel.username.toLowerCase();
 
-        container.innerHTML = this.channels.map(channel => `
-            <div class="channel-card ${this.selectedChannels.has(channel.username) ? 'selected' : ''}" 
-                 data-channel-id="${channel.username}">
-                <div class="channel-card__header">
-                    <img src="${channel.avatar}" class="channel-card__avatar" alt="Channel avatar" />
-                    <div class="channel-card__checkbox">
-                        <img src="/icons/check.svg" alt="Selected" />
-                    </div>
-                </div>
-                <div class="channel-card__body">
-                    <h5 class="channel-card__title">${channel.title}</h5>
-                    <p class="channel-card__username">${channel.username}</p>
-                </div>
-            </div>
-        `).join('');
+      if (title.includes(normalizedQuery) || username.includes(normalizedQuery)) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
 
-        this.updateCounter();
-        this.initChannelCards();
-    }
+  handleSelectAll() {
+    const visibleCards = Array.from(this.channelCards).filter(
+      card => card.style.display !== 'none'
+    );
+    const isSelectingAll = this.selectedChannels.size !== visibleCards.length;
 
-    // ... остальные методы аналогичны CreateGroup, но с префиксом edit-group ...
+    visibleCards.forEach(card => {
+      const channelId = card.dataset.channelId;
 
-    updateSaveButton() {
-        const button = document.querySelector('.edit-group__button');
-        const input = document.querySelector('.edit-group__input');
-        
-        if (button && input) {
-            const hasName = input.value.trim().length > 0;
-            const hasSelectedChannels = this.selectedChannels.size > 0;
-            
-            button.disabled = !(hasName && hasSelectedChannels);
-        }
-    }
+      if (isSelectingAll) {
+        this.selectedChannels.add(channelId);
+        card.classList.add('selected');
+      } else {
+        this.selectedChannels.delete(channelId);
+        card.classList.remove('selected');
+      }
+    });
+
+    this.updateSelectAllButton();
+  }
+
+  updateSelectAllButton() {
+    const visibleCards = Array.from(this.channelCards).filter(
+      card => card.style.display !== 'none'
+    );
+    const buttonText =
+      this.selectedChannels.size === visibleCards.length ? 'Снять выделение' : 'Выбрать все';
+    this.selectAllButton.querySelector('span').textContent = buttonText;
+  }
 }

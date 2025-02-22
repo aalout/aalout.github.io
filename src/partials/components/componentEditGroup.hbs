@@ -1,42 +1,61 @@
-<section class="edit-group">
-    <div class="edit-group__header">
-        <h3 class="edit-group__title">Название группы</h3>
-        <input class="edit-group__input" placeholder="Введите название" />
-    </div>
+<section class='edit-group'>
+  <div class='edit-group__header'>
+    <h3 class='edit-group__title'>Название группы</h3>
+    <input class='edit-group__input' placeholder='Введите название' />
+  </div>
 
-    <div class="edit-group__content">
-        <div class="edit-group__content-header">
-            <div class="edit-group__content-header-title">
-                <h3 class="edit-group__content-header-title-text">Каналы в группе</h3>
-                <span class="edit-group__content-header-title-count">0</span>
-            </div>
-            <button class="edit-group__content-header-button">
-                <span>Выбрать все</span>
-            </button>
-        </div>
-        <div class="edit-group__content-search">
-            <input class="edit-group__content-search-input" placeholder="Поиск каналов" />
-            <button class="edit-group__content-search-button">
-                <img src="/icons/search.svg" alt="Поиск" />
-            </button>
-        </div>
-        <div class="edit-group__content-channels">
-            <div class="channel-card">
-                <div class="channel-card__header">
-                    <img src="{{avatar}}" class="channel-card__avatar" alt="Channel avatar" />
-                    <div class="channel-card__checkbox">
-                        <img src="/icons/check.svg" alt="Selected" />
-                    </div>
-                </div>
-                <div class="channel-card__body">
-                    <h5 class="channel-card__title">{{title}}</h5>
-                    <p class="channel-card__username">{{username}}</p>
-                </div>
-            </div>
-        </div>
+  <div class='edit-group__content'>
+    <div class='edit-group__content-header'>
+      <div class='edit-group__content-header-title'>
+        <h3 class='edit-group__content-header-title-text'>Каналы в группе</h3>
+        <span class='edit-group__content-header-title-count'>{{channels.length}}</span>
+      </div>
+      <button class='edit-group__content-header-button'>
+        <span>Выбрать все</span>
+      </button>
     </div>
+    <div class='edit-group__content-search'>
+      <input class='edit-group__content-search-input' placeholder='Поиск каналов' />
+      <button class='edit-group__content-search-button'>
+        <img src='/icons/search.svg' alt='Поиск' />
+      </button>
+    </div>
+    <div class='edit-group__content-channels'>
+      {{#if channels.length}}
+        <div class='channel-cards-grid-edit'>
+          {{#each channels}}
+            <div class='channel-card' data-channel-id='{{id}}'>
+              <div class='channel-card__header'>
+                <img src='{{avatar}}' class='channel-card__avatar' alt='Channel avatar' />
+                <a href='/create' class='channel-card__menu'>
+                  <svg
+                    width='24'
+                    height='24'
+                    viewBox='0 0 24 24'
+                    fill='none'
+                    xmlns='http://www.w3.org/2000/svg'
+                  >
+                    <path
+                      fill-rule='evenodd'
+                      clip-rule='evenodd'
+                      d='M12 8.5C12.8284 8.5 13.5 7.82843 13.5 7C13.5 6.17157 12.8284 5.5 12 5.5C11.1716 5.5 10.5 6.17157 10.5 7C10.5 7.82843 11.1716 8.5 12 8.5ZM13.5 12C13.5 12.8284 12.8284 13.5 12 13.5C11.1716 13.5 10.5 12.8284 10.5 12C10.5 11.1716 11.1716 10.5 12 10.5C12.8284 10.5 13.5 11.1716 13.5 12ZM13.5 17C13.5 17.8284 12.8284 18.5 12 18.5C11.1716 18.5 10.5 17.8284 10.5 17C10.5 16.1716 11.1716 15.5 12 15.5C12.8284 15.5 13.5 16.1716 13.5 17Z'
+                      fill='var(--text-primary)'
+                    />
+                  </svg>
+                </a>
+              </div>
+              <div class='channel-card__body'>
+                <h5 class='channel-card__title'>{{title}}</h5>
+                <p class='channel-card__username'>{{username}}</p>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      {{/if}}
+    </div>
+  </div>
 
-    <button class="edit-group__button">
-        <span>Сохранить</span>
-    </button>
+  <button class='edit-group__button'>
+    <span>Сохранить</span>
+  </button>
 </section>

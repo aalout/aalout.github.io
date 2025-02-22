@@ -119,61 +119,59 @@
 }
 
 .edit-group__content-channels {
+  display: block;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.channel-cards-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 8px;
-  max-height: 406px; /* Высота 6 карточек (2x3 сетка) */
-  overflow-y: auto;
-  padding-right: 8px; /* Для скроллбара */
-}
-
-/* Стилизация скроллбара */
-.edit-group__content-channels::-webkit-scrollbar {
-  width: 4px;
-}
-
-.edit-group__content-channels::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 2px;
-}
-
-.edit-group__content-channels::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 2px;
-}
-
-.edit-group__content-channels::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  width: 100%;
 }
 
 .channel-card {
   position: relative;
   cursor: pointer;
+  border-radius: 16px;
+  padding: 16px;
+  border: 2px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.channel-card__header {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.channel-card__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+}
+
+.channel-card__menu {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .channel-card__checkbox {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
   display: none;
-  align-items: center;
-  justify-content: center;
-}
-
-.channel-card__checkbox img {
-  width: 24px;
-  height: 24px;
 }
 
 .channel-card.selected {
-  border-color: #8571ff;
-}
-
-.channel-card.selected .channel-card__checkbox {
-  display: flex;
+  border-color: rgba(133, 111, 255, 1);
 }
 
 .edit-group__button:disabled {
@@ -212,4 +210,11 @@
   background-color: rgba(231, 230, 255, 0.1);
   border-radius: 50%;
   padding: 10px;
+}
+
+.channel-cards-grid-edit {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 52px;
 }
